@@ -208,8 +208,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 3
 .office-info .legal-label{font-style:italic;font-weight:700;color:var(--ink);}
 
 /* CONTACT FORM */
-.contact-form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:38px;margin-top:22px;}
-.contact-form-card h3{font-size:18px;margin-bottom:26px;}
+.contact-columns{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start;}
+.contact-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:38px;}
+.contact-box h3{font-size:18px;margin-bottom:26px;}
 .form-group{margin-bottom:28px;}
 .form-group:last-of-type{margin-bottom:0;}
 .form-label{font-family:'Libre Franklin','Inter',sans-serif;font-weight:700;font-size:16.5px;color:var(--navy-900);margin-bottom:10px;display:block;}
@@ -266,7 +267,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   section{padding:52px 0;}
   .about-grid,.card-grid,.tools-grid,.region-grid,.team-grid,.insight-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
-  .contact-form-card{padding:26px;}
+  .contact-columns{grid-template-columns:1fr;}
+  .contact-box{padding:26px;}
   .hero{padding:150px 0 64px;}
   .hero h1{font-size:32px;}
   .page-hero{padding:130px 0 40px;}
@@ -639,19 +641,20 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section>
   <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Our Office</h2>
-    </div>
-    <div class="office-info reveal">
-      <p>2 Kallang Avenue #03-05<br>CT Hub, Singapore 339407</p>
-      <p>Tel: +65 6295 7155<br>Email: <a href="mailto:partners@jondavidsongroup.com">partners@jondavidsongroup.com</a></p>
-      <p><span class="legal-label">Licence No. 22S1412</span></p>
-      <p><span class="legal-label">Member of ENEX:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">www.enexsearch.group</a></p>
-      <p>Member of NPA Worldwide: <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a></p>
-      <p>Member of ELITEZ Group: <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
+    <div class="contact-columns">
+    <div class="contact-box reveal">
+      <h3>Our Office</h3>
+      <div class="office-info">
+        <p>2 Kallang Avenue #03-05<br>CT Hub, Singapore 339407</p>
+        <p>Tel: +65 6295 7155<br>Email: <a href="mailto:partners@jondavidsongroup.com">partners@jondavidsongroup.com</a></p>
+        <p><span class="legal-label">Licence No. 22S1412</span></p>
+        <p><span class="legal-label">Member of ENEX:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">www.enexsearch.group</a></p>
+        <p>Member of NPA Worldwide: <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a></p>
+        <p>Member of ELITEZ Group: <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
+      </div>
     </div>
 
-    <div class="contact-form-card reveal">
+    <div class="contact-box reveal">
       <h3>Send Us a Message</h3>
       <form id="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" enctype="multipart/form-data" novalidate>
         <div class="form-group">
@@ -716,6 +719,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <button type="submit" class="form-submit-btn" id="cf-submit-btn">Submit</button>
         <div class="form-status" id="cf-status" role="status"></div>
       </form>
+    </div>
     </div>
 
   </div>
