@@ -90,8 +90,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 3
 .hero .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .hero .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
-.home-banner-image{width:100%;max-height:460px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);}
+.banner-image{width:100%;max-height:460px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);}
 .image-band{padding:0;}
+.image-pair{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;}
+.image-pair .banner-image{height:400px;max-height:none;}
 .hero-stats{display:grid;grid-template-columns:repeat(4,auto);gap:40px;border-top:1px solid rgba(255,255,255,0.2);padding-top:26px;max-width:800px;}
 .hero-stats div{display:flex;flex-direction:column;gap:4px;}
 .hero-stats .num{font-family:'Libre Franklin',sans-serif;font-size:26px;font-weight:800;color:var(--white);}
@@ -273,6 +275,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   section{padding:52px 0;}
   .about-grid,.card-grid,.tools-grid,.region-grid,.team-grid,.insight-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
+  .image-pair{grid-template-columns:1fr;}
+  .image-pair .banner-image{height:auto;max-height:320px;}
   .contact-columns{grid-template-columns:1fr;}
   .contact-box{padding:26px;}
   .hero{padding:150px 0 64px;}
@@ -353,7 +357,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="image-band">
   <div class="wrap">
-    <img class="home-banner-image reveal" src="images/office-team.jpg" alt="JonDavidson consultants mapping our global talent network">
+    <img class="banner-image reveal" src="images/office-team.jpg" alt="JonDavidson consultants mapping our global talent network">
   </div>
 </section>
 
@@ -514,6 +518,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <h3>Training &amp; Consultancy</h3>
         <p>Programmes designed to sharpen the skills of recruitment and talent management professionals.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="image-band">
+  <div class="wrap">
+    <div class="image-pair">
+      <img class="banner-image reveal" src="images/client-meeting.jpg" alt="Consultants presenting talent strategy to a client leadership team">
+      <img class="banner-image reveal" src="images/client-portrait.jpg" alt="Client executive reviewing strategy in her office">
     </div>
   </div>
 </section>
