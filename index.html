@@ -66,8 +66,8 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .logo{display:flex;align-items:center;cursor:pointer;}
 .logo-icon{height:44px;width:auto;display:block;}
 .logo-text{display:flex;flex-direction:column;line-height:1.15;margin-left:10px;}
-.logo-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-0.03em;display:inline-block;transform:scaleX(0.85);transform-origin:left center;}
-.logo-tagline{font-family:'Poppins',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:0.09em;color:var(--gray-600);min-height:13px;}
+.logo-name{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-0.01em;}
+.logo-tagline{font-family:'Poppins',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.32em;color:var(--ink);min-height:14px;}
 .nav-links{display:flex;gap:32px;align-items:center;margin-left:auto;}
 .nav-links a{color:var(--gray-600);font-size:14.5px;font-weight:500;transition:color .15s;padding-bottom:4px;border-bottom:2px solid transparent;cursor:pointer;}
 .nav-links a:hover{color:var(--navy-900);}
@@ -347,6 +347,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 @media (max-width:680px){
   .nav-links{display:none;}
   .menu-toggle{display:block;}
+  .logo-name{font-size:16px;}
+  .logo-tagline{font-size:7.5px;letter-spacing:0.1em;white-space:nowrap;}
   section{padding:52px 0;}
   .about-grid,.card-grid,.region-grid,.team-grid,.tools-preview-grid{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
