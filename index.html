@@ -248,6 +248,14 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .jobs-cta h2{color:var(--navy-900);font-size:26px;max-width:420px;}
 .jobs-cta p{color:var(--gray-600);margin-top:10px;max-width:420px;font-size:14.5px;}
 .jobs-cta-actions{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap;}
+.jobs-cta.photo{
+  background:linear-gradient(115deg, rgba(9,22,43,0.90), rgba(11,31,58,0.75) 55%, rgba(11,31,58,0.55)), url("images/office-team.jpg") center/cover no-repeat;
+  border:none;
+}
+.jobs-cta.photo h2{color:var(--white);}
+.jobs-cta.photo p{color:rgba(255,255,255,0.82);}
+.jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
+.jobs-cta.photo .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
 /* LIVE ROLES TICKER */
 .ticker-bar{display:flex;align-items:stretch;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .ticker-label{display:flex;align-items:center;gap:10px;padding:18px 22px;flex-shrink:0;background:var(--bg);position:relative;z-index:2;}
@@ -420,12 +428,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<section class="image-band">
-  <div class="wrap">
-    <img class="banner-image reveal" src="images/office-team.jpg" alt="JonDavidson consultants mapping our global talent network">
-  </div>
-</section>
-
 <section class="ticker-section">
   <div class="ticker-bar">
     <div class="ticker-label">
@@ -464,7 +466,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="tight-top">
   <div class="wrap">
-    <div class="jobs-cta reveal">
+    <div class="jobs-cta photo reveal">
       <div>
         <h2>Looking for your next executive role?</h2>
         <p>Our consultants would be glad to discuss, in confidence, how we can help you find your next opportunity.</p>
