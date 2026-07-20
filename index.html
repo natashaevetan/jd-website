@@ -219,6 +219,24 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .tag-row{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 8px;}
 .tag-pill{background:var(--white);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:13px;color:var(--navy-800);font-weight:600;}
 
+/* LIVE ROLES TICKER */
+.ticker-bar{display:flex;align-items:stretch;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.ticker-label{display:flex;align-items:center;gap:10px;padding:18px 22px;flex-shrink:0;background:var(--bg);position:relative;z-index:2;}
+.ticker-dot{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,0.18);flex-shrink:0;}
+.ticker-label-title{font-family:'Libre Franklin',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:0.06em;color:var(--navy-900);}
+.ticker-label-sub{font-size:11.5px;color:var(--gray-600);}
+.ticker-track-wrap{flex:1;overflow:hidden;background:var(--white);position:relative;}
+.ticker-track{display:flex;align-items:center;gap:14px;width:max-content;padding:14px 0;animation:ticker-scroll 34s linear infinite;}
+.ticker-track-wrap:hover .ticker-track{animation-play-state:paused;}
+.ticker-item{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--border);border-radius:999px;padding:9px 18px;font-size:13.5px;white-space:nowrap;flex-shrink:0;}
+.ticker-item-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;flex-shrink:0;}
+.ticker-item strong{color:var(--navy-900);font-weight:700;}
+.ticker-item span.pay{color:var(--navy-600);font-weight:700;}
+.ticker-all-jobs{display:flex;align-items:center;gap:6px;padding:18px 22px;flex-shrink:0;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--navy-900);background:var(--bg);white-space:nowrap;}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (prefers-reduced-motion: reduce){.ticker-track{animation:none;}}
+@media (max-width:680px){.ticker-label-sub{display:none;}.ticker-label,.ticker-all-jobs{padding:14px 14px;}}
+
 /* CONTACT */
 .office-info p{color:var(--gray-600);font-size:16px;line-height:1.65;margin-bottom:26px;}
 .office-info p:last-child{margin-bottom:0;}
@@ -391,6 +409,43 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <a href="#contact" data-route="contact" class="btn btn-outline">Talk to a Consultant</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="ticker-section">
+  <div class="ticker-bar">
+    <div class="ticker-label">
+      <span class="ticker-dot"></span>
+      <div>
+        <div class="ticker-label-title">LIVE ROLES</div>
+        <div class="ticker-label-sub">Now hiring</div>
+      </div>
+    </div>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Site Engineer</strong> <span class="pay">$8,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Operations Manager</strong> <span class="pay">$9,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Procurement Specialist</strong> <span class="pay">$5,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Warehouse Supervisor</strong> <span class="pay">$3,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Marketing Manager</strong> <span class="pay">$7,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Finance Director</strong> <span class="pay">$14,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>HR Business Partner</strong> <span class="pay">$6,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Manager</strong> <span class="pay">$10,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Compliance Manager</strong> <span class="pay">$8,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Supply Chain Lead</strong> <span class="pay">$9,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Site Engineer</strong> <span class="pay">$8,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Operations Manager</strong> <span class="pay">$9,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Procurement Specialist</strong> <span class="pay">$5,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Warehouse Supervisor</strong> <span class="pay">$3,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Marketing Manager</strong> <span class="pay">$7,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Finance Director</strong> <span class="pay">$14,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>HR Business Partner</strong> <span class="pay">$6,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Manager</strong> <span class="pay">$10,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Compliance Manager</strong> <span class="pay">$8,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Supply Chain Lead</strong> <span class="pay">$9,800/mo</span></div>
+      </div>
+    </div>
+    <a href="#browse-jobs" data-route="browse-jobs" class="ticker-all-jobs">All Jobs &rarr;</a>
   </div>
 </section>
 
@@ -611,6 +666,43 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <span class="tag-pill">Policy</span>
       <span class="tag-pill">Project Management</span>
     </div>
+  </div>
+</section>
+
+<section class="ticker-section">
+  <div class="ticker-bar">
+    <div class="ticker-label">
+      <span class="ticker-dot"></span>
+      <div>
+        <div class="ticker-label-title">LIVE ROLES</div>
+        <div class="ticker-label-sub">Now hiring</div>
+      </div>
+    </div>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Site Engineer</strong> <span class="pay">$8,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Operations Manager</strong> <span class="pay">$9,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Procurement Specialist</strong> <span class="pay">$5,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Warehouse Supervisor</strong> <span class="pay">$3,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Marketing Manager</strong> <span class="pay">$7,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Finance Director</strong> <span class="pay">$14,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>HR Business Partner</strong> <span class="pay">$6,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Manager</strong> <span class="pay">$10,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Compliance Manager</strong> <span class="pay">$8,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Supply Chain Lead</strong> <span class="pay">$9,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Site Engineer</strong> <span class="pay">$8,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Operations Manager</strong> <span class="pay">$9,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Procurement Specialist</strong> <span class="pay">$5,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Warehouse Supervisor</strong> <span class="pay">$3,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Marketing Manager</strong> <span class="pay">$7,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Finance Director</strong> <span class="pay">$14,000/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>HR Business Partner</strong> <span class="pay">$6,800/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Manager</strong> <span class="pay">$10,500/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Compliance Manager</strong> <span class="pay">$8,200/mo</span></div>
+        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Supply Chain Lead</strong> <span class="pay">$9,800/mo</span></div>
+      </div>
+    </div>
+    <a href="#browse-jobs" data-route="browse-jobs" class="ticker-all-jobs">All Jobs &rarr;</a>
   </div>
 </section>
 
