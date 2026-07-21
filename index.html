@@ -263,17 +263,15 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .jobs-cta p{color:var(--gray-600);margin-top:10px;max-width:420px;font-size:14.5px;}
 .jobs-cta-actions{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap;}
 .jobs-cta.photo{
-  aspect-ratio:1035/600;
   background-image:linear-gradient(115deg, rgba(9,22,43,0.88), rgba(11,31,58,0.72) 55%, rgba(11,31,58,0.5)), url("images/jobs-cta-executive.jpg");
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
   border:none;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  gap:26px;
+  border-radius:0;
+  padding:150px 0;
 }
+.jobs-cta.photo .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:26px;}
 .jobs-cta.photo h2{color:var(--white);}
 .jobs-cta.photo p{color:rgba(255,255,255,0.82);}
 .jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
@@ -394,7 +392,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .page-hero{padding:130px 0 40px;}
   .wrap{padding:0 20px;}
   .jobs-cta{padding:28px 22px;}
-  .jobs-cta.photo{aspect-ratio:auto;min-height:420px;}
+  .jobs-cta.photo{padding:64px 0;}
   footer .wrap{padding:0 20px;}
 }
 </style>
@@ -509,15 +507,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </section>
 
 <section class="tight-top">
-  <div class="wrap">
-    <div class="jobs-cta photo reveal">
+  <div class="jobs-cta photo reveal">
+    <div class="wrap">
       <div>
         <h2>Looking for your next executive role?</h2>
         <p>Our consultants would be glad to discuss, in confidence, how we can help you find your next opportunity.</p>
       </div>
       <div class="jobs-cta-actions">
-        <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse Open Roles</a>
-        <a href="#contact" data-route="contact" class="btn btn-outline">Talk to a Consultant</a>
+        <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse open roles</a>
+        <a href="#contact" data-route="contact" class="btn btn-outline">Talk to our consultants</a>
       </div>
     </div>
   </div>
