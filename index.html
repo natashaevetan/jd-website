@@ -176,7 +176,16 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .pillar h4{font-family:'Manrope',sans-serif;font-size:22px;color:var(--navy-900);margin-bottom:8px;}
 .pillar p{font-size:16px;color:var(--gray-600);margin:0;line-height:1.6;}
 
-.our-values-band{background:var(--navy-900);}
+.our-values-band{
+  position:relative;
+  background-color:var(--navy-900);
+  background-image:linear-gradient(90deg, rgba(11,31,58,0.1) 0%, rgba(11,31,58,0.88) 45%, var(--navy-900) 65%), url("images/our-values-handshake.jpg");
+  background-position:left center, left center;
+  background-size:cover, auto 100%;
+  background-repeat:no-repeat, no-repeat;
+  padding:140px 0;
+}
+.our-values-text{max-width:640px;margin-left:auto;}
 .our-values-heading{font-size:44px;line-height:1.15;color:#fff;max-width:760px;margin-bottom:24px;}
 .our-values-copy{max-width:760px;}
 .our-values-copy p{font-size:19px;line-height:1.85;color:rgba(255,255,255,0.82);margin-bottom:20px;}
@@ -343,7 +352,7 @@ select.form-control:invalid{color:var(--gray-400);}
 footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-top:1px solid var(--border);}
 .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;}
 .footer-brand p{font-size:18px;max-width:320px;margin:16px 0 20px;color:var(--gray-600);}
-.footer-brand-tight{margin:0;}
+.footer-brand-tight{margin:0;line-height:1.25;}
 .footer-brand-tight:first-of-type{margin-top:16px;}
 .footer-brand-tight:last-of-type{margin-bottom:20px;}
 .footer-bottom{display:flex;justify-content:space-between;padding-top:32px;font-size:13px;flex-wrap:wrap;gap:12px;color:var(--gray-400);}
@@ -373,6 +382,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .jobs-cta{flex-direction:column;align-items:flex-start;padding:36px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:38px;}
+  .our-values-band{padding:100px 0;}
   .our-values-heading{font-size:36px;}
   #page-home .solutions .section-head h2{font-size:34px;}
 }
@@ -393,6 +403,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:30px;}
+  .our-values-band{background-image:none;padding:64px 0;}
+  .our-values-text{max-width:100%;margin-left:0;}
   .our-values-heading{font-size:28px;}
   .story-split-grid h2{font-size:28px;}
   #page-home .solutions .section-head h2{font-size:28px;}
@@ -584,12 +596,14 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="our-values-band">
   <div class="wrap">
-    <h2 class="our-values-heading reveal">Our Values</h2>
-    <div class="our-values-copy reveal">
-      <p>Every client and candidate is treated as a unique individual, with distinct goals, motivations, and aspirations. Through executive search, recruitment consultancy, and training, we build lasting partnerships founded on <strong>Trust</strong>, strengthened by reliability and integrity.</p>
-      <p>Guided by <strong>Transparency</strong>, we foster open and honest communication, ensuring clarity and confidence throughout the recruitment journey. Our commitment to <strong>Transformation</strong> drives us to create meaningful impact by connecting the right talent with the right opportunities&mdash;empowering organisations and individuals to achieve lasting success.</p>
+    <div class="our-values-text">
+      <h2 class="our-values-heading reveal">Our Values</h2>
+      <div class="our-values-copy reveal">
+        <p>Every client and candidate is treated as a unique individual, with distinct goals, motivations, and aspirations. Through executive search, recruitment consultancy, and training, we build lasting partnerships founded on <strong>Trust</strong>, strengthened by reliability and integrity.</p>
+        <p>Guided by <strong>Transparency</strong>, we foster open and honest communication, ensuring clarity and confidence throughout the recruitment journey. Our commitment to <strong>Transformation</strong> drives us to create meaningful impact by connecting the right talent with the right opportunities&mdash;empowering organisations and individuals to achieve lasting success.</p>
+      </div>
+      <p class="our-values-founded reveal">Your trusted partner in building high-performing organisations and advancing executive careers.</p>
     </div>
-    <p class="our-values-founded reveal">Your trusted partner in building high-performing organisations and advancing executive careers.</p>
   </div>
 </section>
 
