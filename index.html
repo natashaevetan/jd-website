@@ -251,11 +251,27 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 
 /* REGIONS */
 .regions-detail{background:var(--white);}
-.region-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:32px;}
-.region-chip{border:1px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;background:var(--white);}
-.region-chip.hq{border-color:var(--red-500);background:rgba(194,32,55,0.06);}
-.region-chip .city{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;color:var(--navy-900);}
-.region-chip .country{font-size:11.5px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em;}
+.region-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:32px;align-items:start;}
+.region-chip{
+  border:1px solid var(--border);border-radius:16px;padding:30px 20px;text-align:center;background:var(--white);
+  transition:transform .2s ease, box-shadow .2s ease;cursor:default;position:relative;
+}
+.region-chip:hover{transform:translateY(-6px) scale(1.05);box-shadow:var(--shadow);z-index:2;}
+.region-chip.hq{border-color:var(--border);background:var(--white);}
+.region-chip .city{font-family:'Manrope',sans-serif;font-weight:700;font-size:19px;margin-bottom:4px;color:var(--navy-900);}
+.region-chip .country{font-size:12.5px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em;}
+.region-visit{
+  display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:0;
+  background:none;border:none;color:var(--red-600);font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;
+}
+.region-visit:hover{color:var(--red-500);}
+.region-visit-arrow{transition:transform .2s ease;}
+.region-chip.is-open .region-visit-arrow{transform:rotate(90deg);}
+.region-address{
+  max-height:0;overflow:hidden;text-align:left;font-size:13px;line-height:1.6;color:var(--gray-600);
+  transition:max-height .3s ease, margin-top .3s ease;
+}
+.region-chip.is-open .region-address{max-height:220px;margin-top:14px;}
 .network-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--border);padding-top:26px;}
 .network-row span{font-size:12.5px;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;}
 .network-row strong{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--navy-800);}
@@ -614,18 +630,49 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="wrap">
     <div class="eyebrow reveal">Regional Presence</div>
     <h1 class="reveal">Headquartered in Singapore, active across Asia Pacific</h1>
+    <p class="reveal">Present across 6 Asia Pacific countries, supported by 3 global partner organisations.</p>
   </div>
 </section>
 
 <section class="regions-detail">
   <div class="wrap">
     <div class="region-grid">
-      <div class="region-chip hq"><div class="city">Singapore</div><div class="country">HQ · Kallang Ave</div></div>
-      <div class="region-chip"><div class="city">Bangkok</div><div class="country">Thailand</div></div>
-      <div class="region-chip"><div class="city">Jakarta</div><div class="country">Indonesia</div></div>
-      <div class="region-chip"><div class="city">Kuala Lumpur</div><div class="country">Malaysia</div></div>
-      <div class="region-chip"><div class="city">Ho Chi Minh</div><div class="country">Vietnam</div></div>
-      <div class="region-chip"><div class="city">Coimbatore</div><div class="country">India</div></div>
+      <div class="region-chip hq">
+        <div class="city">Singapore</div>
+        <div class="country">HQ &middot; Kallang Ave</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">2 Kallang Avenue, #03-05 CT Hub, Singapore 339407</div>
+      </div>
+      <div class="region-chip">
+        <div class="city">Bangkok</div>
+        <div class="country">Thailand</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">408/107 Phahonyothin Place Building, 12th Floor Samsen Nai, Phaya Thai, Bangkok 10400, Thailand</div>
+      </div>
+      <div class="region-chip">
+        <div class="city">Jakarta</div>
+        <div class="country">Indonesia</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">Luminary Tower, 63rd Floor Thamrin Nine Complex, Jl. MH Thamrin No.10, Jakarta, Daerah Khusus Ibukota Jakarta 10230, Indonesia</div>
+      </div>
+      <div class="region-chip">
+        <div class="city">Kuala Lumpur</div>
+        <div class="country">Malaysia</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">B1-43A-1, Soho Suites @ KLCC No. 20 Jalan Perak 50450 Kuala Lumpur, Malaysia</div>
+      </div>
+      <div class="region-chip">
+        <div class="city">Ho Chi Minh</div>
+        <div class="country">Vietnam</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">VRG Building, 177 Hai Ba Trung Street Xuan Hoa Ward, Ho Chi Minh City, Vietnam</div>
+      </div>
+      <div class="region-chip">
+        <div class="city">Coimbatore</div>
+        <div class="country">India</div>
+        <button class="region-visit" type="button">Visit us <span class="region-visit-arrow">&rarr;</span></button>
+        <div class="region-address">11/4 Pooja Garden, Kalapatti Main Road, SITRA, Coimbatore, Tamil Nadu 641014, India</div>
+      </div>
     </div>
     <div class="network-row">
       <span>Global Network</span>
@@ -1209,6 +1256,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       cfSubmitBtn.disabled = false;
       cfSubmitBtn.textContent = 'Submit';
     }
+  });
+
+  document.querySelectorAll('.region-visit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const chip = btn.closest('.region-chip');
+      const wasOpen = chip.classList.contains('is-open');
+      document.querySelectorAll('.region-chip.is-open').forEach(open => { if (open !== chip) open.classList.remove('is-open'); });
+      chip.classList.toggle('is-open', !wasOpen);
+    });
   });
 </script>
 
