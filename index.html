@@ -263,16 +263,17 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .jobs-cta p{color:var(--gray-600);margin-top:10px;max-width:420px;font-size:14.5px;}
 .jobs-cta-actions{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap;}
 .jobs-cta.photo{
+  aspect-ratio:1264/848;
+  background-color:var(--navy-900);
   background-image:linear-gradient(115deg, rgba(9,22,43,0.88), rgba(11,31,58,0.72) 55%, rgba(11,31,58,0.5)), url("images/jobs-cta-executive.jpg");
   background-position:center;
-  background-size:cover;
+  background-size:cover, contain;
   background-repeat:no-repeat;
   border:none;
   border-radius:0;
-  padding:150px 0;
 }
 .jobs-cta.photo .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:26px;}
-.jobs-cta.photo h2{color:var(--white);}
+.jobs-cta.photo h2{color:var(--white);font-size:44px;max-width:600px;}
 .jobs-cta.photo p{color:rgba(255,255,255,0.82);}
 .jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .jobs-cta.photo .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
@@ -332,13 +333,9 @@ select.form-control:invalid{color:var(--gray-400);}
 
 /* FOOTER */
 footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-top:1px solid var(--border);}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid var(--border);}
-.footer-col h5{color:var(--navy-900);font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;}
-.footer-col a{display:block;font-size:14px;color:var(--gray-600);margin-bottom:10px;transition:color .15s;cursor:pointer;}
-.footer-col a:hover{color:var(--red-600);}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;}
 .footer-brand p{font-size:14px;max-width:280px;margin:16px 0 20px;color:var(--gray-600);}
-.footer-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:13px;flex-wrap:wrap;gap:12px;color:var(--gray-400);}
-.footer-legal{margin-top:28px;}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:32px;font-size:13px;flex-wrap:wrap;gap:12px;color:var(--gray-400);}
 .footer-legal-name{font-family:'Manrope',sans-serif;font-weight:700;color:var(--navy-900);font-size:13.5px;margin-bottom:10px;}
 .footer-legal-name span{font-weight:500;color:var(--gray-600);}
 .footer-legal p{font-size:12.5px;color:var(--gray-600);line-height:1.7;margin-bottom:4px;}
@@ -392,8 +389,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .page-hero{padding:130px 0 40px;}
   .wrap{padding:0 20px;}
   .jobs-cta{padding:28px 22px;}
-  .jobs-cta.photo{padding:64px 0;}
+  .jobs-cta.photo .wrap{padding:48px 20px;}
+  .jobs-cta.photo h2{font-size:30px;}
   footer .wrap{padding:0 20px;}
+  .footer-grid{grid-template-columns:1fr;gap:32px;}
 }
 </style>
 </head>
@@ -444,10 +443,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="wrap hero-inner">
     <h1>An enabler for clients, candidates &amp; consultants to reach <em>their potential.</em></h1>
     <p>A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary" data-route="contact">Find Executive Talent</a>
-      <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-outline">Browse Open Roles &rarr;</a>
-    </div>
     <div class="hero-stats">
       <div><span class="num">2007</span><span class="label">Founded</span></div>
       <div><span class="num">6</span><span class="label">APAC Offices</span></div>
@@ -515,7 +510,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       </div>
       <div class="jobs-cta-actions">
         <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse open roles</a>
-        <a href="#contact" data-route="contact" class="btn btn-outline">Talk to our consultants</a>
+        <a href="#contact" data-route="contact" class="btn btn-outline">Connect with us</a>
       </div>
     </div>
   </div>
@@ -1007,24 +1002,13 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <p>Delivering Talent, driving success.</p>
         <a href="#contact" class="btn btn-primary" data-route="contact" style="display:inline-flex;">Contact Us</a>
       </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="#about" data-route="about">About Us</a>
-        <a href="#client-solutions" data-route="client-solutions">Client Solutions</a>
-        <a href="#talent-tools" data-route="talent-tools">Talent Profiling Tools</a>
+      <div class="footer-legal">
+        <div class="footer-legal-name">JonDavidson Pte Ltd <span>(member of ELITEZ Group)</span></div>
+        <p>2 Kallang Avenue, #03-05 CT Hub, Singapore 339407</p>
+        <p>Tel: +65 6295 7155 &nbsp;&middot;&nbsp; Email: <a href="mailto:partners@jondavidsongroup.com">partners@jondavidsongroup.com</a></p>
+        <p><span class="legal-label">Licence No. 22S1412</span></p>
+        <p><span class="legal-label">Member of ENEX:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">enexsearch.group</a> &nbsp;&middot;&nbsp; Member of NPA Worldwide: <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a> &nbsp;&middot;&nbsp; Member of ELITEZ Group: <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
       </div>
-      <div class="footer-col">
-        <h5>For Job Seekers</h5>
-        <a href="#browse-jobs" data-route="browse-jobs">Browse Jobs</a>
-        <a href="#contact" data-route="contact">Submit Your Resume</a>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <div class="footer-legal-name">JonDavidson Pte Ltd <span>(member of ELITEZ Group)</span></div>
-      <p>2 Kallang Avenue, #03-05 CT Hub, Singapore 339407</p>
-      <p>Tel: +65 6295 7155 &nbsp;&middot;&nbsp; Email: <a href="mailto:partners@jondavidsongroup.com">partners@jondavidsongroup.com</a></p>
-      <p><span class="legal-label">Licence No. 22S1412</span></p>
-      <p><span class="legal-label">Member of ENEX:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">enexsearch.group</a> &nbsp;&middot;&nbsp; Member of NPA Worldwide: <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a> &nbsp;&middot;&nbsp; Member of ELITEZ Group: <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 JonDavidson Group. All rights reserved.</span>
