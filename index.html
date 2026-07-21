@@ -163,9 +163,10 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 #page-about .page-hero p,#page-meet-team .page-hero p{font-size:18px;max-width:640px;color:rgba(255,255,255,0.82);}
 .who-we-are{background:var(--white);}
 #page-about .who-we-are .wrap{max-width:1400px;}
-.who-we-are-copy{max-width:960px;}
-.who-we-are-copy p{font-size:22px;line-height:1.8;color:var(--ink);margin-bottom:26px;}
-.who-we-are-copy .lede-statement{font-size:34px;font-weight:700;line-height:1.35;color:var(--navy-900);margin-bottom:30px;}
+.who-we-are-intro{background:var(--white);min-height:100vh;display:flex;align-items:center;}
+.who-we-are-copy{max-width:760px;margin:0 auto;}
+.who-we-are-copy p{font-size:19px;line-height:1.85;color:var(--ink);margin-bottom:24px;}
+.who-we-are-copy .lede-statement{font-size:34px;font-weight:700;line-height:1.35;color:var(--navy-900);margin-bottom:28px;}
 .pillars{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
 .pillars-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
 .pillar{border-radius:14px;background:var(--bg);border:1px solid var(--border);}
@@ -178,13 +179,20 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 
 .our-values-band{
   position:relative;
-  background-color:var(--navy-900);
-  background-image:linear-gradient(90deg, rgba(11,31,58,0.1) 0%, rgba(11,31,58,0.88) 45%, var(--navy-900) 65%), url("images/our-values-handshake.jpg");
-  background-position:left center, left center;
-  background-size:cover, auto 100%;
-  background-repeat:no-repeat, no-repeat;
+  background:var(--navy-900);
+  overflow:hidden;
   padding:140px 0;
 }
+.our-values-photo{
+  position:absolute;top:0;left:0;bottom:0;width:70%;
+  background-image:url("images/our-values-handshake.jpg");
+  background-position:40% center;background-size:cover;background-repeat:no-repeat;
+}
+.our-values-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, rgba(11,31,58,0.05) 0%, rgba(11,31,58,0.15) 55%, rgba(11,31,58,0.75) 82%, var(--navy-900) 100%);
+}
+.our-values-band .wrap{position:relative;z-index:1;}
 .our-values-text{max-width:640px;margin-left:auto;}
 .our-values-heading{font-size:44px;line-height:1.15;color:#fff;max-width:760px;margin-bottom:24px;}
 .our-values-copy{max-width:760px;}
@@ -399,6 +407,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .footer-grid{grid-template-columns:1fr 1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:38px;}
   .our-values-band{padding:100px 0;}
+  .who-we-are-intro{min-height:80vh;}
   .our-values-heading{font-size:36px;}
   #page-home .solutions .section-head h2{font-size:34px;}
 }
@@ -419,13 +428,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:30px;}
-  .our-values-band{background-image:none;padding:64px 0;}
+  .our-values-photo{display:none;}
+  .our-values-band{padding:64px 0;}
   .our-values-text{max-width:100%;margin-left:0;}
   .our-values-heading{font-size:28px;}
   .story-split-grid h2{font-size:28px;}
   #page-home .solutions .section-head h2{font-size:28px;}
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
   .who-we-are-copy .lede-statement{font-size:24px;}
+  .who-we-are-intro{min-height:auto;padding:64px 0;}
   .pillar h4{font-size:19px;}
   .pillar p{font-size:15px;}
   .tool-detail{padding:24px;}
@@ -586,13 +597,18 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<section class="who-we-are">
+<section class="who-we-are-intro">
   <div class="wrap">
     <div class="who-we-are-copy reveal">
       <p class="lede-statement">At JonDavidson, we believe that every successful company is built on its people.</p>
       <p>Finding the right talent goes beyond matching skills to a job &mdash; it&rsquo;s about connecting individuals with roles where they can thrive, contribute meaningfully, and align with a company&rsquo;s culture and core values. When the right people are in the right environment, both businesses and employees succeed.</p>
       <p>JonDavidson was founded in May 2007 by a group of experienced industry specialists, driven by a shared passion for helping organisations build capable and high-performing teams. By combining our diverse expertise, insights, and networks, we deliver tailored recruitment solutions that empower businesses to secure exceptional talent while helping candidates achieve their long-term career aspirations.</p>
     </div>
+  </div>
+</section>
+
+<section class="who-we-are">
+  <div class="wrap">
     <div class="pillars pillars-row">
       <div class="pillar reveal">
         <img class="pillar-photo" src="images/pillar-global-perspective.jpg" alt="Global Perspective">
@@ -611,6 +627,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </section>
 
 <section class="our-values-band">
+  <div class="our-values-photo"></div>
   <div class="wrap">
     <div class="our-values-text">
       <h2 class="our-values-heading reveal">Our Values</h2>
