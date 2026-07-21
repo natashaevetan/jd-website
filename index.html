@@ -157,11 +157,13 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .who-we-are-copy p{font-size:19px;line-height:1.85;color:var(--ink);margin-bottom:24px;}
 .pillars{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
 .pillars-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-.pillar{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:14px;background:var(--bg);border:1px solid var(--border);}
-.pillars-row .pillar{padding:22px;}
-.pillar-icon{width:38px;height:38px;border-radius:10px;background:var(--navy-900);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
-.pillar h4{font-family:'Manrope',sans-serif;font-size:15px;color:var(--navy-900);margin-bottom:3px;}
-.pillar p{font-size:13.5px;color:var(--gray-600);margin:0;}
+.pillar{border-radius:14px;background:var(--bg);border:1px solid var(--border);}
+.pillars-row .pillar{padding:0;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease;}
+.pillars-row .pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.pillar-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.pillar-body{padding:20px 22px 22px;}
+.pillar h4{font-family:'Manrope',sans-serif;font-size:17px;color:var(--navy-900);margin-bottom:5px;}
+.pillar p{font-size:14px;color:var(--gray-600);margin:0;line-height:1.6;}
 
 .our-values-band{background:var(--navy-900);}
 .our-values-heading{font-size:44px;line-height:1.15;color:#fff;max-width:760px;margin-bottom:24px;}
@@ -565,16 +567,16 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     </div>
     <div class="pillars pillars-row">
       <div class="pillar reveal">
-        <div class="pillar-icon">&#127760;</div>
-        <div><h4>Worldwide Reach</h4><p>Global network access through ENEX and international search partners.</p></div>
+        <img class="pillar-photo" src="images/pillar-global-perspective.jpg" alt="Global Perspective">
+        <div class="pillar-body"><h4>Global Perspective</h4><p>Global network access through ENEX and international search partners.</p></div>
       </div>
       <div class="pillar reveal">
-        <div class="pillar-icon">&#128205;</div>
-        <div><h4>Local Expertise</h4><p>Deep, on-the-ground knowledge of Asia Pacific markets.</p></div>
+        <img class="pillar-photo" src="images/pillar-local-expertise.jpg" alt="Local Expertise">
+        <div class="pillar-body"><h4>Local Expertise</h4><p>Deep, on-the-ground knowledge of Asia Pacific markets.</p></div>
       </div>
       <div class="pillar reveal">
-        <div class="pillar-icon">&#129309;</div>
-        <div><h4>True Engagement</h4><p>Partnership-driven relationships with clients, candidates and consultants.</p></div>
+        <img class="pillar-photo" src="images/pillar-strategic-partnerships.jpg" alt="Strategic Partnerships">
+        <div class="pillar-body"><h4>Strategic Partnerships</h4><p>Partnership-driven relationships with clients, candidates and consultants.</p></div>
       </div>
     </div>
   </div>
