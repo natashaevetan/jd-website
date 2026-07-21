@@ -410,7 +410,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-menu-inner">
             <a href="#about" data-route="about">Why we exist</a>
-            <a href="#meet-team" data-route="about">Meet our team</a>
+            <a href="#meet-team" data-route="meet-team">Meet our team</a>
           </div>
         </div>
       </div>
@@ -583,6 +583,9 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     </div>
   </div>
 </section>
+
+</main>
+<main class="page" id="page-meet-team" data-route="meet-team">
 
 <section class="regions photo">
   <div class="wrap">
@@ -1052,17 +1055,20 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     navLinksEl.style.cssText += 'flex-direction:column;position:fixed;top:64px;right:20px;background:#FFFFFF;border:1px solid #E4E9F1;padding:20px 28px;border-radius:14px;gap:16px;box-shadow:0 20px 40px rgba(11,31,58,0.18);';
   });
 
-  const TITLES = {"home": "JonDavidson Group", "about": "About Us — JonDavidson Group", "client-solutions": "Client Solutions — JonDavidson Group", "talent-tools": "Talent Profiling Tools — JonDavidson Group", "tool-wpi": "Work Personality Index — JonDavidson Group", "tool-eri": "Employee Reliability Inventory — JonDavidson Group", "tool-ccv": "Sales Competence Coefficient — JonDavidson Group", "browse-jobs": "Browse Jobs — JonDavidson Group", "contact": "Contact — JonDavidson Group"};
+  const TITLES = {"home": "JonDavidson Group", "about": "About Us — JonDavidson Group", "meet-team": "Meet the Team — JonDavidson Group", "client-solutions": "Client Solutions — JonDavidson Group", "talent-tools": "Talent Profiling Tools — JonDavidson Group", "tool-wpi": "Work Personality Index — JonDavidson Group", "tool-eri": "Employee Reliability Inventory — JonDavidson Group", "tool-ccv": "Sales Competence Coefficient — JonDavidson Group", "browse-jobs": "Browse Jobs — JonDavidson Group", "contact": "Contact — JonDavidson Group"};
   const pages = document.querySelectorAll('.page');
   // Scoped to the nav bar only — many other elements (cards, footer links, the
   // page sections themselves) also carry data-route for navigation, but only
   // the top-level nav pills (not the items inside a dropdown menu) should get
   // the "active" highlight style.
   const navAnchors = document.querySelectorAll('.nav-links > a[data-route], .nav-links > .nav-dropdown > a[data-route]');
-  // Hashes that don't correspond to a page route on their own, but should
-  // resolve to one (and optionally scroll to a section within that page).
-  const ROUTE_ALIASES = { 'meet-team': 'about' };
-  const SCROLL_TARGETS = { 'meet-team': 'team' };
+  // Routes reached via a dropdown should keep that dropdown's top-level pill
+  // highlighted, since the pill itself only carries the first sub-route.
+  const NAV_GROUP_ROOT = {
+    'about': 'about', 'meet-team': 'about',
+    'client-solutions': 'client-solutions', 'talent-tools': 'client-solutions', 'tool-wpi': 'client-solutions', 'tool-eri': 'client-solutions', 'tool-ccv': 'client-solutions',
+    'browse-jobs': 'browse-jobs', 'contact': 'browse-jobs'
+  };
 
   function closeMobileMenu(){
     if (window.innerWidth <= 680) { navLinksEl.style.display = 'none'; }
@@ -1080,28 +1086,19 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       pages.forEach(p => p.classList.toggle('active', p.dataset.route === 'home'));
       route = 'home';
     }
+    const highlightRoute = NAV_GROUP_ROOT[route] || route;
     navAnchors.forEach(a => {
-      a.classList.toggle('active', a.dataset.route === route);
+      a.classList.toggle('active', a.dataset.route === highlightRoute);
     });
     document.title = TITLES[route] || 'JonDavidson Group';
-    const scrollTarget = SCROLL_TARGETS[rawHash()];
-    const targetEl = scrollTarget && document.getElementById(scrollTarget);
-    if (targetEl) {
-      targetEl.scrollIntoView({behavior:'instant' in window ? 'instant' : 'auto', block:'start'});
-    } else {
-      window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
-    }
+    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
     closeMobileMenu();
     reobserve();
   }
 
-  function rawHash(){
-    return window.location.hash.replace('#','').trim();
-  }
-
   function routeFromHash(){
-    const h = rawHash();
-    return ROUTE_ALIASES[h] || h || 'home';
+    const h = window.location.hash.replace('#','').trim();
+    return h || 'home';
   }
 
   let io;
