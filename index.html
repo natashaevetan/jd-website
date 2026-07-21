@@ -239,17 +239,13 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
   background-position:center, center;
   background-size:cover, contain;
   background-repeat:no-repeat, no-repeat;
-  padding:90px 0;
+  padding:90px 0 64px;
 }
 .regions.photo .eyebrow{color:#FF9CA6;}
 .regions.photo .eyebrow::before{background:#FF9CA6;}
 .regions.photo h2{color:var(--white);}
-.regions.photo .network-row{border-top-color:rgba(255,255,255,0.25);}
-.regions.photo .network-row span{color:rgba(255,255,255,0.65);}
-.regions.photo .network-row strong{color:var(--white);}
-.regions.photo .region-chip.hq{background:rgba(255,255,255,0.96);}
+.regions-detail{background:var(--white);}
 .region-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:32px;}
-.regions.photo .region-grid{margin-top:120px;}
 .region-chip{border:1px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;background:var(--white);}
 .region-chip.hq{border-color:var(--red-500);background:rgba(194,32,55,0.06);}
 .region-chip .city{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;color:var(--navy-900);}
@@ -603,10 +599,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="regions photo">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head reveal" style="margin-bottom:0;">
       <div class="eyebrow">Regional Presence</div>
       <h2>Headquartered in Singapore, active across Asia Pacific</h2>
     </div>
+  </div>
+</section>
+
+<section class="regions-detail">
+  <div class="wrap">
     <div class="region-grid">
       <div class="region-chip hq"><div class="city">Singapore</div><div class="country">HQ · Kallang Ave</div></div>
       <div class="region-chip"><div class="city">Bangkok</div><div class="country">Thailand</div></div>
