@@ -161,6 +161,7 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 #page-about .page-hero .eyebrow::before,#page-meet-team .page-hero .eyebrow::before{background:#FF9CA6;}
 #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:48px;color:#fff;}
 #page-about .page-hero p,#page-meet-team .page-hero p{font-size:18px;max-width:640px;color:rgba(255,255,255,0.82);}
+.region-subheading{max-width:none;white-space:nowrap;}
 .who-we-are{background:var(--white);}
 #page-about .who-we-are .wrap{max-width:1400px;}
 .who-we-are-intro{background:var(--white);min-height:100vh;display:flex;align-items:center;}
@@ -286,12 +287,25 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 
 /* TEAM */
 .team{background:var(--white);}
-.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+#page-meet-team .team .wrap{max-width:1440px;}
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;align-items:start;}
 .person{text-align:center;}
-.avatar{width:128px;height:128px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Manrope',sans-serif;font-size:19px;font-weight:700;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
-.avatar:hover{transform:scale(1.12);box-shadow:var(--shadow);}
-.person h4{font-family:'Manrope',sans-serif;font-size:14.5px;color:var(--navy-900);margin-bottom:2px;}
-.person p{font-size:12px;color:var(--gray-600);}
+.avatar{width:100%;aspect-ratio:1/1;border-radius:16px;margin:0 auto 18px;display:block;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
+.avatar:hover{transform:scale(1.04);box-shadow:var(--shadow);}
+.person h4{font-family:'Manrope',sans-serif;font-size:19px;color:var(--navy-900);margin-bottom:4px;}
+.person p{font-size:14px;color:var(--gray-600);}
+.person-readmore{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:0;
+  background:none;border:none;color:var(--red-600);font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;
+}
+.person-readmore:hover{color:var(--red-500);}
+.person-readmore-arrow{transition:transform .2s ease;}
+.person.is-open .person-readmore-arrow{transform:rotate(90deg);}
+.person-bio{
+  max-height:0;overflow:hidden;text-align:left;font-size:13.5px;line-height:1.65;color:var(--gray-600);
+  transition:max-height .35s ease, margin-top .35s ease;
+}
+.person.is-open .person-bio{max-height:900px;margin-top:16px;}
 
 /* JOBS CTA */
 .jobs-cta{
@@ -407,6 +421,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .footer-grid{grid-template-columns:1fr 1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:38px;}
   .our-values-band{padding:100px 0;}
+  .region-subheading{white-space:normal;}
   .who-we-are-intro{min-height:80vh;}
   .our-values-heading{font-size:36px;}
   #page-home .solutions .section-head h2{font-size:34px;}
@@ -437,6 +452,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
   .who-we-are-copy .lede-statement{font-size:24px;}
   .who-we-are-intro{min-height:auto;padding:64px 0;}
+  .region-subheading{white-space:normal;}
   .pillar h4{font-size:19px;}
   .pillar p{font-size:15px;}
   .tool-detail{padding:24px;}
@@ -646,8 +662,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="page-hero">
   <div class="wrap">
     <div class="eyebrow reveal">Regional Presence</div>
-    <h1 class="reveal">Headquartered in Singapore, active across Asia Pacific</h1>
-    <p class="reveal">Present across 6 Asia Pacific countries, supported by 3 global partner organisations.</p>
+    <h1 class="reveal">Rooted in Singapore and across APAC</h1>
+    <p class="reveal region-subheading">Present across 6 Asia Pacific countries, supported by 3 global partner organisations.</p>
   </div>
 </section>
 
@@ -710,22 +726,32 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-yvonne-tan.webp" alt="Yvonne Tan">
         <h4>Yvonne Tan</h4><p>Group Managing Director</p>
+        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <div class="person-bio">Yvonne Tan is the Group Managing Director of JonDavidson and Dynamic Human Capital, bringing extensive expertise in executive search, leadership recruitment, and talent advisory across the Healthcare and Fast-Moving Consumer Goods (FMCG) sectors. Known for her strong relationships with clients and candidates, she takes a strategic, people-centric approach to identifying high-calibre talent that drives organisational growth. Passionate about developing careers and building high-performing teams, Yvonne is committed to connecting exceptional leaders with opportunities where they can create lasting business impact.</div>
       </div>
       <div class="person reveal">
         <img class="avatar" src="images/team-kevin-chong.webp" alt="Kevin Chong">
         <h4>Kevin Chong</h4><p>Senior Associate Director</p>
+        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <div class="person-bio">Kevin Chong brings over 15 years of experience in the IT industry, specialising in executive search and leadership recruitment across the technology sector. With a strong track record of placing senior executives&mdash;including CFOs, CTOs, Country Managers, General Managers, Regional Sales Directors, HR Directors (APAC), and Programme &amp; Delivery Directors&mdash;he partners with organisations to build high-performing leadership teams. Based in Singapore, Kevin has successfully delivered executive search assignments across Singapore, Malaysia, Thailand, Taiwan, and China.</div>
       </div>
       <div class="person reveal">
         <img class="avatar" src="images/team-desmond-ong.webp" alt="Desmond Ong">
         <h4>Desmond Ong</h4><p>Senior Associate Director</p>
+        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <div class="person-bio">Desmond has over 25 years of experience in executive search and human capital consulting, advising multinational corporations and local enterprises on leadership hiring across Asia. He has led executive search assignments throughout Singapore, China, Indonesia, and Vietnam, placing senior executives across Sales &amp; Marketing, Finance, Project Management, and Technology functions. Backed by corporate leadership experience with Kyocera, Harris Semiconductor, UBS Warburg, and Lucent Technologies, Desmond brings a strategic understanding of both business and talent, helping organisations build strong, high-performing leadership teams.</div>
       </div>
       <div class="person reveal">
         <img class="avatar" src="images/team-liew-yuk-kong.webp" alt="Liew Yuk Kong">
         <h4>Liew Yuk Kong</h4><p>Senior Associate Director</p>
+        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <div class="person-bio">Yuk Kong is a Principal Consultant at JonDavidson, specialising in executive search and talent acquisition across the Semiconductor, Information Technology, Oil &amp; Gas, Pharmaceutical, Diagnostics, Aviation, and Engineering sectors. Prior to joining JonDavidson, he spent over 22 years in senior IT leadership roles with leading multinational companies, including Siemens, Infineon, Qimonda, and Polycom, culminating in his position as Corporate IT Vice President. His extensive industry expertise and leadership experience enable him to connect organisations with high-calibre professionals who drive business success. Yuk Kong also served in the Singapore Armed Forces (SAF) Reserve, attaining the rank of Captain through his leadership as a unit commander.</div>
       </div>
       <div class="person reveal">
         <img class="avatar" src="images/team-sonny-yuen.webp" alt="Sonny Yuen">
         <h4>Sonny Yuen</h4><p>Senior Advisor</p>
+        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <div class="person-bio">Sonny Yuen is the Managing Director of JonDavidson, bringing over 30 years of leadership experience in manufacturing, supply chain management, and business transformation. His expertise spans Human Resources, Information Technology, Finance, Project Management, and Supply Chain Management, with a strong track record in driving organisational productivity and process improvement. Previously, Sonny held senior management positions, including General Manager at Sumitomo Bakelite Singapore, and currently serves as an Independent Director of SGX-listed Healthway Medical Corporation, contributing to its Audit &amp; Risk, Remuneration, and Nominating Committees. A certified Privacy Management Professional and Certified Productivity Consultant, Sonny is also an active contributor to Singapore&rsquo;s business and education communities through his leadership roles with the Singapore Institute of Directors, the National University of Singapore, and Bukit View Primary School.</div>
       </div>
     </div>
   </div>
@@ -1281,6 +1307,21 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       const wasOpen = chip.classList.contains('is-open');
       document.querySelectorAll('.region-chip.is-open').forEach(open => { if (open !== chip) open.classList.remove('is-open'); });
       chip.classList.toggle('is-open', !wasOpen);
+    });
+  });
+
+  document.querySelectorAll('.person-readmore').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const person = btn.closest('.person');
+      const wasOpen = person.classList.contains('is-open');
+      document.querySelectorAll('.person.is-open').forEach(open => { if (open !== person) open.classList.remove('is-open'); });
+      person.classList.toggle('is-open', !wasOpen);
+      btn.textContent = '';
+      btn.append(wasOpen ? 'Read more ' : 'Show less ');
+      const arrow = document.createElement('span');
+      arrow.className = 'person-readmore-arrow';
+      arrow.innerHTML = '&rarr;';
+      btn.append(arrow);
     });
   });
 </script>
