@@ -75,6 +75,29 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 .nav-cta{display:flex;align-items:center;gap:16px;margin-left:32px;}
 .menu-toggle{display:none;background:none;border:none;color:var(--navy-900);font-size:24px;cursor:pointer;}
 
+/* NAV DROPDOWNS */
+.nav-dropdown{position:relative;}
+.nav-dropdown-trigger{display:inline-flex;align-items:center;gap:5px;}
+.nav-dropdown-caret{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;transition:transform .15s ease;}
+.nav-dropdown:hover .nav-dropdown-caret,.nav-dropdown:focus-within .nav-dropdown-caret{transform:rotate(-135deg);margin-top:1px;}
+.nav-dropdown-menu{
+  position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(2px);
+  padding-top:14px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .15s ease, transform .15s ease, visibility .15s;
+  z-index:120;
+}
+.nav-dropdown-menu-inner{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);
+  padding:8px;min-width:200px;display:flex;flex-direction:column;gap:2px;
+}
+.nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:8px;border-bottom:none !important;white-space:nowrap;}
+.nav-dropdown-menu a:hover{background:var(--bg);color:var(--navy-900);}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);
+}
+
 /* HOME HERO */
 .hero{
   position:relative;padding:196px 0 88px;overflow:hidden;
@@ -347,6 +370,14 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 @media (max-width:680px){
   .nav-links{display:none;}
   .menu-toggle{display:block;}
+  .nav-links .nav-dropdown{width:100%;}
+  .nav-links .nav-dropdown-menu{
+    position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;
+    padding-top:10px;
+  }
+  .nav-links .nav-dropdown-menu-inner{
+    background:transparent;border:none;box-shadow:none;padding:0 0 0 16px;
+  }
   .logo-name{font-size:16px;}
   .logo-tagline{font-size:7.5px;letter-spacing:0.1em;white-space:nowrap;}
   section{padding:52px 0;}
@@ -374,10 +405,33 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <a href="#home" class="logo" data-route="home"><img class="logo-icon" src="images/logo-icon.png" alt="JonDavidson"><span class="logo-text"><span class="logo-name">JonDavidson</span><span class="logo-tagline" id="nav-tagline"></span></span></a>
     <div class="nav-links">
       <a href="#home" data-route="home">Home</a>
-      <a href="#about" data-route="about">About</a>
-      <a href="#client-solutions" data-route="client-solutions">Client Solutions</a>
-      <a href="#talent-tools" data-route="talent-tools">Talent Tools</a>
-      <a href="#browse-jobs" data-route="browse-jobs">Browse Jobs</a>
+      <div class="nav-dropdown">
+        <a href="#about" data-route="about" class="nav-dropdown-trigger">Who we are<span class="nav-dropdown-caret"></span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu-inner">
+            <a href="#about" data-route="about">Why we exist</a>
+            <a href="#meet-team" data-route="about">Meet our team</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="#client-solutions" data-route="client-solutions" class="nav-dropdown-trigger">What we do<span class="nav-dropdown-caret"></span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu-inner">
+            <a href="#client-solutions" data-route="client-solutions">Client solutions</a>
+            <a href="#talent-tools" data-route="talent-tools">Talent profiling tools</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="#browse-jobs" data-route="browse-jobs" class="nav-dropdown-trigger">Careers<span class="nav-dropdown-caret"></span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu-inner">
+            <a href="#browse-jobs" data-route="browse-jobs">Search for jobs</a>
+            <a href="#contact" data-route="contact">Talk to our consultants</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-primary" data-route="contact">Contact Us</a>
@@ -553,7 +607,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<section class="team">
+<section class="team" id="team">
   <div class="wrap">
     <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
       <div class="eyebrow" style="justify-content:center;">Leadership</div>
@@ -1002,8 +1056,13 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   const pages = document.querySelectorAll('.page');
   // Scoped to the nav bar only — many other elements (cards, footer links, the
   // page sections themselves) also carry data-route for navigation, but only
-  // the top nav should get the "active" highlight style.
-  const navAnchors = document.querySelectorAll('.nav-links a[data-route]');
+  // the top-level nav pills (not the items inside a dropdown menu) should get
+  // the "active" highlight style.
+  const navAnchors = document.querySelectorAll('.nav-links > a[data-route], .nav-links > .nav-dropdown > a[data-route]');
+  // Hashes that don't correspond to a page route on their own, but should
+  // resolve to one (and optionally scroll to a section within that page).
+  const ROUTE_ALIASES = { 'meet-team': 'about' };
+  const SCROLL_TARGETS = { 'meet-team': 'team' };
 
   function closeMobileMenu(){
     if (window.innerWidth <= 680) { navLinksEl.style.display = 'none'; }
@@ -1025,14 +1084,24 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       a.classList.toggle('active', a.dataset.route === route);
     });
     document.title = TITLES[route] || 'JonDavidson Group';
-    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+    const scrollTarget = SCROLL_TARGETS[rawHash()];
+    const targetEl = scrollTarget && document.getElementById(scrollTarget);
+    if (targetEl) {
+      targetEl.scrollIntoView({behavior:'instant' in window ? 'instant' : 'auto', block:'start'});
+    } else {
+      window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+    }
     closeMobileMenu();
     reobserve();
   }
 
+  function rawHash(){
+    return window.location.hash.replace('#','').trim();
+  }
+
   function routeFromHash(){
-    const h = window.location.hash.replace('#','').trim();
-    return h || 'home';
+    const h = rawHash();
+    return ROUTE_ALIASES[h] || h || 'home';
   }
 
   let io;
