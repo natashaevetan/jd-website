@@ -1606,6 +1606,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       inner.classList.remove('intro-fly');
       inner.style.transform = '';
       iconEl.classList.remove('in');
+      nameEl.innerHTML = '';
+      taglineEl.innerHTML = '';
       taglineEl.style.letterSpacing = '';
       document.body.classList.add('intro-active');
       void inner.offsetWidth;
