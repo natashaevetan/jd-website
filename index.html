@@ -157,7 +157,12 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero .eyebrow{color:#FF9CA6;}
 .hero .eyebrow::before{background:#FF9CA6;}
 .hero h1{color:var(--white);font-size:60px;line-height:1.1;margin-bottom:22px;}
-.hero h1 em{font-style:normal;color:#FF9CA6;}
+.hero h1 .animate-word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(24px);
+}
+.hero h1 .animate-word.in{opacity:1;transform:translateY(0);}
 .tw-cursor{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-0.15em;margin-left:2px;animation:tw-blink 0.9s step-end infinite;}
 @keyframes tw-blink{50%{opacity:0;}}
 .hero .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
@@ -636,7 +641,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="hero">
   <div class="wrap hero-inner">
-    <h1>An enabler for clients, candidates &amp; consultants to reach <em>their potential.</em></h1>
+    <h1><span class="animate-word">Your</span> <span class="animate-word">Strategic</span> <span class="animate-word">Human</span> <span class="animate-word">Capital</span> <span class="animate-word">Partner.</span></h1>
   </div>
 </section>
 
@@ -1341,6 +1346,29 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     if (window.innerWidth <= 680) { navLinksEl.style.display = 'none'; }
   }
 
+  // Set once the logo-splash's first fly-away has revealed the home page —
+  // guards against replaying the headline (via showRoute) before the splash
+  // has actually uncovered it, which would finish the animation invisibly.
+  let introRevealed = false;
+
+  function playHeroHeadline(){
+    const heading = document.querySelector('.hero h1');
+    const words = heading ? heading.querySelectorAll('.animate-word') : [];
+    if (!words.length) return;
+    // Kill any transition first so the reset to hidden is instant, not an
+    // animated fade-out fighting with the fade-in we're about to trigger.
+    words.forEach(w => { w.style.transition = 'none'; w.classList.remove('in'); });
+    void heading.offsetWidth;
+    words.forEach(w => {
+      const delay = Math.round(80 + Math.random() * 420);
+      w.style.transition = `opacity .8s cubic-bezier(.16,1,.3,1) ${delay}ms, transform .8s cubic-bezier(.16,1,.3,1) ${delay}ms`;
+    });
+    void heading.offsetWidth;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      words.forEach(w => w.classList.add('in'));
+    }));
+  }
+
   function showRoute(route){
     let found = false;
     pages.forEach(p => {
@@ -1361,6 +1389,9 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
     closeMobileMenu();
     reobserve();
+    if (route === 'home' && introRevealed && !document.body.classList.contains('intro-active')) {
+      playHeroHeadline();
+    }
   }
 
   function routeFromHash(){
@@ -1604,6 +1635,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       inner.classList.add('intro-fly');
       splash.classList.add('intro-hidden');
       document.body.classList.remove('intro-active');
+      introRevealed = true;
+      if (document.querySelector('.page.active')?.dataset.route === 'home') playHeroHeadline();
       after(900, () => { splash.style.display = 'none'; });
     }
 
