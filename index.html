@@ -78,16 +78,36 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 #intro-splash.intro-hidden{opacity:0;pointer-events:none;}
 #intro-splash-inner{
   display:flex;align-items:center;
-  opacity:0;transform:translateY(16px) scale(0.96);
-  transition:opacity .8s ease, transform .8s ease;
-}
-#intro-splash-inner.intro-in{opacity:1;transform:translateY(0) scale(1);}
-#intro-splash-inner.intro-fly{
-  opacity:0;
   transition:transform .8s cubic-bezier(.65,0,.35,1), opacity .5s ease .35s;
 }
-#intro-logo-icon{height:120px;width:auto;display:block;}
-#intro-logo-text{font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;margin-left:22px;}
+#intro-splash-inner.intro-fly{opacity:0;}
+#intro-logo-icon{
+  height:120px;width:auto;display:block;
+  opacity:0;transform:scale(0.92);
+  transition:opacity .6s ease, transform .6s ease;
+}
+#intro-logo-icon.in{opacity:1;transform:scale(1);}
+#intro-logo-text{display:flex;flex-direction:column;line-height:1.15;margin-left:22px;}
+#intro-logo-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;}
+#intro-logo-name .ch{
+  display:inline-block;opacity:0;transform:translateY(10px);
+  transition:opacity .38s ease, transform .38s ease;
+}
+#intro-logo-name .ch.in{opacity:1;transform:translateY(0);}
+#intro-logo-tagline{
+  font-family:'Manrope',sans-serif;font-weight:500;font-size:20px;color:var(--ink);
+  white-space:nowrap;margin-top:8px;min-height:1.2em;
+}
+#intro-logo-tagline .ch{
+  display:inline-block;opacity:0;transform:translateY(4px);
+  transition:opacity .25s ease, transform .25s ease;
+}
+#intro-logo-tagline .ch.in{opacity:1;transform:translateY(0);}
+#intro-logo-tagline .intro-cursor{
+  display:inline-block;width:2px;height:0.9em;background:currentColor;vertical-align:-0.1em;margin-left:2px;
+  animation:intro-cursor-blink 1s ease-in-out infinite;
+}
+@keyframes intro-cursor-blink{0%,100%{opacity:1;}50%{opacity:0;}}
 body.intro-active{overflow:hidden;}
 body.intro-active header,body.intro-active main.page{opacity:0;}
 header,main.page{transition:opacity .6s ease .2s;}
@@ -489,7 +509,9 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .logo-name{font-size:16px;}
   .logo-tagline{font-size:7.5px;letter-spacing:0.1em;white-space:nowrap;}
   #intro-logo-icon{height:64px;}
-  #intro-logo-text{font-size:32px;margin-left:14px;}
+  #intro-logo-text{margin-left:14px;}
+  #intro-logo-name{font-size:32px;}
+  #intro-logo-tagline{font-size:12px;}
   section{padding:52px 0;}
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
@@ -533,7 +555,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <div id="intro-splash" aria-hidden="true">
   <div id="intro-splash-inner">
     <img id="intro-logo-icon" src="images/logo-icon.png" alt="">
-    <span id="intro-logo-text">JonDavidson</span>
+    <div id="intro-logo-text">
+      <span id="intro-logo-name"></span>
+      <span id="intro-logo-tagline"></span>
+    </div>
   </div>
 </div>
 <header>
@@ -1438,8 +1463,84 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   (function(){
     const splash = document.getElementById('intro-splash');
     const inner = document.getElementById('intro-splash-inner');
-    if (!splash || !inner) return;
+    const iconEl = document.getElementById('intro-logo-icon');
+    const nameEl = document.getElementById('intro-logo-name');
+    const taglineEl = document.getElementById('intro-logo-tagline');
+    if (!splash || !inner || !iconEl || !nameEl || !taglineEl) return;
+
+    const NAME_TEXT = 'JonDavidson';
+    const TAGLINE_TEXT = 'we go the distance';
     let flying = false;
+    let timers = [];
+
+    function after(ms, fn){ timers.push(setTimeout(fn, ms)); return fn; }
+
+    function clearTimers(){
+      timers.forEach(clearTimeout);
+      timers = [];
+    }
+
+    function makeCharSpan(ch){
+      const span = document.createElement('span');
+      span.className = 'ch';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      return span;
+    }
+
+    // Builds the static (invisible) letters up front so their layout width
+    // can be measured immediately, then reveals each one on a stagger.
+    function revealLetters(container, text, stagger, onDone){
+      container.innerHTML = '';
+      const spans = Array.from(text).map(makeCharSpan);
+      spans.forEach(s => container.appendChild(s));
+      spans.forEach((span, i) => {
+        after(i * stagger, () => span.classList.add('in'));
+      });
+      after((spans.length - 1) * stagger + 380, onDone);
+    }
+
+    // Types the tagline in one character at a time (with a blinking cursor),
+    // fading each new letter in rather than snapping it into place.
+    function typeTagline(container, text, interval, onDone){
+      container.innerHTML = '';
+      const cursor = document.createElement('span');
+      cursor.className = 'intro-cursor';
+      container.appendChild(cursor);
+      let i = 0;
+      function step(){
+        if (i < text.length) {
+          const span = makeCharSpan(text[i]);
+          container.insertBefore(span, cursor);
+          requestAnimationFrame(() => requestAnimationFrame(() => span.classList.add('in')));
+          i++;
+          after(interval, step);
+        } else {
+          after(300, onDone);
+        }
+      }
+      step();
+    }
+
+    // Measures how wide `text` would render at a few letter-spacing values,
+    // then interpolates the exact spacing needed to span targetWidth.
+    function letterSpacingToMatchWidth(referenceEl, text, targetWidth){
+      const probe = document.createElement('span');
+      const computed = getComputedStyle(referenceEl);
+      probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;pointer-events:none;top:-9999px;left:-9999px;';
+      probe.style.fontFamily = computed.fontFamily;
+      probe.style.fontWeight = computed.fontWeight;
+      probe.style.fontSize = computed.fontSize;
+      probe.textContent = text;
+      document.body.appendChild(probe);
+      probe.style.letterSpacing = '0px';
+      const w0 = probe.getBoundingClientRect().width;
+      probe.style.letterSpacing = '10px';
+      const w10 = probe.getBoundingClientRect().width;
+      document.body.removeChild(probe);
+      const perPx = (w10 - w0) / 10;
+      if (perPx <= 0) return 0;
+      return Math.max(0, (targetWidth - w0) / perPx);
+    }
 
     function flyAway(){
       if (flying) return;
@@ -1456,25 +1557,38 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       inner.classList.add('intro-fly');
       splash.classList.add('intro-hidden');
       document.body.classList.remove('intro-active');
-      setTimeout(() => { splash.style.display = 'none'; }, 900);
+      after(900, () => { splash.style.display = 'none'; });
     }
 
     function playIntro(holdMs){
+      clearTimers();
       flying = false;
       splash.style.display = 'flex';
       splash.classList.remove('intro-hidden');
-      inner.classList.remove('intro-fly', 'intro-in');
+      inner.classList.remove('intro-fly');
       inner.style.transform = '';
+      iconEl.classList.remove('in');
+      taglineEl.style.letterSpacing = '';
       document.body.classList.add('intro-active');
       void inner.offsetWidth;
-      requestAnimationFrame(() => requestAnimationFrame(() => inner.classList.add('intro-in')));
-      setTimeout(flyAway, holdMs);
+
+      after(0, () => iconEl.classList.add('in'));
+
+      after(300, () => {
+        revealLetters(nameEl, NAME_TEXT, 45, () => {
+          const targetWidth = nameEl.getBoundingClientRect().width;
+          taglineEl.style.letterSpacing = letterSpacingToMatchWidth(taglineEl, TAGLINE_TEXT, targetWidth) + 'px';
+          typeTagline(taglineEl, TAGLINE_TEXT, 75, () => {
+            after(holdMs, flyAway);
+          });
+        });
+      });
     }
 
-    playIntro(2800);
+    playIntro(1600);
 
     document.querySelectorAll('header .logo').forEach(a => {
-      a.addEventListener('click', () => playIntro(2400));
+      a.addEventListener('click', () => playIntro(1300));
     });
   })();
 </script>
