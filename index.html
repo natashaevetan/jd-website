@@ -158,7 +158,6 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero .eyebrow::before{background:#FF9CA6;}
 .hero h1{color:var(--white);font-size:60px;line-height:1.1;margin-bottom:22px;}
 .hero h1 em{font-style:normal;color:#FF9CA6;}
-.hero p{color:rgba(255,255,255,0.82);font-size:20px;max-width:640px;margin-bottom:32px;}
 .tw-cursor{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-0.15em;margin-left:2px;animation:tw-blink 0.9s step-end infinite;}
 @keyframes tw-blink{50%{opacity:0;}}
 .hero .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
@@ -175,21 +174,31 @@ header,main.page{transition:opacity .6s ease .2s;}
 .ticker-section{padding:20px 0;background:var(--white);}
 .tight-top{padding-top:20px;padding-bottom:0;}
 .stats-reveal{background:var(--navy-900);}
-.stats-reveal-track{position:relative;height:220vh;}
-.stats-reveal-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.stats-reveal-track{position:relative;height:160vh;}
+.stats-reveal-pin{
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;padding:0 32px;
+}
 .stats-reveal-grid{
   --stats-progress:0;
-  display:flex;gap:90px;flex-wrap:wrap;justify-content:center;padding:0 32px;
+  --stats-size-progress:0;
+  display:flex;gap:90px;flex-wrap:wrap;justify-content:center;
 }
 .stats-reveal-grid div{display:flex;flex-direction:column;align-items:center;gap:8px;}
 .stats-reveal-grid .num{
   font-family:'Manrope',sans-serif;font-weight:800;color:var(--white);
-  font-size:calc(30px + 66px * var(--stats-progress));
+  font-size:calc(30px + 54px * var(--stats-size-progress));
   line-height:1;
 }
 .stats-reveal-grid .label{
-  font-size:calc(10.5px + 3.5px * var(--stats-progress));
+  font-size:calc(10.5px + 3.5px * var(--stats-size-progress));
   color:rgba(255,255,255,0.68);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;
+}
+.stats-reveal-copy{
+  color:rgba(255,255,255,0.82);font-size:17px;line-height:1.65;
+  max-width:560px;text-align:center;margin-top:36px;
+  opacity:0;transition:opacity .4s ease;
 }
 
 /* SUBPAGE HERO (compact) */
@@ -502,7 +511,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .ccv-grid{grid-template-columns:repeat(2,1fr);}
   .hero h1{font-size:44px;}
   .stats-reveal-grid{gap:56px;}
-  .stats-reveal-grid .num{font-size:calc(24px + 44px * var(--stats-progress));}
+  .stats-reveal-grid .num{font-size:calc(24px + 36px * var(--stats-size-progress));}
   .jobs-cta{flex-direction:column;align-items:flex-start;padding:36px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:38px;}
@@ -530,10 +539,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   #intro-logo-text{margin-left:14px;}
   #intro-logo-name{font-size:32px;}
   #intro-logo-tagline{font-size:12px;}
-  .stats-reveal-track{height:170vh;}
   .stats-reveal-grid{gap:32px 40px;}
-  .stats-reveal-grid .num{font-size:calc(20px + 30px * var(--stats-progress));}
-  .stats-reveal-grid .label{font-size:calc(9px + 2px * var(--stats-progress));}
+  .stats-reveal-grid .num{font-size:calc(20px + 24px * var(--stats-size-progress));}
+  .stats-reveal-grid .label{font-size:calc(9px + 2px * var(--stats-size-progress));}
+  .stats-reveal-copy{font-size:15px;margin-top:24px;}
   section{padding:52px 0;}
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
@@ -628,7 +637,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="hero">
   <div class="wrap hero-inner">
     <h1>An enabler for clients, candidates &amp; consultants to reach <em>their potential.</em></h1>
-    <p>A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
   </div>
 </section>
 
@@ -640,6 +648,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <div><span class="num" data-target="6">0</span><span class="label">APAC Offices</span></div>
         <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries via ENEX</span></div>
       </div>
+      <p class="stats-reveal-copy">A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
     </div>
   </div>
 </section>
@@ -1637,21 +1646,35 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     if (!section) return;
     const track = section.querySelector('.stats-reveal-track');
     const grid = section.querySelector('.stats-reveal-grid');
+    const copyEl = section.querySelector('.stats-reveal-copy');
     const nums = Array.from(section.querySelectorAll('.num'));
+
+    // How much scrolling (in viewport heights) it takes to count fully up,
+    // starting the instant the section starts entering view — roughly 1-2
+    // keyboard/trackpad scrolls, not a long dead scroll before anything moves.
+    const SCROLL_RANGE_VH = 1.1;
+    const SETTLE_START = 0.85;
+    const SETTLE_SHRINK = 0.14;
 
     function clamp01(v){ return Math.max(0, Math.min(1, v)); }
 
     function update(){
       const rect = track.getBoundingClientRect();
       const vh = window.innerHeight;
-      const total = rect.height - vh;
-      const progress = total > 0 ? clamp01(-rect.top / total) : (rect.top < 0 ? 1 : 0);
+      const scrollRange = vh * SCROLL_RANGE_VH;
+      const progress = clamp01((vh - rect.top) / scrollRange);
+      const sizeProgress = progress <= SETTLE_START
+        ? progress / SETTLE_START
+        : 1 - SETTLE_SHRINK * ((progress - SETTLE_START) / (1 - SETTLE_START));
+
       grid.style.setProperty('--stats-progress', progress.toFixed(4));
+      grid.style.setProperty('--stats-size-progress', sizeProgress.toFixed(4));
       nums.forEach(el => {
         const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || '';
         el.textContent = Math.round(target * progress) + suffix;
       });
+      if (copyEl) copyEl.style.opacity = clamp01((progress - 0.8) / 0.2).toFixed(3);
     }
 
     let ticking = false;
