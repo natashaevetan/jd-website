@@ -291,6 +291,12 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 /* TEAM */
 .team{background:var(--white);}
 #page-meet-team .team .wrap{max-width:1440px;}
+.team-photo-band{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:linear-gradient(180deg, rgba(11,31,58,0.5), rgba(11,31,58,0.7)), url("images/team-full-group.jpg") center/cover no-repeat;
+}
+.team-photo-band .eyebrow{color:#FF9CA6;justify-content:center;}
+.team-photo-band h2{color:#fff;font-size:48px;}
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;align-items:start;}
 .person{text-align:center;}
 .avatar{width:100%;aspect-ratio:1/1;border-radius:50%;margin:0 auto 18px;display:block;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
@@ -444,6 +450,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .region-subheading{white-space:normal;}
   .who-we-are-intro{min-height:80vh;}
   .our-values-heading{font-size:36px;}
+  .team-photo-band h2{font-size:36px;}
   #page-home .solutions .section-head h2{font-size:34px;}
 }
 @media (max-width:680px){
@@ -470,6 +477,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .our-values-band{padding:64px 0;}
   .our-values-text{max-width:100%;margin-left:0;}
   .our-values-heading{font-size:28px;}
+  .team-photo-band{min-height:70vh;}
+  .team-photo-band h2{font-size:28px;}
   .story-split-grid h2{font-size:28px;}
   #page-home .solutions .section-head h2{font-size:28px;}
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
@@ -739,12 +748,17 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<section class="team" id="team">
+<section class="team-photo-band" id="team">
   <div class="wrap">
-    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
-      <div class="eyebrow" style="justify-content:center;">Leadership</div>
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;margin-bottom:0;">
+      <div class="eyebrow">Leadership</div>
       <h2>Meet the team</h2>
     </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="wrap">
     <div class="team-grid">
       <div class="person reveal">
         <img class="avatar" src="images/team-yvonne-tan.webp" alt="Yvonne Tan">
