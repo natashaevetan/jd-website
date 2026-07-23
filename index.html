@@ -475,6 +475,12 @@ header,main.page{transition:opacity .6s ease .2s;}
 .jobs-cta.photo .jobs-cta-actions .btn{font-size:17px;padding:16px 30px;}
 .jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .jobs-cta.photo .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
+.career-cta-band{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:linear-gradient(180deg, rgba(11,31,58,0.4), rgba(11,31,58,0.6)), url("images/career-cta-professional.jpg") center/cover no-repeat;
+}
+.career-cta-band h2{color:#fff;font-size:56px;line-height:1.15;max-width:780px;margin:0 auto 32px;}
+.career-cta-band .btn-primary{font-size:17px;padding:16px 34px;}
 /* LIVE ROLES TICKER */
 .ticker-bar{display:flex;align-items:stretch;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .ticker-label{display:flex;align-items:center;gap:10px;padding:18px 40px;min-width:230px;flex-shrink:0;background:var(--bg);position:relative;z-index:2;}
@@ -562,6 +568,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .stats-reveal-grid{gap:56px;}
   .stats-reveal-grid .num{font-size:calc(24px + 36px * var(--stats-size-progress));}
   .jobs-cta{flex-direction:column;align-items:flex-start;padding:36px;}
+  .career-cta-band h2{font-size:42px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:38px;}
   .our-values-band{padding:100px 0;}
@@ -630,6 +637,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .jobs-cta.photo .wrap{padding:48px 20px;}
   .jobs-cta.photo h2{font-size:34px;}
   .jobs-cta.photo p{font-size:17px;}
+  .career-cta-band h2{font-size:32px;}
   footer .wrap{padding:0 20px;}
   .footer-grid{grid-template-columns:1fr;gap:32px;}
 }
@@ -1237,18 +1245,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<section>
+<section class="career-cta-band">
   <div class="wrap">
-    <div class="jobs-cta reveal">
-      <div>
-        <h2>Discreet, consultative job matching</h2>
-        <p>Rather than generic listings, we take a personalised approach &mdash; matching senior and board-level professionals to roles that fit.</p>
-      </div>
-      <div class="jobs-cta-actions">
-        <a href="#contact" data-route="contact" class="btn btn-primary">Talk to a Consultant</a>
-        <a href="#contact" data-route="contact" class="btn btn-outline">Submit Your Resume</a>
-      </div>
-    </div>
+    <h2 class="reveal">Curated Executive Career Opportunities, Tailored to You.</h2>
+    <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary reveal">Browse open roles</a>
   </div>
 </section>
 
