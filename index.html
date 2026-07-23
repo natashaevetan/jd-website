@@ -376,7 +376,11 @@ header,main.page{transition:opacity .6s ease .2s;}
   position:sticky;top:0;height:100vh;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
-  background:linear-gradient(rgba(11,31,58,0.3), rgba(11,31,58,0.45)), url("images/world-network-map.jpg") center/cover no-repeat;
+  background:
+    linear-gradient(to bottom, var(--navy-900) 0%, rgba(11,31,58,0.55) 30%, rgba(11,31,58,0) 55%),
+    linear-gradient(to top, var(--navy-900) 0%, rgba(11,31,58,0.55) 25%, rgba(11,31,58,0) 50%),
+    linear-gradient(rgba(11,31,58,0.3), rgba(11,31,58,0.45)),
+    url("images/world-network-map.jpg") center/cover no-repeat;
 }
 .world-mark-text{text-align:center;}
 .world-mark-line{
@@ -387,6 +391,7 @@ header,main.page{transition:opacity .6s ease .2s;}
   text-shadow:0 6px 34px rgba(0,0,0,0.45);
   will-change:transform, opacity, filter;
 }
+.navy-buffer{background:var(--navy-900);min-height:100vh;}
 .city-carousel{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
 .city-carousel-slide{
   position:absolute;inset:0;
@@ -910,6 +915,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     </div>
   </div>
 </section>
+
+<section class="navy-buffer"></section>
 
 <section class="city-carousel">
   <div class="city-carousel-slide" style="background-image:url('images/city-singapore.jpg')"></div>
