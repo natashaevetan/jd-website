@@ -268,6 +268,8 @@ header,main.page{transition:opacity .6s ease .2s;}
 
 /* ABOUT — WHO WE ARE */
 #page-about .page-hero,#page-meet-team .page-hero{background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,0.16);}
+#page-meet-team .page-hero{min-height:100vh;display:flex;align-items:center;}
+#page-meet-team .page-hero .wrap{width:100%;}
 #page-about .page-hero .eyebrow,#page-meet-team .page-hero .eyebrow{color:#FF9CA6;}
 #page-about .page-hero .eyebrow::before,#page-meet-team .page-hero .eyebrow::before{background:#FF9CA6;}
 #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:48px;color:#fff;}
@@ -401,7 +403,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .city-carousel-slide.is-active{opacity:1;}
 .city-carousel::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(11,31,58,0.35) 0%, rgba(11,31,58,0.5) 60%, var(--navy-900) 100%);
+  background:linear-gradient(180deg, var(--navy-900) 0%, rgba(11,31,58,0.35) 20%, rgba(11,31,58,0.35) 55%, rgba(11,31,58,0.5) 75%, var(--navy-900) 100%);
   pointer-events:none;
 }
 .city-carousel-overlay{position:relative;z-index:1;color:#fff;padding:0 32px;}
@@ -433,7 +435,10 @@ header,main.page{transition:opacity .6s ease .2s;}
 #page-meet-team .team .wrap{max-width:1440px;}
 .team-photo-band{
   position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
-  background:linear-gradient(180deg, rgba(11,31,58,0.5), rgba(11,31,58,0.7)), url("images/team-full-group.jpg") center/cover no-repeat;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0) 72%, var(--white) 100%),
+    linear-gradient(180deg, rgba(11,31,58,0.5), rgba(11,31,58,0.7)),
+    url("images/team-full-group.jpg") center/cover no-repeat;
 }
 .team-photo-band h2{color:#fff;font-size:48px;}
 .team-photo-band h2 .animate-word{
