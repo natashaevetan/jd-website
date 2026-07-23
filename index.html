@@ -269,30 +269,27 @@ header,main.page{transition:opacity .6s ease .2s;}
 
 .our-values-band{
   position:relative;
-  background:var(--white);
+  background:var(--navy-900);
   overflow:hidden;
-  min-height:100vh;
-  display:flex;align-items:center;
   padding:140px 0;
 }
 .our-values-photo{
-  position:absolute;top:0;right:0;bottom:0;width:65%;
+  position:absolute;top:0;left:0;bottom:0;width:60%;
   background-image:url("images/our-values-handshake.jpg");
-  background-position:center;background-size:contain;background-repeat:no-repeat;
-  background-color:var(--white);
+  background-position:65% center;background-size:cover;background-repeat:no-repeat;
 }
 .our-values-photo::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg, var(--white) 0%, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0) 26%);
+  background:linear-gradient(90deg, rgba(11,31,58,0.05) 0%, rgba(11,31,58,0.08) 78%, rgba(11,31,58,0.85) 92%, var(--navy-900) 100%);
 }
-.our-values-band .wrap{position:relative;z-index:1;max-width:1400px;width:100%;}
-.our-values-text{max-width:480px;}
-.our-values-heading{font-size:44px;line-height:1.15;color:var(--navy-900);max-width:760px;margin-bottom:24px;}
+.our-values-band .wrap{position:relative;z-index:1;max-width:1400px;}
+.our-values-text{max-width:480px;margin-left:auto;}
+.our-values-heading{font-size:44px;line-height:1.15;color:#fff;max-width:760px;margin-bottom:24px;}
 .our-values-copy{max-width:760px;}
-.our-values-copy p{font-size:19px;line-height:1.85;color:var(--gray-600);margin-bottom:20px;}
+.our-values-copy p{font-size:19px;line-height:1.85;color:rgba(255,255,255,0.82);margin-bottom:20px;}
 .our-values-copy p:last-child{margin-bottom:0;}
-.our-values-copy strong{color:var(--red-600);font-weight:800;}
-.our-values-founded{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);font-size:14px;color:var(--gray-400);max-width:760px;}
+.our-values-copy strong{color:#FF9CA6;font-weight:800;}
+.our-values-founded{margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.16);font-size:14px;color:rgba(255,255,255,0.55);max-width:760px;}
 
 /* SOLUTIONS */
 .solutions{background:var(--bg);}
@@ -395,15 +392,16 @@ header,main.page{transition:opacity .6s ease .2s;}
 .team-photo-band h2 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;align-items:start;}
 .person{text-align:center;}
-.avatar{width:100%;aspect-ratio:1/1;border-radius:50%;margin:0 auto 18px;display:block;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
+.avatar{width:85%;aspect-ratio:1/1;border-radius:50%;margin:0 auto 18px;display:block;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
 .avatar:hover{transform:scale(1.04);box-shadow:var(--shadow);}
 .person h4{font-family:'Manrope',sans-serif;font-size:19px;color:var(--navy-900);margin-bottom:4px;}
 .person p{font-size:14px;color:var(--gray-600);}
 .person-readmore{
-  display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:0;
-  background:none;border:none;color:var(--red-600);font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;margin-top:14px;
+  background:var(--red-600);border:none;border-radius:999px;padding:10px 22px;
+  color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:background .2s ease;
 }
-.person-readmore:hover{color:var(--red-500);}
+.person-readmore:hover{background:var(--red-500);}
 .person-bio{display:none;}
 
 /* PERSON MODAL */
@@ -582,7 +580,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
   .our-values-photo{display:none;}
-  .our-values-band{padding:64px 0;min-height:0;}
+  .our-values-band{padding:64px 0;}
   .our-values-text{max-width:100%;margin-left:0;}
   .our-values-heading{font-size:28px;}
   .team-photo-band{min-height:70vh;}
@@ -887,7 +885,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-yvonne-tan.webp" alt="Yvonne Tan">
         <h4>Yvonne Tan</h4><p>Group Managing Director</p>
-        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <button class="person-readmore" type="button">Read more</button>
         <div class="person-bio">
           <p>Yvonne Tan is the Group Managing Director of JonDavidson and Dynamic Human Capital, bringing extensive expertise in executive search, leadership recruitment, and talent advisory across the Healthcare and Fast-Moving Consumer Goods (FMCG) sectors.</p>
           <p>Known for her strong relationships with clients and candidates, she takes a strategic, people-centric approach to identifying high-calibre talent that drives organisational growth. Passionate about developing careers and building high-performing teams, Yvonne is committed to connecting exceptional leaders with opportunities where they can create lasting business impact.</p>
@@ -896,7 +894,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-kevin-chong.webp" alt="Kevin Chong">
         <h4>Kevin Chong</h4><p>Senior Associate Director</p>
-        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <button class="person-readmore" type="button">Read more</button>
         <div class="person-bio">
           <p>Kevin Chong brings over 15 years of experience in the IT industry, specialising in executive search and leadership recruitment across the technology sector.</p>
           <p>With a strong track record of placing senior executives&mdash;including CFOs, CTOs, Country Managers, General Managers, Regional Sales Directors, HR Directors (APAC), and Programme &amp; Delivery Directors&mdash;he partners with organisations to build high-performing leadership teams. Based in Singapore, Kevin has successfully delivered executive search assignments across Singapore, Malaysia, Thailand, Taiwan, and China.</p>
@@ -905,7 +903,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-desmond-ong.webp" alt="Desmond Ong">
         <h4>Desmond Ong</h4><p>Senior Associate Director</p>
-        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <button class="person-readmore" type="button">Read more</button>
         <div class="person-bio">
           <p>Desmond has over 25 years of experience in executive search and human capital consulting, advising multinational corporations and local enterprises on leadership hiring across Asia. He has led executive search assignments throughout Singapore, China, Indonesia, and Vietnam, placing senior executives across Sales &amp; Marketing, Finance, Project Management, and Technology functions.</p>
           <p>Backed by corporate leadership experience with Kyocera, Harris Semiconductor, UBS Warburg, and Lucent Technologies, Desmond brings a strategic understanding of both business and talent, helping organisations build strong, high-performing leadership teams.</p>
@@ -914,7 +912,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-liew-yuk-kong.webp" alt="Liew Yuk Kong">
         <h4>Liew Yuk Kong</h4><p>Senior Associate Director</p>
-        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <button class="person-readmore" type="button">Read more</button>
         <div class="person-bio">
           <p>Yuk Kong is a Principal Consultant at JonDavidson, specialising in executive search and talent acquisition across the Semiconductor, Information Technology, Oil &amp; Gas, Pharmaceutical, Diagnostics, Aviation, and Engineering sectors. Prior to joining JonDavidson, he spent over 22 years in senior IT leadership roles with leading multinational companies, including Siemens, Infineon, Qimonda, and Polycom, culminating in his position as Corporate IT Vice President.</p>
           <p>His extensive industry expertise and leadership experience enable him to connect organisations with high-calibre professionals who drive business success. Yuk Kong also served in the Singapore Armed Forces (SAF) Reserve, attaining the rank of Captain through his leadership as a unit commander.</p>
@@ -923,7 +921,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="person reveal">
         <img class="avatar" src="images/team-sonny-yuen.webp" alt="Sonny Yuen">
         <h4>Sonny Yuen</h4><p>Senior Advisor</p>
-        <button class="person-readmore" type="button">Read more <span class="person-readmore-arrow">&rarr;</span></button>
+        <button class="person-readmore" type="button">Read more</button>
         <div class="person-bio">
           <p>Sonny Yuen is the Managing Director of JonDavidson, bringing over 30 years of leadership experience in manufacturing, supply chain management, and business transformation. His expertise spans Human Resources, Information Technology, Finance, Project Management, and Supply Chain Management, with a strong track record in driving organisational productivity and process improvement.</p>
           <p>Previously, Sonny held senior management positions, including General Manager at Sumitomo Bakelite Singapore, and currently serves as an Independent Director of SGX-listed Healthway Medical Corporation, contributing to its Audit &amp; Risk, Remuneration, and Nominating Committees. A certified Privacy Management Professional and Certified Productivity Consultant, Sonny is also an active contributor to Singapore&rsquo;s business and education communities through his leadership roles with the Singapore Institute of Directors, the National University of Singapore, and Bukit View Primary School.</p>
