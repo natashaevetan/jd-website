@@ -332,6 +332,13 @@ header,main.page{transition:opacity .6s ease .2s;}
 .card h3{font-size:17px;margin-bottom:8px;}
 .card p{font-size:14px;color:var(--gray-600);}
 .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--navy-800);}
+.card-readmore{
+  display:inline-flex;align-items:center;justify-content:center;margin-top:16px;
+  background:var(--red-600);border:none;border-radius:999px;padding:10px 22px;
+  color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:background .2s ease;
+}
+.card-readmore:hover{background:var(--red-500);}
+.card-more{display:none;}
 
 /* TOOLS */
 .tools{background:var(--white);}
@@ -499,6 +506,44 @@ header,main.page{transition:opacity .6s ease .2s;}
 .person-modal-bio p{margin-bottom:18px;}
 .person-modal-bio p:last-child{margin-bottom:0;}
 
+.solution-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
+.solution-modal.is-open{display:flex;}
+.solution-modal-backdrop{position:absolute;inset:0;background:rgba(11,31,58,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.solution-modal-panel{
+  position:relative;background:var(--white);border-radius:20px;box-shadow:0 30px 80px rgba(11,31,58,0.35);
+  max-width:680px;width:100%;max-height:86vh;overflow-y:auto;padding:48px;
+}
+.solution-modal-close{
+  position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--border);background:var(--white);font-size:18px;line-height:1;color:var(--gray-600);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.solution-modal-close:hover{color:var(--navy-900);border-color:var(--navy-900);}
+.solution-modal-icon{width:48px;height:48px;border-radius:14px;background:rgba(194,32,55,0.09);color:var(--red-600);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
+.solution-modal-title{font-size:24px;margin-bottom:18px;}
+.solution-modal-body{font-size:15.5px;line-height:1.85;color:var(--gray-600);}
+.solution-modal-body p{margin-bottom:18px;}
+.solution-modal-body p:last-child{margin-bottom:0;}
+.solution-modal-body h4{color:var(--navy-900);font-size:17px;margin:26px 0 16px;}
+.solution-steps{list-style:none;counter-reset:solution-step;display:flex;flex-direction:column;gap:16px;}
+.solution-steps li{counter-increment:solution-step;position:relative;padding-left:38px;}
+.solution-steps li::before{
+  content:counter(solution-step);position:absolute;left:0;top:0;
+  width:26px;height:26px;border-radius:50%;background:var(--navy-900);color:#fff;
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:12.5px;
+  display:flex;align-items:center;justify-content:center;
+}
+.solution-steps strong{display:block;color:var(--navy-900);font-size:15px;margin-bottom:3px;}
+.solution-steps span{display:block;font-size:14.5px;}
+.solution-features{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.solution-features li{position:relative;padding-left:22px;}
+.solution-features li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--red-600);}
+.solution-features strong{display:block;color:var(--navy-900);font-size:15px;margin-bottom:2px;}
+.solution-features span{display:block;font-size:14.5px;}
+.solution-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.solution-list li{position:relative;padding-left:20px;font-size:14.5px;}
+.solution-list li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--red-600);}
+
 /* JOBS CTA */
 .jobs-cta{
   background:linear-gradient(120deg,#FFF3F4,#FFFFFF);
@@ -664,6 +709,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .who-we-are{padding-bottom:64px;}
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
+  .solution-modal-panel{padding:32px;max-height:88vh;}
   .our-values-photo{display:none;}
   .our-values-band{padding:64px 0;}
   .our-values-text{max-width:100%;margin-left:0;}
@@ -1063,31 +1109,108 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <div class="card-icon">&#128269;</div>
         <h3>Executive Search</h3>
         <p>Identifying and recruiting high-performing leaders whose beliefs and behaviour align with your company's values and culture.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>Finding the right executive goes beyond matching skills to a job description. At JonDavidson, we take a consultative approach to identify leaders whose experience, values, and leadership style align with your organisation's vision and culture.</p>
+          <p>We begin by understanding your business, strategic objectives, and leadership needs. As your trusted partner, we act as an extension of your organisation&mdash;leveraging our extensive regional network to identify, assess, and secure exceptional executive talent.</p>
+          <p>With nearly two decades of experience and a strong presence across Singapore and the Asia-Pacific region, we have successfully delivered executive search assignments in markets including China, India, Vietnam, Malaysia, and Hong Kong.</p>
+          <h4>Our Search Process</h4>
+          <ol class="solution-steps">
+            <li><strong>Understand Your Business</strong><span>We take the time to understand your organisation, culture, leadership requirements, and long-term objectives.</span></li>
+            <li><strong>Strategic Talent Mapping</strong><span>We leverage our regional network and market insights to identify and engage high-calibre executive talent.</span></li>
+            <li><strong>Rigorous Assessment</strong><span>Candidates are evaluated for their experience, leadership capabilities, and cultural alignment before being shortlisted.</span></li>
+            <li><strong>Interview &amp; Selection</strong><span>We coordinate interviews, gather feedback, and support informed hiring decisions throughout the process.</span></li>
+            <li><strong>Offer &amp; Negotiation</strong><span>We manage offer negotiations and facilitate a smooth transition to secure your preferred candidate.</span></li>
+            <li><strong>Ongoing Partnership</strong><span>Our commitment continues beyond placement with post-hire follow-up to support long-term success.</span></li>
+          </ol>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">&#9203;</div>
         <h3>Interim Management</h3>
         <p>Experienced senior-level leadership on a temporary basis to keep your organisation moving through transition.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>When your organisation is navigating change, growth, or unexpected leadership gaps, the right interim leader can provide immediate stability and expertise. JonDavidson connects businesses with experienced interim executives who deliver impact from day one.</p>
+          <p>Whether you require leadership during a transformation, business expansion, restructuring, or an urgent vacancy, our interim managers bring the experience, objectivity, and agility to lead with confidence.</p>
+          <h4>Why Interim Management?</h4>
+          <ul class="solution-features">
+            <li><strong>Rapid Deployment</strong><span>Experienced executives ready to step in at short notice.</span></li>
+            <li><strong>Immediate Impact</strong><span>Proven leaders who quickly assess challenges and drive results.</span></li>
+            <li><strong>Specialised Expertise</strong><span>Access niche skills and leadership capabilities when you need them most.</span></li>
+            <li><strong>Objective Perspective</strong><span>Independent leaders who provide unbiased insights and decisive action.</span></li>
+            <li><strong>Outcome-Focused</strong><span>Interim managers are accountable for delivering measurable results throughout their assignment.</span></li>
+          </ul>
+          <h4>Our Approach</h4>
+          <p>We work closely with you to understand your business objectives, leadership requirements, and desired outcomes. Leveraging our extensive executive network, we identify and assess highly qualified interim leaders who align with your organisation's needs, ensuring a seamless and timely placement.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">&#8635;</div>
         <h3>Career Transition</h3>
         <p>Outplacement support that helps departing employees move confidently into their next role.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>Supporting people through career transitions with confidence, dignity, and purpose.</p>
+          <p>Whether your organisation is undergoing restructuring or an individual is navigating an unexpected career change, JonDavidson provides personalised outplacement and career transition services that help people move forward with clarity and confidence.</p>
+          <h4>For Employers</h4>
+          <p>Supporting employees during organisational change demonstrates a commitment to people while protecting your employer brand. Our outplacement programmes help departing employees transition successfully, enabling organisations to manage change with professionalism and care.</p>
+          <h4>Our Services</h4>
+          <ul class="solution-list">
+            <li>Individual and group outplacement programmes</li>
+            <li>Career coaching and transition planning</li>
+            <li>R&eacute;sum&eacute; and LinkedIn profile optimisation</li>
+            <li>Interview preparation and job search strategies</li>
+            <li>Networking and personal branding guidance</li>
+            <li>Ongoing career support</li>
+          </ul>
+          <h4>Benefits to Your Organisation</h4>
+          <ul class="solution-list">
+            <li>Strengthen employee trust and morale</li>
+            <li>Preserve your employer reputation</li>
+            <li>Support departing employees with dignity and respect</li>
+            <li>Reduce transition risks and workplace disruption</li>
+          </ul>
+          <h4>For Candidates</h4>
+          <p>A career transition can be challenging, but it can also be the beginning of new opportunities. Our experienced career consultants work closely with you to develop a personalised strategy for your next career move.</p>
+          <h4>How We Help</h4>
+          <ul class="solution-list">
+            <li>Assess your strengths, experience and career aspirations</li>
+            <li>Explore suitable career opportunities</li>
+            <li>Develop compelling r&eacute;sum&eacute;s and cover letters</li>
+            <li>Prepare you for interviews with confidence</li>
+            <li>Connect you with relevant employers through our network</li>
+            <li>Provide guidance on salary negotiation and career planning</li>
+          </ul>
+          <p>Whether you're entering the workforce, seeking your next leadership role, or navigating an unexpected career transition, we're here to help you take the next step with confidence.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">&#128101;</div>
         <h3>Human Capital Outsourcing</h3>
         <p>Flexible contract staffing solutions to help you scale your workforce as business needs shift.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>Flexible contract staffing solutions to help you scale your workforce as business needs shift.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">&#128179;</div>
         <h3>Payroll Outsourcing</h3>
         <p>Reliable, compliant payroll administration so you can focus on growing your business.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>Reliable, compliant payroll administration so you can focus on growing your business.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">&#127891;</div>
         <h3>Training &amp; Consultancy</h3>
         <p>Programmes designed to sharpen the skills of recruitment and talent management professionals.</p>
+        <button class="card-readmore" type="button">Learn more</button>
+        <div class="card-more">
+          <p>Programmes designed to sharpen the skills of recruitment and talent management professionals.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1115,6 +1238,16 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     </div>
   </div>
 </section>
+
+<div class="solution-modal" id="solution-modal">
+  <div class="solution-modal-backdrop"></div>
+  <div class="solution-modal-panel" role="dialog" aria-modal="true" aria-labelledby="solution-modal-title">
+    <button class="solution-modal-close" type="button" aria-label="Close">&times;</button>
+    <div class="solution-modal-icon"></div>
+    <h3 class="solution-modal-title" id="solution-modal-title"></h3>
+    <div class="solution-modal-body"></div>
+  </div>
+</div>
 
 </main>
 <main class="page" id="page-talent-tools" data-route="talent-tools">
@@ -1677,6 +1810,34 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && personModal.classList.contains('is-open')) closePersonModal();
   });
+
+  (function(){
+    const solutionModal = document.getElementById('solution-modal');
+    if (!solutionModal) return;
+    const solutionModalIcon = solutionModal.querySelector('.solution-modal-icon');
+    const solutionModalTitle = solutionModal.querySelector('.solution-modal-title');
+    const solutionModalBody = solutionModal.querySelector('.solution-modal-body');
+
+    function openSolutionModal(card){
+      solutionModalIcon.innerHTML = card.querySelector('.card-icon').innerHTML;
+      solutionModalTitle.textContent = card.querySelector('h3').textContent;
+      solutionModalBody.innerHTML = card.querySelector('.card-more').innerHTML;
+      solutionModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSolutionModal(){
+      solutionModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.card-readmore').forEach(btn => {
+      btn.addEventListener('click', () => openSolutionModal(btn.closest('.card')));
+    });
+    solutionModal.querySelector('.solution-modal-close').addEventListener('click', closeSolutionModal);
+    solutionModal.querySelector('.solution-modal-backdrop').addEventListener('click', closeSolutionModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && solutionModal.classList.contains('is-open')) closeSolutionModal();
+    });
+  })();
 
   (function(){
     const section = document.querySelector('.city-carousel');
