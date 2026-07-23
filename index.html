@@ -90,8 +90,8 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 #intro-logo-text{display:flex;flex-direction:column;line-height:1.15;margin-left:22px;}
 #intro-logo-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;}
 #intro-logo-name .ch{
-  display:inline-block;opacity:0;transform:translateY(10px);
-  transition:opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+  display:inline-block;opacity:0;transform:translateY(16px);
+  transition:opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1);
 }
 #intro-logo-name .ch.in{opacity:1;transform:translateY(0);}
 #intro-logo-tagline{
@@ -100,7 +100,7 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 }
 #intro-logo-tagline .ch{
   display:inline-block;opacity:0;transform:translateY(4px);
-  transition:opacity .25s ease, transform .25s ease;
+  transition:opacity .28s cubic-bezier(.16,1,.3,1), transform .28s cubic-bezier(.16,1,.3,1);
 }
 #intro-logo-tagline .ch.in{opacity:1;transform:translateY(0);}
 #intro-logo-tagline .intro-cursor{
@@ -144,22 +144,29 @@ header,main.page{transition:opacity .6s ease .2s;}
 
 /* HOME HERO */
 .hero{
-  position:relative;min-height:100vh;overflow:hidden;
-  display:flex;align-items:center;
-  padding:110px 0 60px;
+  position:relative;height:calc(100vh + 320px);overflow:hidden;
   background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/sg-skyline.jpg") center/cover no-repeat;
   color:var(--white);
 }
-.hero-inner{position:relative;max-width:820px;width:100%;}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:320px;
+  background:linear-gradient(to bottom, rgba(11,31,58,0) 0%, var(--navy-900) 100%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:absolute;top:50vh;left:50%;transform:translate(-50%,-50%);
+  width:100%;max-width:820px;padding:0 32px;
+}
 .hero .eyebrow{color:#FF9CA6;}
 .hero .eyebrow::before{background:#FF9CA6;}
 .hero h1{color:var(--white);font-size:60px;line-height:1.1;margin-bottom:22px;}
 .hero h1 .animate-word{
   display:inline-block;
   opacity:0;
-  transform:translateY(24px);
+  transform:translateY(42px);
+  filter:blur(10px);
 }
-.hero h1 .animate-word.in{opacity:1;transform:translateY(0);}
+.hero h1 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .tw-cursor{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-0.15em;margin-left:2px;animation:tw-blink 0.9s step-end infinite;}
 @keyframes tw-blink{50%{opacity:0;}}
 .hero .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
@@ -175,16 +182,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .story-split-image{width:100%;aspect-ratio:1264/848;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);}
 .ticker-section{padding:20px 0;background:var(--white);}
 .tight-top{padding-top:20px;padding-bottom:0;}
-.stats-reveal{background:var(--navy-900);position:relative;}
-.stats-reveal::before{
-  content:"";position:absolute;left:0;right:0;top:0;height:320px;
-  background:
-    linear-gradient(to bottom, rgba(11,31,58,0) 0%, var(--navy-900) 100%),
-    linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)),
-    url("images/sg-skyline.jpg") center/cover no-repeat;
-  background-position:top,center,center;
-  pointer-events:none;
-}
+.stats-reveal{background:var(--navy-900);}
 .stats-reveal-track{position:relative;height:160vh;}
 .stats-reveal-pin{
   position:sticky;top:0;height:100vh;
@@ -208,7 +206,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 }
 .stats-reveal-copy{
   color:rgba(255,255,255,0.82);font-size:21px;line-height:1.65;
-  max-width:620px;text-align:center;margin:64px auto 0;
+  max-width:620px;text-align:center;margin:120px auto 0;
   opacity:0;transition:opacity .4s ease;
 }
 
@@ -553,7 +551,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .stats-reveal-grid{gap:32px 40px;}
   .stats-reveal-grid .num{font-size:calc(20px + 24px * var(--stats-size-progress));}
   .stats-reveal-grid .label{font-size:calc(9px + 2px * var(--stats-size-progress));}
-  .stats-reveal-copy{font-size:17px;margin-top:40px;}
+  .stats-reveal-copy{font-size:17px;margin-top:72px;}
   section{padding:52px 0;}
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
@@ -1365,8 +1363,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     words.forEach(w => { w.style.transition = 'none'; w.classList.remove('in'); });
     void heading.offsetWidth;
     words.forEach(w => {
-      const delay = Math.round(80 + Math.random() * 420);
-      w.style.transition = `opacity .8s cubic-bezier(.16,1,.3,1) ${delay}ms, transform .8s cubic-bezier(.16,1,.3,1) ${delay}ms`;
+      const delay = Math.round(100 + Math.random() * 650);
+      w.style.transition = `opacity .9s cubic-bezier(.16,1,.3,1) ${delay}ms, transform .9s cubic-bezier(.16,1,.3,1) ${delay}ms, filter .9s cubic-bezier(.16,1,.3,1) ${delay}ms`;
     });
     void heading.offsetWidth;
     requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1607,7 +1605,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       requestAnimationFrame(() => requestAnimationFrame(() => {
         spans.forEach(span => span.classList.add('in'));
       }));
-      after((spans.length - 1) * stagger + 550, onDone);
+      after((spans.length - 1) * stagger + 650, onDone);
     }
 
     // Types the tagline in one character at a time (with a blinking cursor),
@@ -1668,11 +1666,11 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
       after(0, () => iconEl.classList.add('in'));
 
-      after(300, () => {
-        revealLetters(nameEl, NAME_TEXT, 45, () => {
+      after(150, () => {
+        revealLetters(nameEl, NAME_TEXT, 16, () => {
           const targetWidth = nameEl.getBoundingClientRect().width;
           taglineEl.style.letterSpacing = letterSpacingToMatchWidth(taglineEl, TAGLINE_TEXT, targetWidth) + 'px';
-          typeTagline(taglineEl, TAGLINE_TEXT, 75, () => {
+          typeTagline(taglineEl, TAGLINE_TEXT, 45, () => {
             after(holdMs, flyAway);
           });
         });
