@@ -252,8 +252,9 @@ header,main.page{transition:opacity .6s ease .2s;}
 .page-hero p{color:var(--gray-600);font-size:16px;max-width:560px;}
 .page-hero.photo{
   background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/client-meeting.jpg") center/cover no-repeat;
-  padding:196px 0 88px;
+  min-height:78vh;padding:196px 0 88px;display:flex;align-items:center;
 }
+.page-hero.photo .wrap{width:100%;}
 .page-hero.photo .eyebrow{color:#FF9CA6;}
 .page-hero.photo .eyebrow::before{background:#FF9CA6;}
 .page-hero.photo h1{color:var(--white);}
