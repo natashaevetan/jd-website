@@ -161,7 +161,7 @@ header,main.page{transition:opacity .6s ease .2s;}
   filter:blur(18px);
 }
 .hero h1 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
-.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:640px;margin:22px auto 0;}
+.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:560px;margin:22px auto 0;}
 .hero-subhead .animate-word{
   display:inline-block;
   opacity:0;
@@ -241,8 +241,8 @@ header,main.page{transition:opacity .6s ease .2s;}
 .section-head{max-width:640px;margin-bottom:40px;}
 .section-head h2{font-size:30px;}
 .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
-#page-home .solutions .section-head{max-width:none;}
-#page-home .solutions .section-head h2{font-size:58px;}
+#page-home .solutions .section-head{max-width:760px;}
+#page-home .solutions .section-head h2{font-size:48px;}
 
 /* ABOUT — WHO WE ARE */
 #page-about .page-hero,#page-meet-team .page-hero{background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,0.16);}
@@ -269,27 +269,30 @@ header,main.page{transition:opacity .6s ease .2s;}
 
 .our-values-band{
   position:relative;
-  background:var(--navy-900);
+  background:var(--white);
   overflow:hidden;
+  min-height:100vh;
+  display:flex;align-items:center;
   padding:140px 0;
 }
 .our-values-photo{
-  position:absolute;top:0;left:0;bottom:0;width:60%;
+  position:absolute;top:0;right:0;bottom:0;width:65%;
   background-image:url("images/our-values-handshake.jpg");
-  background-position:65% center;background-size:cover;background-repeat:no-repeat;
+  background-position:center;background-size:contain;background-repeat:no-repeat;
+  background-color:var(--white);
 }
 .our-values-photo::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg, rgba(11,31,58,0.05) 0%, rgba(11,31,58,0.08) 78%, rgba(11,31,58,0.85) 92%, var(--navy-900) 100%);
+  background:linear-gradient(90deg, var(--white) 0%, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0) 26%);
 }
-.our-values-band .wrap{position:relative;z-index:1;max-width:1400px;}
-.our-values-text{max-width:480px;margin-left:auto;}
-.our-values-heading{font-size:44px;line-height:1.15;color:#fff;max-width:760px;margin-bottom:24px;}
+.our-values-band .wrap{position:relative;z-index:1;max-width:1400px;width:100%;}
+.our-values-text{max-width:480px;}
+.our-values-heading{font-size:44px;line-height:1.15;color:var(--navy-900);max-width:760px;margin-bottom:24px;}
 .our-values-copy{max-width:760px;}
-.our-values-copy p{font-size:19px;line-height:1.85;color:rgba(255,255,255,0.82);margin-bottom:20px;}
+.our-values-copy p{font-size:19px;line-height:1.85;color:var(--gray-600);margin-bottom:20px;}
 .our-values-copy p:last-child{margin-bottom:0;}
-.our-values-copy strong{color:#FF9CA6;font-weight:800;}
-.our-values-founded{margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.16);font-size:14px;color:rgba(255,255,255,0.55);max-width:760px;}
+.our-values-copy strong{color:var(--red-600);font-weight:800;}
+.our-values-founded{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);font-size:14px;color:var(--gray-400);max-width:760px;}
 
 /* SOLUTIONS */
 .solutions{background:var(--bg);}
@@ -382,8 +385,14 @@ header,main.page{transition:opacity .6s ease .2s;}
   position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
   background:linear-gradient(180deg, rgba(11,31,58,0.5), rgba(11,31,58,0.7)), url("images/team-full-group.jpg") center/cover no-repeat;
 }
-.team-photo-band .eyebrow{color:#FF9CA6;justify-content:center;}
 .team-photo-band h2{color:#fff;font-size:48px;}
+.team-photo-band h2 .animate-word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(64px);
+  filter:blur(18px);
+}
+.team-photo-band h2 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;align-items:start;}
 .person{text-align:center;}
 .avatar{width:100%;aspect-ratio:1/1;border-radius:50%;margin:0 auto 18px;display:block;object-fit:cover;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;}
@@ -573,7 +582,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
   .our-values-photo{display:none;}
-  .our-values-band{padding:64px 0;}
+  .our-values-band{padding:64px 0;min-height:0;}
   .our-values-text{max-width:100%;margin-left:0;}
   .our-values-heading{font-size:28px;}
   .team-photo-band{min-height:70vh;}
@@ -866,9 +875,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="team-photo-band" id="team">
   <div class="wrap">
-    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;margin-bottom:0;">
-      <div class="eyebrow">Leadership</div>
-      <h2>Meet the team</h2>
+    <div class="section-head center" style="margin-left:auto;margin-right:auto;margin-bottom:0;">
+      <h2 class="team-leadership-heading"><span class="animate-word">Our</span> <span class="animate-word">leadership</span></h2>
     </div>
   </div>
 </section>
@@ -1703,6 +1711,20 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     update();
+  })();
+
+  (function(){
+    const heading = document.querySelector('.team-photo-band h2');
+    if (!heading) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          revealWords(heading, 0.9, 100, 750);
+          io.unobserve(heading);
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(heading);
   })();
 </script>
 
