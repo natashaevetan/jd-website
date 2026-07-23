@@ -91,7 +91,7 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 #intro-logo-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;}
 #intro-logo-name .ch{
   display:inline-block;opacity:0;transform:translateY(10px);
-  transition:opacity .38s ease, transform .38s ease;
+  transition:opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
 }
 #intro-logo-name .ch.in{opacity:1;transform:translateY(0);}
 #intro-logo-tagline{
@@ -198,8 +198,8 @@ header,main.page{transition:opacity .6s ease .2s;}
   color:rgba(255,255,255,0.68);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;
 }
 .stats-reveal-copy{
-  color:rgba(255,255,255,0.82);font-size:17px;line-height:1.65;
-  max-width:560px;text-align:center;margin-top:36px;
+  color:rgba(255,255,255,0.82);font-size:21px;line-height:1.65;
+  max-width:620px;text-align:center;margin:64px auto 0;
   opacity:0;transition:opacity .4s ease;
 }
 
@@ -544,7 +544,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .stats-reveal-grid{gap:32px 40px;}
   .stats-reveal-grid .num{font-size:calc(20px + 24px * var(--stats-size-progress));}
   .stats-reveal-grid .label{font-size:calc(9px + 2px * var(--stats-size-progress));}
-  .stats-reveal-copy{font-size:15px;margin-top:24px;}
+  .stats-reveal-copy{font-size:17px;margin-top:40px;}
   section{padding:52px 0;}
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
@@ -1583,15 +1583,22 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     }
 
     // Builds the static (invisible) letters up front so their layout width
-    // can be measured immediately, then reveals each one on a stagger.
+    // can be measured immediately, then reveals them on a stagger driven by
+    // CSS transition-delay (not per-letter setTimeout calls) so the timing
+    // runs on the compositor instead of being at the mercy of main-thread
+    // jitter — that's what made the reveal look laggy/choppy before.
     function revealLetters(container, text, stagger, onDone){
       container.innerHTML = '';
       const spans = Array.from(text).map(makeCharSpan);
-      spans.forEach(s => container.appendChild(s));
       spans.forEach((span, i) => {
-        after(i * stagger, () => span.classList.add('in'));
+        span.style.transitionDelay = (i * stagger) + 'ms';
+        container.appendChild(span);
       });
-      after((spans.length - 1) * stagger + 380, onDone);
+      void container.offsetWidth;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        spans.forEach(span => span.classList.add('in'));
+      }));
+      after((spans.length - 1) * stagger + 550, onDone);
     }
 
     // Types the tagline in one character at a time (with a blinking cursor),
