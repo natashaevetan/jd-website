@@ -178,10 +178,23 @@ header,main.page{transition:opacity .6s ease .2s;}
 .image-pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 .image-pair .banner-image{height:400px;max-height:none;}
 .image-band{padding:0;}
-.story-split{background:var(--bg);}
-.story-split-grid{display:grid;grid-template-columns:minmax(460px,0.75fr) 1.6fr;gap:40px;align-items:center;}
-.story-split-grid h2{font-size:42px;line-height:1.2;}
-.story-split-image{width:100%;aspect-ratio:1264/848;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);}
+.story-split{
+  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;align-items:center;
+  background:var(--white);
+}
+.story-split-photo{
+  position:absolute;top:0;right:0;bottom:0;width:60%;
+  background-image:url("images/building-businesses.jpg");
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+}
+.story-split-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, var(--white) 0%, rgba(255,255,255,0.85) 8%, rgba(255,255,255,0) 24%);
+}
+.story-split .wrap{position:relative;z-index:1;max-width:1400px;width:100%;}
+.story-split-text{max-width:440px;}
+.story-split-text h2{font-size:42px;line-height:1.2;color:var(--navy-900);}
 .ticker-section{padding:20px 0;background:var(--white);}
 .tight-top{padding-top:20px;padding-bottom:0;}
 .stats-reveal{background:var(--navy-900);padding:0;}
@@ -256,7 +269,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .who-we-are-intro{background:var(--white);min-height:100vh;display:flex;align-items:center;}
 .who-we-are-copy{max-width:760px;margin:0 auto;}
 .who-we-are-copy p{font-size:19px;line-height:1.85;color:var(--ink);margin-bottom:24px;}
-.who-we-are-copy .lede-statement{font-size:42px;font-weight:700;line-height:1.3;color:var(--navy-900);margin-bottom:28px;}
+.who-we-are-copy .lede-statement{font-size:42px;font-weight:700;line-height:1.3;color:var(--navy-900);margin-bottom:28px;text-align:center;}
 .pillars{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
 .pillars-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
 .pillar{border-radius:14px;background:var(--bg);border:1px solid var(--border);}
@@ -533,8 +546,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 .page.active{display:block;}
 
 @media (max-width:980px){
-  .story-split-grid{grid-template-columns:1fr;gap:32px;}
-  .story-split-grid h2{font-size:34px;}
+  .story-split-text h2{font-size:34px;}
   .card-grid,.region-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:repeat(2,1fr);}
   .ccv-grid{grid-template-columns:repeat(2,1fr);}
   .hero h1{font-size:44px;}
@@ -585,7 +597,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .our-values-heading{font-size:28px;}
   .team-photo-band{min-height:70vh;}
   .team-photo-band h2{font-size:28px;}
-  .story-split-grid h2{font-size:28px;}
+  .story-split{min-height:0;padding:64px 0;}
+  .story-split-photo{display:none;}
+  .story-split-text{max-width:100%;}
+  .story-split-text h2{font-size:28px;}
   #page-home .solutions .section-head h2{font-size:32px;}
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
   .who-we-are-copy .lede-statement{font-size:28px;}
@@ -698,10 +713,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </section>
 
 <section class="story-split">
+  <div class="story-split-photo" role="img" aria-label="JonDavidson colleagues chatting in a modern office overlooking the city"></div>
   <div class="wrap">
-    <div class="story-split-grid">
+    <div class="story-split-text">
       <h2 class="reveal">Building Businesses,<br>Empowering People.</h2>
-      <img class="story-split-image reveal" src="images/building-businesses.jpg" alt="JonDavidson colleagues chatting in a modern office overlooking the city">
     </div>
   </div>
 </section>
@@ -771,7 +786,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="who-we-are-intro">
   <div class="wrap">
     <div class="who-we-are-copy reveal">
-      <p class="lede-statement">At JonDavidson, we believe that every successful company is built on its people.</p>
+      <p class="lede-statement">At JonDavidson, we believe that every successful company is built on its people</p>
       <p>Finding the right talent goes beyond matching skills to a job &mdash; it&rsquo;s about connecting individuals with roles where they can thrive, contribute meaningfully, and align with a company&rsquo;s culture and core values. When the right people are in the right environment, both businesses and employees succeed.</p>
       <p>JonDavidson was founded in May 2007 by a group of experienced industry specialists, driven by a shared passion for helping organisations build capable and high-performing teams. By combining our diverse expertise, insights, and networks, we deliver tailored recruitment solutions that empower businesses to secure exceptional talent while helping candidates achieve their long-term career aspirations.</p>
     </div>
