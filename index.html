@@ -88,26 +88,19 @@ nav{display:flex;align-items:center;padding:14px 32px;max-width:1180px;margin:0 
 }
 #intro-logo-icon.in{opacity:1;transform:scale(1);}
 #intro-logo-text{display:flex;flex-direction:column;line-height:1.15;margin-left:22px;}
-#intro-logo-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;}
-#intro-logo-name .ch{
-  display:inline-block;opacity:0;transform:translateY(16px);
-  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+#intro-logo-name{
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
 }
-#intro-logo-name .ch.in{opacity:1;transform:translateY(0);}
+#intro-logo-name.in{opacity:1;transform:translateY(0);}
 #intro-logo-tagline{
   font-family:'Manrope',sans-serif;font-weight:500;font-size:20px;color:var(--ink);
   white-space:nowrap;margin-top:8px;min-height:1.2em;
+  opacity:0;transform:translateY(6px);
+  transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
 }
-#intro-logo-tagline .ch{
-  display:inline-block;opacity:0;transform:translateY(4px);
-  transition:opacity .22s cubic-bezier(.16,1,.3,1), transform .22s cubic-bezier(.16,1,.3,1);
-}
-#intro-logo-tagline .ch.in{opacity:1;transform:translateY(0);}
-#intro-logo-tagline .intro-cursor{
-  display:inline-block;width:2px;height:0.9em;background:currentColor;vertical-align:-0.1em;margin-left:2px;
-  animation:intro-cursor-blink 1s ease-in-out infinite;
-}
-@keyframes intro-cursor-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+#intro-logo-tagline.in{opacity:1;transform:translateY(0);}
 body.intro-active{overflow:hidden;}
 body.intro-active header,body.intro-active main.page{opacity:0;}
 header,main.page{transition:opacity .6s ease .2s;}
@@ -156,6 +149,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero-inner{
   position:absolute;top:50vh;left:50%;transform:translate(-50%,-50%);
   width:100%;max-width:820px;padding:0 32px;
+  text-align:center;
 }
 .hero .eyebrow{color:#FF9CA6;}
 .hero .eyebrow::before{background:#FF9CA6;}
@@ -167,7 +161,7 @@ header,main.page{transition:opacity .6s ease .2s;}
   filter:blur(18px);
 }
 .hero h1 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
-.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:640px;margin-top:22px;}
+.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:640px;margin:22px auto 0;}
 .hero-subhead .animate-word{
   display:inline-block;
   opacity:0;
@@ -190,12 +184,20 @@ header,main.page{transition:opacity .6s ease .2s;}
 .story-split-image{width:100%;aspect-ratio:1264/848;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);}
 .ticker-section{padding:20px 0;background:var(--white);}
 .tight-top{padding-top:20px;padding-bottom:0;}
-.stats-reveal{background:var(--navy-900);}
+.stats-reveal{background:var(--navy-900);padding:0;}
 .stats-reveal-track{position:relative;height:160vh;}
 .stats-reveal-pin{
   position:sticky;top:0;height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   overflow:hidden;padding:0 32px;
+  background:
+    linear-gradient(rgba(11,31,58,0.45), rgba(11,31,58,0.6)),
+    url("images/sg-skyline-dusk.jpg") center/cover no-repeat;
+}
+.stats-reveal-pin::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:300px;
+  background:linear-gradient(to bottom, var(--navy-900) 0%, rgba(11,31,58,0) 100%);
+  pointer-events:none;
 }
 .stats-reveal-grid{
   --stats-progress:0;
@@ -1597,54 +1599,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       timers = [];
     }
 
-    function makeCharSpan(ch){
-      const span = document.createElement('span');
-      span.className = 'ch';
-      span.textContent = ch === ' ' ? ' ' : ch;
-      return span;
-    }
-
-    // Builds the static (invisible) letters up front so their layout width
-    // can be measured immediately, then reveals them on a stagger driven by
-    // CSS transition-delay (not per-letter setTimeout calls) so the timing
-    // runs on the compositor instead of being at the mercy of main-thread
-    // jitter — that's what made the reveal look laggy/choppy before.
-    function revealLetters(container, text, stagger, onDone){
-      container.innerHTML = '';
-      const spans = Array.from(text).map(makeCharSpan);
-      spans.forEach((span, i) => {
-        span.style.transitionDelay = (i * stagger) + 'ms';
-        container.appendChild(span);
-      });
-      void container.offsetWidth;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        spans.forEach(span => span.classList.add('in'));
-      }));
-      after((spans.length - 1) * stagger + 500, onDone);
-    }
-
-    // Types the tagline in one character at a time (with a blinking cursor),
-    // fading each new letter in rather than snapping it into place.
-    function typeTagline(container, text, interval, onDone){
-      container.innerHTML = '';
-      const cursor = document.createElement('span');
-      cursor.className = 'intro-cursor';
-      container.appendChild(cursor);
-      let i = 0;
-      function step(){
-        if (i < text.length) {
-          const span = makeCharSpan(text[i]);
-          container.insertBefore(span, cursor);
-          requestAnimationFrame(() => requestAnimationFrame(() => span.classList.add('in')));
-          i++;
-          after(interval, step);
-        } else {
-          after(300, onDone);
-        }
-      }
-      step();
-    }
-
     function flyAway(){
       if (flying) return;
       flying = true;
@@ -1673,22 +1627,24 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       inner.classList.remove('intro-fly');
       inner.style.transform = '';
       iconEl.classList.remove('in');
-      nameEl.innerHTML = '';
-      taglineEl.innerHTML = '';
+      nameEl.textContent = NAME_TEXT;
+      nameEl.classList.remove('in');
+      taglineEl.textContent = TAGLINE_TEXT;
+      taglineEl.classList.remove('in');
       taglineEl.style.letterSpacing = '';
       document.body.classList.add('intro-active');
       void inner.offsetWidth;
 
       after(0, () => iconEl.classList.add('in'));
 
-      after(100, () => {
-        revealLetters(nameEl, NAME_TEXT, 12, () => {
-          const targetWidth = nameEl.getBoundingClientRect().width;
-          taglineEl.style.letterSpacing = letterSpacingToMatchWidth(taglineEl, TAGLINE_TEXT, targetWidth) + 'px';
-          typeTagline(taglineEl, TAGLINE_TEXT, 38, () => {
-            after(holdMs, flyAway);
-          });
-        });
+      after(200, () => {
+        const targetWidth = nameEl.getBoundingClientRect().width;
+        taglineEl.style.letterSpacing = letterSpacingToMatchWidth(taglineEl, TAGLINE_TEXT, targetWidth) + 'px';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          nameEl.classList.add('in');
+          taglineEl.classList.add('in');
+        }));
+        after(1000, () => after(holdMs, flyAway));
       });
     }
 
