@@ -157,16 +157,16 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero h1 .animate-word{
   display:inline-block;
   opacity:0;
-  transform:translateY(64px);
-  filter:blur(18px);
+  transform:translateY(90px);
+  filter:blur(26px);
 }
 .hero h1 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:560px;margin:22px auto 0;}
 .hero-subhead .animate-word{
   display:inline-block;
   opacity:0;
-  transform:translateY(24px);
-  filter:blur(6px);
+  transform:translateY(36px);
+  filter:blur(10px);
 }
 .hero-subhead .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .tw-cursor{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-0.15em;margin-left:2px;animation:tw-blink 0.9s step-end infinite;}
@@ -233,6 +233,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 }
 .stats-reveal-grid .label{
   font-size:calc(10.5px + 3.5px * var(--stats-size-progress));
+  font-weight:600;
   color:rgba(255,255,255,0.68);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;
 }
 .stats-reveal-copy{
@@ -476,10 +477,11 @@ header,main.page{transition:opacity .6s ease .2s;}
 .jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .jobs-cta.photo .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
 .career-cta-band{
-  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  position:relative;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;text-align:center;
+  padding-bottom:11vh;
   background:linear-gradient(180deg, rgba(11,31,58,0.4), rgba(11,31,58,0.6)), url("images/career-cta-professional.jpg") center/cover no-repeat;
 }
-.career-cta-band h2{color:#fff;font-size:56px;line-height:1.15;max-width:780px;margin:0 auto 32px;}
+.career-cta-band h2{color:#fff;font-size:56px;line-height:1.15;max-width:1160px;margin:0 auto 32px;}
 .career-cta-band .btn-primary{font-size:17px;padding:16px 34px;}
 /* LIVE ROLES TICKER */
 .ticker-bar{display:flex;align-items:stretch;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -708,7 +710,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="stats-reveal-grid">
         <div><span class="num" data-target="2007">0</span><span class="label">Established</span></div>
         <div><span class="num" data-target="6">0</span><span class="label">APAC Offices</span></div>
-        <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries via ENEX</span></div>
+        <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries Connected</span></div>
       </div>
       <p class="stats-reveal-copy">A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
     </div>
@@ -1247,7 +1249,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="career-cta-band">
   <div class="wrap">
-    <h2 class="reveal">Curated Executive Career Opportunities, Tailored to You.</h2>
+    <h2 class="reveal">Curated Executive Career Opportunities,<br>Tailored to You.</h2>
     <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary reveal">Browse open roles</a>
   </div>
 </section>
@@ -1429,8 +1431,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   }
 
   function playHeroHeadline(){
-    revealWords(document.querySelector('.hero h1'), 0.9, 100, 750);
-    revealWords(document.querySelector('.hero .hero-subhead'), 0.6, 300, 600);
+    revealWords(document.querySelector('.hero h1'), 1.1, 100, 800);
+    revealWords(document.querySelector('.hero .hero-subhead'), 0.7, 350, 700);
   }
 
   function showRoute(route){
@@ -1732,7 +1734,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         const suffix = el.dataset.suffix || '';
         el.textContent = Math.round(target * progress) + suffix;
       });
-      if (copyEl) copyEl.style.opacity = clamp01((progress - 0.8) / 0.2).toFixed(3);
+      if (copyEl) copyEl.style.opacity = clamp01((progress - 0.9) / 0.1).toFixed(3);
     }
 
     let ticking = false;
@@ -1769,6 +1771,22 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       });
     }, { threshold: 0.4 });
     io.observe(lines[0].closest('h2'));
+  })();
+
+  (function(){
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    // The very first reveal is timed off the logo splash landing (see
+    // flyAway); skip this observer's initial firing so it only replays the
+    // animation on subsequent scrolls back into the hero.
+    let skippedFirst = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!skippedFirst) { skippedFirst = true; return; }
+        if (e.isIntersecting && introRevealed) playHeroHeadline();
+      });
+    }, { threshold: 0.3 });
+    io.observe(hero);
   })();
 </script>
 
