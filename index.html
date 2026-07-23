@@ -1765,10 +1765,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     if (!lines.length) return;
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          lines.forEach(l => l.classList.add('in'));
-          io.disconnect();
-        }
+        lines.forEach(l => l.classList.toggle('in', e.isIntersecting));
       });
     }, { threshold: 0.4 });
     io.observe(lines[0].closest('h2'));
