@@ -401,7 +401,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .city-carousel-slide.is-active{opacity:1;}
 .city-carousel::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(11,31,58,0.35) 0%, rgba(11,31,58,0.55) 100%);
+  background:linear-gradient(180deg, rgba(11,31,58,0.35) 0%, rgba(11,31,58,0.5) 60%, var(--navy-900) 100%);
   pointer-events:none;
 }
 .city-carousel-overlay{position:relative;z-index:1;color:#fff;padding:0 32px;}
@@ -931,6 +931,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <button class="btn btn-primary city-carousel-visit" type="button">Visit us</button>
   </div>
 </section>
+
+<section class="navy-buffer"></section>
 
 <section class="team-photo-band" id="team">
   <div class="wrap">
