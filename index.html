@@ -328,17 +328,10 @@ header,main.page{transition:opacity .6s ease .2s;}
   padding:26px;transition:transform .2s ease, box-shadow .2s ease;display:block;
 }
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-.card-icon{width:42px;height:42px;border-radius:12px;background:rgba(194,32,55,0.09);color:var(--red-600);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:18px;}
 .card h3{font-size:17px;margin-bottom:8px;}
 .card p{font-size:14px;color:var(--gray-600);}
-.card-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--navy-800);}
-.card-readmore{
-  display:inline-flex;align-items:center;justify-content:center;margin-top:16px;
-  background:var(--red-600);border:none;border-radius:999px;padding:10px 22px;
-  color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:background .2s ease;
-}
-.card-readmore:hover{background:var(--red-500);}
-.card-more{display:none;}
+.card-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--navy-800);transition:color .15s ease;}
+.card-link:hover{color:var(--red-600);}
 
 /* TOOLS */
 .tools{background:var(--white);}
@@ -506,25 +499,11 @@ header,main.page{transition:opacity .6s ease .2s;}
 .person-modal-bio p{margin-bottom:18px;}
 .person-modal-bio p:last-child{margin-bottom:0;}
 
-.solution-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
-.solution-modal.is-open{display:flex;}
-.solution-modal-backdrop{position:absolute;inset:0;background:rgba(11,31,58,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-.solution-modal-panel{
-  position:relative;background:var(--white);border-radius:20px;box-shadow:0 30px 80px rgba(11,31,58,0.35);
-  max-width:680px;width:100%;max-height:86vh;overflow-y:auto;padding:48px;
-}
-.solution-modal-close{
-  position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;
-  border:1px solid var(--border);background:var(--white);font-size:18px;line-height:1;color:var(--gray-600);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-}
-.solution-modal-close:hover{color:var(--navy-900);border-color:var(--navy-900);}
-.solution-modal-icon{width:48px;height:48px;border-radius:14px;background:rgba(194,32,55,0.09);color:var(--red-600);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
-.solution-modal-title{font-size:24px;margin-bottom:18px;}
-.solution-modal-body{font-size:15.5px;line-height:1.85;color:var(--gray-600);}
-.solution-modal-body p{margin-bottom:18px;}
-.solution-modal-body p:last-child{margin-bottom:0;}
-.solution-modal-body h4{color:var(--navy-900);font-size:17px;margin:26px 0 16px;}
+.solution-detail{border-radius:var(--radius);padding:34px;color:var(--ink);background:var(--white);border:1px solid var(--border);}
+.solution-detail p{font-size:15.5px;line-height:1.85;color:var(--gray-600);margin-bottom:18px;}
+.solution-detail p:last-child{margin-bottom:0;}
+.solution-detail h4{color:var(--navy-900);font-size:18px;margin:26px 0 16px;}
+.solution-detail h4:first-child{margin-top:0;}
 .solution-steps{list-style:none;counter-reset:solution-step;display:flex;flex-direction:column;gap:16px;}
 .solution-steps li{counter-increment:solution-step;position:relative;padding-left:38px;}
 .solution-steps li::before{
@@ -709,7 +688,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .who-we-are{padding-bottom:64px;}
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
-  .solution-modal-panel{padding:32px;max-height:88vh;}
+  .solution-detail{padding:24px;}
   .our-values-photo{display:none;}
   .our-values-band{padding:64px 0;}
   .our-values-text{max-width:100%;margin-left:0;}
@@ -1106,182 +1085,34 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="wrap">
     <div class="card-grid">
       <div class="card reveal">
-        <div class="card-icon">&#128269;</div>
         <h3>Executive Search</h3>
         <p>Identifying and recruiting high-performing leaders whose beliefs and behaviour align with your company's values and culture.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>Finding the right executive goes beyond matching skills to a job description. At JonDavidson, we take a consultative approach to identify leaders whose experience, values, and leadership style align with your organisation's vision and culture.</p>
-          <p>We begin by understanding your business, strategic objectives, and leadership needs. As your trusted partner, we act as an extension of your organisation&mdash;leveraging our extensive regional network to identify, assess, and secure exceptional executive talent.</p>
-          <p>With nearly two decades of experience and a strong presence across Singapore and the Asia-Pacific region, we have successfully delivered executive search assignments in markets including China, India, Vietnam, Malaysia, and Hong Kong.</p>
-          <h4>Our Search Process</h4>
-          <ol class="solution-steps">
-            <li><strong>Understand Your Business</strong><span>We take the time to understand your organisation, culture, leadership requirements, and long-term objectives.</span></li>
-            <li><strong>Strategic Talent Mapping</strong><span>We leverage our regional network and market insights to identify and engage high-calibre executive talent.</span></li>
-            <li><strong>Rigorous Assessment</strong><span>Candidates are evaluated for their experience, leadership capabilities, and cultural alignment before being shortlisted.</span></li>
-            <li><strong>Interview &amp; Selection</strong><span>We coordinate interviews, gather feedback, and support informed hiring decisions throughout the process.</span></li>
-            <li><strong>Offer &amp; Negotiation</strong><span>We manage offer negotiations and facilitate a smooth transition to secure your preferred candidate.</span></li>
-            <li><strong>Ongoing Partnership</strong><span>Our commitment continues beyond placement with post-hire follow-up to support long-term success.</span></li>
-          </ol>
-        </div>
+        <a href="#solution-executive-search" data-route="solution-executive-search" class="card-link">Learn more &rarr;</a>
       </div>
       <div class="card reveal">
-        <div class="card-icon">&#9203;</div>
         <h3>Interim Management</h3>
         <p>Experienced senior-level leadership on a temporary basis to keep your organisation moving through transition.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>When your organisation is navigating change, growth, or unexpected leadership gaps, the right interim leader can provide immediate stability and expertise. JonDavidson connects businesses with experienced interim executives who deliver impact from day one.</p>
-          <p>Whether you require leadership during a transformation, business expansion, restructuring, or an urgent vacancy, our interim managers bring the experience, objectivity, and agility to lead with confidence.</p>
-          <h4>Why Interim Management?</h4>
-          <ul class="solution-features">
-            <li><strong>Rapid Deployment</strong><span>Experienced executives ready to step in at short notice.</span></li>
-            <li><strong>Immediate Impact</strong><span>Proven leaders who quickly assess challenges and drive results.</span></li>
-            <li><strong>Specialised Expertise</strong><span>Access niche skills and leadership capabilities when you need them most.</span></li>
-            <li><strong>Objective Perspective</strong><span>Independent leaders who provide unbiased insights and decisive action.</span></li>
-            <li><strong>Outcome-Focused</strong><span>Interim managers are accountable for delivering measurable results throughout their assignment.</span></li>
-          </ul>
-          <h4>Our Approach</h4>
-          <p>We work closely with you to understand your business objectives, leadership requirements, and desired outcomes. Leveraging our extensive executive network, we identify and assess highly qualified interim leaders who align with your organisation's needs, ensuring a seamless and timely placement.</p>
-        </div>
+        <a href="#solution-interim-management" data-route="solution-interim-management" class="card-link">Learn more &rarr;</a>
       </div>
       <div class="card reveal">
-        <div class="card-icon">&#8635;</div>
         <h3>Career Transition</h3>
         <p>Outplacement support that helps departing employees move confidently into their next role.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>Supporting people through career transitions with confidence, dignity, and purpose.</p>
-          <p>Whether your organisation is undergoing restructuring or an individual is navigating an unexpected career change, JonDavidson provides personalised outplacement and career transition services that help people move forward with clarity and confidence.</p>
-          <h4>For Employers</h4>
-          <p>Supporting employees during organisational change demonstrates a commitment to people while protecting your employer brand. Our outplacement programmes help departing employees transition successfully, enabling organisations to manage change with professionalism and care.</p>
-          <h4>Our Services</h4>
-          <ul class="solution-list">
-            <li>Individual and group outplacement programmes</li>
-            <li>Career coaching and transition planning</li>
-            <li>R&eacute;sum&eacute; and LinkedIn profile optimisation</li>
-            <li>Interview preparation and job search strategies</li>
-            <li>Networking and personal branding guidance</li>
-            <li>Ongoing career support</li>
-          </ul>
-          <h4>Benefits to Your Organisation</h4>
-          <ul class="solution-list">
-            <li>Strengthen employee trust and morale</li>
-            <li>Preserve your employer reputation</li>
-            <li>Support departing employees with dignity and respect</li>
-            <li>Reduce transition risks and workplace disruption</li>
-          </ul>
-          <h4>For Candidates</h4>
-          <p>A career transition can be challenging, but it can also be the beginning of new opportunities. Our experienced career consultants work closely with you to develop a personalised strategy for your next career move.</p>
-          <h4>How We Help</h4>
-          <ul class="solution-list">
-            <li>Assess your strengths, experience and career aspirations</li>
-            <li>Explore suitable career opportunities</li>
-            <li>Develop compelling r&eacute;sum&eacute;s and cover letters</li>
-            <li>Prepare you for interviews with confidence</li>
-            <li>Connect you with relevant employers through our network</li>
-            <li>Provide guidance on salary negotiation and career planning</li>
-          </ul>
-          <p>Whether you're entering the workforce, seeking your next leadership role, or navigating an unexpected career transition, we're here to help you take the next step with confidence.</p>
-        </div>
+        <a href="#solution-career-transition" data-route="solution-career-transition" class="card-link">Learn more &rarr;</a>
       </div>
       <div class="card reveal">
-        <div class="card-icon">&#128101;</div>
         <h3>Human Capital Outsourcing</h3>
         <p>Flexible contract staffing solutions to help you scale your workforce as business needs shift.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>Flexible workforce solutions that help your organisation scale with confidence.</p>
-          <p>JonDavidson provides end-to-end human capital outsourcing solutions, enabling organisations to quickly access skilled professionals while reducing the administrative burden of employment. Whether you're managing business growth, project-based work, seasonal demand, or temporary staffing needs, we deliver the talent and support you need to stay productive.</p>
-          <h4>For Employers</h4>
-          <p>Our contract staffing solutions provide experienced professionals who can integrate seamlessly into your team&mdash;without the long-term commitments of permanent hiring.</p>
-          <h4>Our Services</h4>
-          <ul class="solution-list">
-            <li>Contract and temporary staffing</li>
-            <li>Talent sourcing and candidate screening</li>
-            <li>Interview coordination and background checks</li>
-            <li>Payroll administration and CPF management</li>
-            <li>Employment contracts and statutory compliance</li>
-            <li>Insurance and employee administration</li>
-          </ul>
-          <h4>Why Partner With Us?</h4>
-          <ul class="solution-features">
-            <li><strong>Flexible Workforce Solutions</strong><span>Scale your workforce as business needs evolve.</span></li>
-            <li><strong>Faster Hiring</strong><span>Access qualified talent quickly through our extensive network.</span></li>
-            <li><strong>Reduced Administrative Burden</strong><span>We manage payroll, compliance, and employment administration.</span></li>
-            <li><strong>Cost-Effective Staffing</strong><span>Meet short-term workforce needs without permanent employment commitments.</span></li>
-          </ul>
-          <h4>For Candidates</h4>
-          <p>Whether you're exploring contract opportunities, returning to the workforce, or seeking greater career flexibility, we connect you with assignments that align with your skills, experience, and career goals.</p>
-          <p>Our consultants take the time to understand your strengths and aspirations, ensuring every opportunity is carefully matched to maximise your success.</p>
-          <h4>What You Can Expect</h4>
-          <ul class="solution-list">
-            <li>Access to contract and project-based opportunities</li>
-            <li>Roles across multiple industries and functions</li>
-            <li>Personalised career matching and guidance</li>
-            <li>Ongoing support throughout your assignment</li>
-          </ul>
-        </div>
+        <a href="#solution-hc-outsourcing" data-route="solution-hc-outsourcing" class="card-link">Learn more &rarr;</a>
       </div>
       <div class="card reveal">
-        <div class="card-icon">&#128179;</div>
         <h3>Payroll Outsourcing</h3>
         <p>Reliable, compliant payroll administration so you can focus on growing your business.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>Accurate, compliant, and hassle-free payroll solutions tailored to your business.</p>
-          <p>Managing payroll and HR administration can be time-consuming and complex. JonDavidson provides end-to-end payroll outsourcing services that ensure your employees are paid accurately, statutory obligations are met, and your business remains compliant&mdash;allowing your team to focus on strategic growth.</p>
-          <h4>Our Payroll Services</h4>
-          <p>We manage every aspect of your payroll process, including:</p>
-          <ul class="solution-list">
-            <li>Payroll processing and salary computation</li>
-            <li>CPF and statutory contribution administration</li>
-            <li>Bonus, allowances, claims, and leave calculations</li>
-            <li>Secure payslip generation and salary disbursement</li>
-            <li>Payroll reporting and management insights</li>
-            <li>Statutory submissions, including NS, maternity, childcare, and IR21 claims</li>
-            <li>Payroll records and compliance administration</li>
-          </ul>
-          <h4>Leave Management</h4>
-          <p>Simplify leave administration with an integrated leave management solution that enables employees to submit requests online while managers can review, approve, and monitor leave across teams and locations with ease.</p>
-          <h4>Why Partner With Us?</h4>
-          <ul class="solution-features">
-            <li><strong>Accurate &amp; Timely Payroll</strong><span>Ensure employees are paid correctly and on schedule.</span></li>
-            <li><strong>Regulatory Compliance</strong><span>Stay compliant with Singapore's statutory and payroll requirements.</span></li>
-            <li><strong>Reduced Administrative Workload</strong><span>Free your HR team to focus on higher-value initiatives.</span></li>
-            <li><strong>Secure &amp; Reliable Processes</strong><span>Protect sensitive employee data with trusted payroll systems.</span></li>
-            <li><strong>Scalable Solutions</strong><span>Flexible payroll services that grow alongside your business.</span></li>
-          </ul>
-        </div>
+        <a href="#solution-payroll-outsourcing" data-route="solution-payroll-outsourcing" class="card-link">Learn more &rarr;</a>
       </div>
       <div class="card reveal">
-        <div class="card-icon">&#127891;</div>
         <h3>Training &amp; Consultancy</h3>
         <p>Programmes designed to sharpen the skills of recruitment and talent management professionals.</p>
-        <button class="card-readmore" type="button">Learn more</button>
-        <div class="card-more">
-          <p>Empowering people. Strengthening organisations.</p>
-          <p>People are at the heart of every successful business. JonDavidson partners with organisations to develop capable leaders, build high-performing teams, and strengthen organisational capabilities through practical training and strategic human capital consultancy.</p>
-          <p>Whether you're enhancing leadership effectiveness, developing talent, or addressing workforce challenges, our customised solutions are designed to deliver measurable and lasting impact.</p>
-          <h4>Our Services</h4>
-          <p>We offer tailored solutions across a range of organisational needs, including:</p>
-          <ul class="solution-list">
-            <li>Leadership and management development</li>
-            <li>Talent development and succession planning</li>
-            <li>Human capital strategy and organisational consulting</li>
-            <li>Team effectiveness and employee engagement</li>
-            <li>Customised corporate training programmes</li>
-            <li>Executive coaching and career development</li>
-          </ul>
-          <h4>Why Partner With Us?</h4>
-          <ul class="solution-features">
-            <li><strong>Tailored Solutions</strong><span>Programmes designed around your organisation's unique objectives and challenges.</span></li>
-            <li><strong>Practical &amp; Actionable</strong><span>Real-world insights that can be applied immediately in the workplace.</span></li>
-            <li><strong>Experienced Consultants</strong><span>Learn from seasoned professionals with deep industry expertise.</span></li>
-            <li><strong>People-Centred Approach</strong><span>Develop leaders, empower teams, and build a culture of continuous growth.</span></li>
-            <li><strong>Long-Term Impact</strong><span>Sustainable solutions that strengthen organisational performance and future readiness.</span></li>
-          </ul>
-        </div>
+        <a href="#solution-training-consultancy" data-route="solution-training-consultancy" class="card-link">Learn more &rarr;</a>
       </div>
     </div>
   </div>
@@ -1310,15 +1141,243 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
-<div class="solution-modal" id="solution-modal">
-  <div class="solution-modal-backdrop"></div>
-  <div class="solution-modal-panel" role="dialog" aria-modal="true" aria-labelledby="solution-modal-title">
-    <button class="solution-modal-close" type="button" aria-label="Close">&times;</button>
-    <div class="solution-modal-icon"></div>
-    <h3 class="solution-modal-title" id="solution-modal-title"></h3>
-    <div class="solution-modal-body"></div>
+</main>
+<main class="page" id="page-solution-executive-search" data-route="solution-executive-search">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Executive Search</h1>
   </div>
-</div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>Finding the right executive goes beyond matching skills to a job description. At JonDavidson, we take a consultative approach to identify leaders whose experience, values, and leadership style align with your organisation's vision and culture.</p>
+      <p>We begin by understanding your business, strategic objectives, and leadership needs. As your trusted partner, we act as an extension of your organisation&mdash;leveraging our extensive regional network to identify, assess, and secure exceptional executive talent.</p>
+      <p>With nearly two decades of experience and a strong presence across Singapore and the Asia-Pacific region, we have successfully delivered executive search assignments in markets including China, India, Vietnam, Malaysia, and Hong Kong.</p>
+      <h4>Our Search Process</h4>
+      <ol class="solution-steps">
+        <li><strong>Understand Your Business</strong><span>We take the time to understand your organisation, culture, leadership requirements, and long-term objectives.</span></li>
+        <li><strong>Strategic Talent Mapping</strong><span>We leverage our regional network and market insights to identify and engage high-calibre executive talent.</span></li>
+        <li><strong>Rigorous Assessment</strong><span>Candidates are evaluated for their experience, leadership capabilities, and cultural alignment before being shortlisted.</span></li>
+        <li><strong>Interview &amp; Selection</strong><span>We coordinate interviews, gather feedback, and support informed hiring decisions throughout the process.</span></li>
+        <li><strong>Offer &amp; Negotiation</strong><span>We manage offer negotiations and facilitate a smooth transition to secure your preferred candidate.</span></li>
+        <li><strong>Ongoing Partnership</strong><span>Our commitment continues beyond placement with post-hire follow-up to support long-term success.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</main>
+<main class="page" id="page-solution-interim-management" data-route="solution-interim-management">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Interim Management</h1>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>When your organisation is navigating change, growth, or unexpected leadership gaps, the right interim leader can provide immediate stability and expertise. JonDavidson connects businesses with experienced interim executives who deliver impact from day one.</p>
+      <p>Whether you require leadership during a transformation, business expansion, restructuring, or an urgent vacancy, our interim managers bring the experience, objectivity, and agility to lead with confidence.</p>
+      <h4>Why Interim Management?</h4>
+      <ul class="solution-features">
+        <li><strong>Rapid Deployment</strong><span>Experienced executives ready to step in at short notice.</span></li>
+        <li><strong>Immediate Impact</strong><span>Proven leaders who quickly assess challenges and drive results.</span></li>
+        <li><strong>Specialised Expertise</strong><span>Access niche skills and leadership capabilities when you need them most.</span></li>
+        <li><strong>Objective Perspective</strong><span>Independent leaders who provide unbiased insights and decisive action.</span></li>
+        <li><strong>Outcome-Focused</strong><span>Interim managers are accountable for delivering measurable results throughout their assignment.</span></li>
+      </ul>
+      <h4>Our Approach</h4>
+      <p>We work closely with you to understand your business objectives, leadership requirements, and desired outcomes. Leveraging our extensive executive network, we identify and assess highly qualified interim leaders who align with your organisation's needs, ensuring a seamless and timely placement.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<main class="page" id="page-solution-career-transition" data-route="solution-career-transition">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Career Transition</h1>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>Supporting people through career transitions with confidence, dignity, and purpose.</p>
+      <p>Whether your organisation is undergoing restructuring or an individual is navigating an unexpected career change, JonDavidson provides personalised outplacement and career transition services that help people move forward with clarity and confidence.</p>
+      <h4>For Employers</h4>
+      <p>Supporting employees during organisational change demonstrates a commitment to people while protecting your employer brand. Our outplacement programmes help departing employees transition successfully, enabling organisations to manage change with professionalism and care.</p>
+      <h4>Our Services</h4>
+      <ul class="solution-list">
+        <li>Individual and group outplacement programmes</li>
+        <li>Career coaching and transition planning</li>
+        <li>R&eacute;sum&eacute; and LinkedIn profile optimisation</li>
+        <li>Interview preparation and job search strategies</li>
+        <li>Networking and personal branding guidance</li>
+        <li>Ongoing career support</li>
+      </ul>
+      <h4>Benefits to Your Organisation</h4>
+      <ul class="solution-list">
+        <li>Strengthen employee trust and morale</li>
+        <li>Preserve your employer reputation</li>
+        <li>Support departing employees with dignity and respect</li>
+        <li>Reduce transition risks and workplace disruption</li>
+      </ul>
+      <h4>For Candidates</h4>
+      <p>A career transition can be challenging, but it can also be the beginning of new opportunities. Our experienced career consultants work closely with you to develop a personalised strategy for your next career move.</p>
+      <h4>How We Help</h4>
+      <ul class="solution-list">
+        <li>Assess your strengths, experience and career aspirations</li>
+        <li>Explore suitable career opportunities</li>
+        <li>Develop compelling r&eacute;sum&eacute;s and cover letters</li>
+        <li>Prepare you for interviews with confidence</li>
+        <li>Connect you with relevant employers through our network</li>
+        <li>Provide guidance on salary negotiation and career planning</li>
+      </ul>
+      <p>Whether you're entering the workforce, seeking your next leadership role, or navigating an unexpected career transition, we're here to help you take the next step with confidence.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<main class="page" id="page-solution-hc-outsourcing" data-route="solution-hc-outsourcing">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Human Capital Outsourcing</h1>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>Flexible workforce solutions that help your organisation scale with confidence.</p>
+      <p>JonDavidson provides end-to-end human capital outsourcing solutions, enabling organisations to quickly access skilled professionals while reducing the administrative burden of employment. Whether you're managing business growth, project-based work, seasonal demand, or temporary staffing needs, we deliver the talent and support you need to stay productive.</p>
+      <h4>For Employers</h4>
+      <p>Our contract staffing solutions provide experienced professionals who can integrate seamlessly into your team&mdash;without the long-term commitments of permanent hiring.</p>
+      <h4>Our Services</h4>
+      <ul class="solution-list">
+        <li>Contract and temporary staffing</li>
+        <li>Talent sourcing and candidate screening</li>
+        <li>Interview coordination and background checks</li>
+        <li>Payroll administration and CPF management</li>
+        <li>Employment contracts and statutory compliance</li>
+        <li>Insurance and employee administration</li>
+      </ul>
+      <h4>Why Partner With Us?</h4>
+      <ul class="solution-features">
+        <li><strong>Flexible Workforce Solutions</strong><span>Scale your workforce as business needs evolve.</span></li>
+        <li><strong>Faster Hiring</strong><span>Access qualified talent quickly through our extensive network.</span></li>
+        <li><strong>Reduced Administrative Burden</strong><span>We manage payroll, compliance, and employment administration.</span></li>
+        <li><strong>Cost-Effective Staffing</strong><span>Meet short-term workforce needs without permanent employment commitments.</span></li>
+      </ul>
+      <h4>For Candidates</h4>
+      <p>Whether you're exploring contract opportunities, returning to the workforce, or seeking greater career flexibility, we connect you with assignments that align with your skills, experience, and career goals.</p>
+      <p>Our consultants take the time to understand your strengths and aspirations, ensuring every opportunity is carefully matched to maximise your success.</p>
+      <h4>What You Can Expect</h4>
+      <ul class="solution-list">
+        <li>Access to contract and project-based opportunities</li>
+        <li>Roles across multiple industries and functions</li>
+        <li>Personalised career matching and guidance</li>
+        <li>Ongoing support throughout your assignment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<main class="page" id="page-solution-payroll-outsourcing" data-route="solution-payroll-outsourcing">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Payroll Outsourcing</h1>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>Accurate, compliant, and hassle-free payroll solutions tailored to your business.</p>
+      <p>Managing payroll and HR administration can be time-consuming and complex. JonDavidson provides end-to-end payroll outsourcing services that ensure your employees are paid accurately, statutory obligations are met, and your business remains compliant&mdash;allowing your team to focus on strategic growth.</p>
+      <h4>Our Payroll Services</h4>
+      <p>We manage every aspect of your payroll process, including:</p>
+      <ul class="solution-list">
+        <li>Payroll processing and salary computation</li>
+        <li>CPF and statutory contribution administration</li>
+        <li>Bonus, allowances, claims, and leave calculations</li>
+        <li>Secure payslip generation and salary disbursement</li>
+        <li>Payroll reporting and management insights</li>
+        <li>Statutory submissions, including NS, maternity, childcare, and IR21 claims</li>
+        <li>Payroll records and compliance administration</li>
+      </ul>
+      <h4>Leave Management</h4>
+      <p>Simplify leave administration with an integrated leave management solution that enables employees to submit requests online while managers can review, approve, and monitor leave across teams and locations with ease.</p>
+      <h4>Why Partner With Us?</h4>
+      <ul class="solution-features">
+        <li><strong>Accurate &amp; Timely Payroll</strong><span>Ensure employees are paid correctly and on schedule.</span></li>
+        <li><strong>Regulatory Compliance</strong><span>Stay compliant with Singapore's statutory and payroll requirements.</span></li>
+        <li><strong>Reduced Administrative Workload</strong><span>Free your HR team to focus on higher-value initiatives.</span></li>
+        <li><strong>Secure &amp; Reliable Processes</strong><span>Protect sensitive employee data with trusted payroll systems.</span></li>
+        <li><strong>Scalable Solutions</strong><span>Flexible payroll services that grow alongside your business.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<main class="page" id="page-solution-training-consultancy" data-route="solution-training-consultancy">
+
+<section class="page-hero">
+  <div class="wrap">
+    <a href="#client-solutions" data-route="client-solutions" class="tool-back">&larr; Back to Client Solutions</a>
+    <div class="eyebrow">Client Solutions</div>
+    <h1>Training &amp; Consultancy</h1>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="solution-detail reveal">
+      <p>Empowering people. Strengthening organisations.</p>
+      <p>People are at the heart of every successful business. JonDavidson partners with organisations to develop capable leaders, build high-performing teams, and strengthen organisational capabilities through practical training and strategic human capital consultancy.</p>
+      <p>Whether you're enhancing leadership effectiveness, developing talent, or addressing workforce challenges, our customised solutions are designed to deliver measurable and lasting impact.</p>
+      <h4>Our Services</h4>
+      <p>We offer tailored solutions across a range of organisational needs, including:</p>
+      <ul class="solution-list">
+        <li>Leadership and management development</li>
+        <li>Talent development and succession planning</li>
+        <li>Human capital strategy and organisational consulting</li>
+        <li>Team effectiveness and employee engagement</li>
+        <li>Customised corporate training programmes</li>
+        <li>Executive coaching and career development</li>
+      </ul>
+      <h4>Why Partner With Us?</h4>
+      <ul class="solution-features">
+        <li><strong>Tailored Solutions</strong><span>Programmes designed around your organisation's unique objectives and challenges.</span></li>
+        <li><strong>Practical &amp; Actionable</strong><span>Real-world insights that can be applied immediately in the workplace.</span></li>
+        <li><strong>Experienced Consultants</strong><span>Learn from seasoned professionals with deep industry expertise.</span></li>
+        <li><strong>People-Centred Approach</strong><span>Develop leaders, empower teams, and build a culture of continuous growth.</span></li>
+        <li><strong>Long-Term Impact</strong><span>Sustainable solutions that strengthen organisational performance and future readiness.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 </main>
 <main class="page" id="page-talent-tools" data-route="talent-tools">
@@ -1655,7 +1714,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     navLinksEl.style.cssText += 'flex-direction:column;position:fixed;top:64px;right:20px;background:#FFFFFF;border:1px solid #E4E9F1;padding:20px 28px;border-radius:14px;gap:16px;box-shadow:0 20px 40px rgba(11,31,58,0.18);';
   });
 
-  const TITLES = {"home": "JonDavidson Group", "about": "About Us — JonDavidson Group", "meet-team": "Meet the Team — JonDavidson Group", "client-solutions": "Client Solutions — JonDavidson Group", "talent-tools": "Talent Profiling Tools — JonDavidson Group", "tool-wpi": "Work Personality Index — JonDavidson Group", "tool-eri": "Employee Reliability Inventory — JonDavidson Group", "tool-ccv": "Sales Competence Coefficient — JonDavidson Group", "browse-jobs": "Browse Jobs — JonDavidson Group", "contact": "Contact — JonDavidson Group"};
+  const TITLES = {"home": "JonDavidson Group", "about": "About Us — JonDavidson Group", "meet-team": "Meet the Team — JonDavidson Group", "client-solutions": "Client Solutions — JonDavidson Group", "solution-executive-search": "Executive Search — JonDavidson Group", "solution-interim-management": "Interim Management — JonDavidson Group", "solution-career-transition": "Career Transition — JonDavidson Group", "solution-hc-outsourcing": "Human Capital Outsourcing — JonDavidson Group", "solution-payroll-outsourcing": "Payroll Outsourcing — JonDavidson Group", "solution-training-consultancy": "Training & Consultancy — JonDavidson Group", "talent-tools": "Talent Profiling Tools — JonDavidson Group", "tool-wpi": "Work Personality Index — JonDavidson Group", "tool-eri": "Employee Reliability Inventory — JonDavidson Group", "tool-ccv": "Sales Competence Coefficient — JonDavidson Group", "browse-jobs": "Browse Jobs — JonDavidson Group", "contact": "Contact — JonDavidson Group"};
   const pages = document.querySelectorAll('.page');
   // Scoped to the nav bar only — many other elements (cards, footer links, the
   // page sections themselves) also carry data-route for navigation, but only
@@ -1667,6 +1726,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   const NAV_GROUP_ROOT = {
     'about': 'about', 'meet-team': 'about',
     'client-solutions': 'client-solutions', 'talent-tools': 'client-solutions', 'tool-wpi': 'client-solutions', 'tool-eri': 'client-solutions', 'tool-ccv': 'client-solutions',
+    'solution-executive-search': 'client-solutions', 'solution-interim-management': 'client-solutions', 'solution-career-transition': 'client-solutions', 'solution-hc-outsourcing': 'client-solutions', 'solution-payroll-outsourcing': 'client-solutions', 'solution-training-consultancy': 'client-solutions',
     'browse-jobs': 'browse-jobs', 'contact': 'browse-jobs'
   };
 
@@ -1881,34 +1941,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && personModal.classList.contains('is-open')) closePersonModal();
   });
-
-  (function(){
-    const solutionModal = document.getElementById('solution-modal');
-    if (!solutionModal) return;
-    const solutionModalIcon = solutionModal.querySelector('.solution-modal-icon');
-    const solutionModalTitle = solutionModal.querySelector('.solution-modal-title');
-    const solutionModalBody = solutionModal.querySelector('.solution-modal-body');
-
-    function openSolutionModal(card){
-      solutionModalIcon.innerHTML = card.querySelector('.card-icon').innerHTML;
-      solutionModalTitle.textContent = card.querySelector('h3').textContent;
-      solutionModalBody.innerHTML = card.querySelector('.card-more').innerHTML;
-      solutionModal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeSolutionModal(){
-      solutionModal.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-    document.querySelectorAll('.card-readmore').forEach(btn => {
-      btn.addEventListener('click', () => openSolutionModal(btn.closest('.card')));
-    });
-    solutionModal.querySelector('.solution-modal-close').addEventListener('click', closeSolutionModal);
-    solutionModal.querySelector('.solution-modal-backdrop').addEventListener('click', closeSolutionModal);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && solutionModal.classList.contains('is-open')) closeSolutionModal();
-    });
-  })();
 
   (function(){
     const section = document.querySelector('.city-carousel');
