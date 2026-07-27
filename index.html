@@ -270,15 +270,15 @@ header,main.page{transition:opacity .6s ease .2s;}
 #page-meet-team .page-hero{min-height:64vh;display:flex;align-items:center;}
 #page-meet-team .page-hero .wrap{width:100%;}
 #page-about .page-hero{
-  position:relative;overflow:hidden;padding:0;display:block;min-height:78vh;
+  position:relative;overflow:hidden;padding:0;display:block;
 }
-#page-about .page-hero .about-hero-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 40%;}
+#page-about .page-hero .about-hero-photo-img{display:block;width:100%;height:auto;}
 #page-about .page-hero::before{
   content:"";position:absolute;inset:0;z-index:0;
   background:linear-gradient(180deg, rgba(11,31,58,0.15) 45%, rgba(11,31,58,0.92) 100%);
 }
 #page-about .page-hero .wrap{
-  position:absolute;left:0;right:0;bottom:0;z-index:1;width:100%;padding-bottom:70px;
+  position:absolute;left:0;right:0;bottom:14%;z-index:1;width:100%;
 }
 #page-about .page-hero .eyebrow,#page-meet-team .page-hero .eyebrow{color:#FF9CA6;}
 #page-about .page-hero .eyebrow::before,#page-meet-team .page-hero .eyebrow::before{background:#FF9CA6;}
@@ -703,8 +703,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .card-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:30px;}
-  #page-about .page-hero{min-height:60vh;}
-  #page-about .page-hero .wrap{padding-bottom:44px;}
+  #page-about .page-hero{min-height:52vh;}
   .who-we-are{padding-bottom:64px;}
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
