@@ -27,7 +27,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease, transform .5s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-anchor:none;}
 body{
   font-family:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
   color:var(--ink);
@@ -270,9 +270,9 @@ header,main.page{transition:opacity .6s ease .2s;}
 #page-meet-team .page-hero{min-height:64vh;display:flex;align-items:center;}
 #page-meet-team .page-hero .wrap{width:100%;}
 #page-about .page-hero{
-  position:relative;overflow:hidden;padding:0;display:block;
+  position:relative;overflow:hidden;padding:0;display:block;min-height:78vh;
 }
-#page-about .page-hero .about-hero-photo-img{display:block;width:100%;height:auto;}
+#page-about .page-hero .about-hero-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 #page-about .page-hero::before{
   content:"";position:absolute;inset:0;z-index:0;
   background:linear-gradient(180deg, rgba(11,31,58,0.15) 45%, rgba(11,31,58,0.92) 100%);
@@ -1771,6 +1771,18 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     revealWords(document.querySelector('.hero .hero-subhead'), 0.7, 350, 700);
   }
 
+  function scrollToTopInstant(){
+    // Some browsers don't honor behavior:'instant' as an override of the
+    // page's scroll-behavior:smooth CSS, so the "instant" jump ends up
+    // animating and can get interrupted mid-flight. Forcing scroll-behavior
+    // to 'auto' for the duration of the jump guarantees a real instant snap.
+    const root = document.documentElement;
+    const prevBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prevBehavior;
+  }
+
   function showRoute(route){
     let found = false;
     pages.forEach(p => {
@@ -1788,7 +1800,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       a.classList.toggle('active', a.dataset.route === highlightRoute);
     });
     document.title = TITLES[route] || 'JonDavidson Group';
-    window.scrollTo({top:0, behavior:'instant'});
+    scrollToTopInstant();
     closeMobileMenu();
     reobserve();
     if (route === 'home' && introRevealed && !document.body.classList.contains('intro-active')) {
@@ -1810,7 +1822,12 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     document.querySelectorAll('.page.active .reveal').forEach(el => io.observe(el));
   }
 
+  // hashchange covers the URL bar / external links; popstate covers
+  // back/forward, since our own navigation below uses pushState (which does
+  // NOT fire hashchange) specifically to dodge the browser's native
+  // scroll-to-fragment animation described above.
   window.addEventListener('hashchange', () => showRoute(routeFromHash()));
+  window.addEventListener('popstate', () => showRoute(routeFromHash()));
 
   function loadHomeFresh(){
     if (window.location.hash && window.location.hash !== '#home') {
@@ -1821,14 +1838,21 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   window.addEventListener('DOMContentLoaded', loadHomeFresh);
   loadHomeFresh();
 
-  document.querySelectorAll('.logo').forEach(el => {
+  // Real anchor clicks (and even plain `location.hash =` assignment) make
+  // the browser run its own native "scroll to fragment" pass, which respects
+  // scroll-behavior:smooth and races our own scroll-to-top — the two can
+  // fight and leave the page not quite at the top. history.pushState changes
+  // the URL without triggering that native scroll, so driving navigation
+  // through it (and calling showRoute ourselves) sidesteps the race entirely.
+  document.querySelectorAll('a[data-route]').forEach(el => {
     el.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const route = el.dataset.route;
       e.preventDefault();
-      if (routeFromHash() === 'home') {
-        showRoute('home');
-      } else {
-        window.location.hash = 'home';
+      if (routeFromHash() !== route) {
+        history.pushState(null, '', '#' + route);
       }
+      showRoute(route);
     });
   });
 
