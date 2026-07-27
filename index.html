@@ -202,41 +202,33 @@ header,main.page{transition:opacity .6s ease .2s;}
 .story-split-text h2 .split-line.in{opacity:1;transform:translateY(0);}
 .ticker-section{padding:20px 0;background:var(--white);}
 .tight-top{padding-top:20px;padding-bottom:0;}
-.stats-reveal{background:var(--navy-900);padding:0;}
-.stats-reveal-track{position:relative;height:160vh;}
-.stats-reveal-pin{
-  position:sticky;top:0;height:100vh;
+.stats-reveal{
+  position:relative;overflow:hidden;padding:0 32px;min-height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;padding:0 32px;
   background:
     linear-gradient(rgba(11,31,58,0.45), rgba(11,31,58,0.6)),
     url("images/sg-skyline-dusk.jpg") center/cover no-repeat;
 }
-.stats-reveal-pin::before{
+.stats-reveal::before{
   content:"";position:absolute;left:0;right:0;top:0;height:300px;
   background:linear-gradient(to bottom, var(--navy-900) 0%, rgba(11,31,58,0) 100%);
   pointer-events:none;
 }
-.stats-reveal-grid{
-  --stats-progress:0;
-  --stats-size-progress:0;
-  display:flex;gap:90px;flex-wrap:wrap;justify-content:center;
-}
+.stats-reveal-grid{display:flex;gap:90px;flex-wrap:wrap;justify-content:center;}
 .stats-reveal-grid div{display:flex;flex-direction:column;align-items:center;gap:8px;}
 .stats-reveal-grid .num{
   font-family:'Manrope',sans-serif;font-weight:800;color:var(--white);
-  font-size:calc(30px + 54px * var(--stats-size-progress));
+  font-size:84px;
   line-height:1;
 }
 .stats-reveal-grid .label{
-  font-size:calc(10.5px + 3.5px * var(--stats-size-progress));
+  font-size:14px;
   font-weight:600;
   color:rgba(255,255,255,0.68);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;
 }
 .stats-reveal-copy{
   color:rgba(255,255,255,0.82);font-size:21px;line-height:1.65;
   max-width:620px;text-align:center;margin:120px auto 0;
-  opacity:0;transition:opacity .4s ease;
 }
 
 /* SUBPAGE HERO (compact) */
@@ -664,7 +656,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .hero h1{font-size:44px;}
   .hero-subhead{font-size:18px;}
   .stats-reveal-grid{gap:56px;}
-  .stats-reveal-grid .num{font-size:calc(24px + 36px * var(--stats-size-progress));}
+  .stats-reveal-grid .num{font-size:60px;}
   .jobs-cta{flex-direction:column;align-items:flex-start;padding:44px;}
   .jobs-cta h2{font-size:28px;}
   .jobs-cta p{font-size:16px;}
@@ -696,8 +688,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   #intro-logo-name{font-size:32px;}
   #intro-logo-tagline{font-size:12px;}
   .stats-reveal-grid{gap:32px 40px;}
-  .stats-reveal-grid .num{font-size:calc(20px + 24px * var(--stats-size-progress));}
-  .stats-reveal-grid .label{font-size:calc(9px + 2px * var(--stats-size-progress));}
+  .stats-reveal-grid .num{font-size:44px;}
+  .stats-reveal-grid .label{font-size:11px;}
   .stats-reveal-copy{font-size:17px;margin-top:72px;}
   section{padding:52px 0;}
   .card-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
@@ -809,16 +801,12 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </section>
 
 <section class="stats-reveal">
-  <div class="stats-reveal-track">
-    <div class="stats-reveal-pin">
-      <div class="stats-reveal-grid">
-        <div><span class="num" data-target="2007">0</span><span class="label">Established</span></div>
-        <div><span class="num" data-target="6">0</span><span class="label">APAC Offices</span></div>
-        <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries Connected</span></div>
-      </div>
-      <p class="stats-reveal-copy">A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
-    </div>
+  <div class="stats-reveal-grid">
+    <div><span class="num" data-target="2007">0</span><span class="label">Established</span></div>
+    <div><span class="num" data-target="6">0</span><span class="label">APAC Offices</span></div>
+    <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries Connected</span></div>
   </div>
+  <p class="stats-reveal-copy reveal">A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
 </section>
 
 <section class="solutions">
@@ -2154,48 +2142,32 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   (function(){
     const section = document.querySelector('.stats-reveal');
     if (!section) return;
-    const track = section.querySelector('.stats-reveal-track');
-    const grid = section.querySelector('.stats-reveal-grid');
-    const copyEl = section.querySelector('.stats-reveal-copy');
     const nums = Array.from(section.querySelectorAll('.num'));
+    const COUNT_DURATION_MS = 3000;
 
-    // How much scrolling (in viewport heights) it takes to count fully up,
-    // starting the instant the section starts entering view — roughly 1-2
-    // keyboard/trackpad scrolls, not a long dead scroll before anything moves.
-    const SCROLL_RANGE_VH = 1.1;
-    const SETTLE_START = 0.85;
-    const SETTLE_SHRINK = 0.14;
+    function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 
-    function clamp01(v){ return Math.max(0, Math.min(1, v)); }
+    function countUp(el){
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      function tick(now){
+        const t = Math.min(1, (now - start) / COUNT_DURATION_MS);
+        el.textContent = Math.round(target * easeOutCubic(t)) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
 
-    function update(){
-      const rect = track.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const scrollRange = vh * SCROLL_RANGE_VH;
-      const progress = clamp01((vh - rect.top) / scrollRange);
-      const sizeProgress = progress <= SETTLE_START
-        ? progress / SETTLE_START
-        : 1 - SETTLE_SHRINK * ((progress - SETTLE_START) / (1 - SETTLE_START));
-
-      grid.style.setProperty('--stats-progress', progress.toFixed(4));
-      grid.style.setProperty('--stats-size-progress', sizeProgress.toFixed(4));
-      nums.forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        el.textContent = Math.round(target * progress) + suffix;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          nums.forEach(countUp);
+          io.unobserve(section);
+        }
       });
-      if (copyEl) copyEl.style.opacity = clamp01((progress - 0.9) / 0.1).toFixed(3);
-    }
-
-    let ticking = false;
-    function onScroll(){
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => { update(); ticking = false; });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+    }, { threshold: 0.4 });
+    io.observe(section);
   })();
 
   (function(){
