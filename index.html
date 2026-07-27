@@ -1788,7 +1788,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       a.classList.toggle('active', a.dataset.route === highlightRoute);
     });
     document.title = TITLES[route] || 'JonDavidson Group';
-    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+    window.scrollTo({top:0, behavior:'instant'});
     closeMobileMenu();
     reobserve();
     if (route === 'home' && introRevealed && !document.body.classList.contains('intro-active')) {
@@ -1811,8 +1811,26 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   }
 
   window.addEventListener('hashchange', () => showRoute(routeFromHash()));
-  window.addEventListener('DOMContentLoaded', () => showRoute(routeFromHash()));
-  showRoute(routeFromHash());
+
+  function loadHomeFresh(){
+    if (window.location.hash && window.location.hash !== '#home') {
+      history.replaceState(null, '', window.location.pathname + window.location.search + '#home');
+    }
+    showRoute('home');
+  }
+  window.addEventListener('DOMContentLoaded', loadHomeFresh);
+  loadHomeFresh();
+
+  document.querySelectorAll('.logo').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (routeFromHash() === 'home') {
+        showRoute('home');
+      } else {
+        window.location.hash = 'home';
+      }
+    });
+  });
 
   // Measures how wide `text` would render at a couple of letter-spacing
   // values, then interpolates the exact spacing needed to span targetWidth.
