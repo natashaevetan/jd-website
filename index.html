@@ -552,6 +552,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .solution-features strong{display:block;color:var(--navy-900);font-size:16px;margin-bottom:2px;}
 .solution-features span{display:block;font-size:15.5px;color:var(--gray-700);}
 .solution-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.candidate-expect-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 32px;max-width:820px;margin:0 auto;}
 .solution-list li{position:relative;padding-left:20px;font-size:15.5px;color:var(--gray-700);}
 .solution-list li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--red-600);}
 
@@ -637,6 +638,10 @@ select.form-control:invalid{color:var(--gray-400);}
 .form-upload-btn:hover{background:var(--navy-700);}
 .form-upload-name{font-size:13.5px;color:var(--gray-600);}
 .form-terms{font-size:13px;color:var(--gray-400);line-height:1.6;margin-bottom:16px;}
+.contact-form-intro{font-size:15px;color:var(--gray-600);line-height:1.6;margin:-6px 0 24px;}
+.contact-form-intro a{color:var(--navy-900);font-weight:600;}
+.form-privacy-note{font-size:13px;color:var(--gray-400);line-height:1.6;margin-top:14px;}
+.contact-box-candidate{max-width:640px;margin:0 auto;}
 .form-checkbox-row{display:flex;align-items:center;gap:10px;cursor:pointer;}
 .form-checkbox-row input[type=checkbox]{width:19px;height:19px;accent-color:var(--navy-900);cursor:pointer;}
 .form-checkbox-row span{font-size:14.5px;color:var(--ink);}
@@ -747,6 +752,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
   .who-we-are-copy .lede-statement{font-size:28px;}
   .our-values-grid{grid-template-columns:1fr;}
+  .candidate-expect-list{grid-template-columns:1fr;}
   .who-we-are-intro{min-height:auto;padding:64px 0;}
   .region-subheading{white-space:normal;}
   .pillar h4{font-size:19px;}
@@ -1789,9 +1795,14 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">For Job Seekers</div>
-    <h1>Your Next Executive Opportunity Begins Here.</h1>
-    <p>Our consultants would be glad to discuss, in confidence, how we could help you find your next opportunity.</p>
+    <div class="eyebrow">Candidates</div>
+    <h1>Your next career opportunity starts here.</h1>
+    <p>Explore leadership, professional and specialist opportunities across Asia Pacific. Our consultants provide confidential, informed guidance throughout the recruitment process.</p>
+    <div class="hero-actions" style="margin-bottom:0;">
+      <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse Current Opportunities</a>
+      <a href="#contact" data-route="contact" class="btn btn-outline">Submit Your CV</a>
+      <a href="#contract-staffing" data-route="contract-staffing" class="btn btn-outline">Explore Contract Opportunities</a>
+    </div>
   </div>
 </section>
 
@@ -1839,8 +1850,24 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="career-cta-band">
   <div class="wrap">
-    <h2 class="reveal">Curated Career Opportunities,<br>Tailored to You.</h2>
-    <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary reveal">Browse open roles</a>
+    <h2 class="reveal">Opportunities matched to your<br>experience and ambitions.</h2>
+    <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary reveal">Browse Current Opportunities</a>
+  </div>
+</section>
+
+<section class="solutions">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <h2>What Candidates Can Expect</h2>
+    </div>
+    <ul class="solution-list candidate-expect-list reveal">
+      <li>Confidential career discussions</li>
+      <li>Clear information about the opportunity</li>
+      <li>Preparation before client interviews</li>
+      <li>Timely process updates</li>
+      <li>Support during offer and resignation discussions</li>
+      <li>Ongoing support for contract employees</li>
+    </ul>
   </div>
 </section>
 
@@ -1850,8 +1877,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="page-hero">
   <div class="wrap">
     <div class="eyebrow">Contact Us</div>
-    <h1>Connect. Collaborate. Capitalise.</h1>
-    <p>Whether you're hiring, job hunting, or exploring our talent tools &mdash; we'd love to hear from you.</p>
+    <h1>How Can We Help?</h1>
+    <p>Your enquiry will be treated confidentially and handled in accordance with our Privacy Policy.</p>
   </div>
 </section>
 
@@ -1864,80 +1891,134 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <p>2 Kallang Avenue #03-05<br>CT Hub, Singapore 339407</p>
         <p>Tel: +65 6295 7155<br>Email: <a href="mailto:partners@jondavidsongroup.com">partners@jondavidsongroup.com</a></p>
         <p><span class="legal-label">Licence No. 22S1412</span></p>
-        <p><span class="legal-label">Member of ENEX:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">www.enexsearch.group</a></p>
-        <p>Member of NPA Worldwide: <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a></p>
-        <p>Member of ELITEZ Group: <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
+        <p><span class="legal-label">Singapore Partner of ENEX Global Executive Search:</span> <a href="https://www.enexsearch.group" target="_blank" rel="noopener">www.enexsearch.group</a></p>
+        <p><span class="legal-label">Member of NPAworldwide:</span> <a href="https://npaworldwide.com" target="_blank" rel="noopener">npaworldwide.com</a></p>
+        <p><span class="legal-label">Part of the ELITEZ Group of Companies:</span> <a href="https://www.elitez.asia" target="_blank" rel="noopener">www.elitez.asia</a></p>
       </div>
     </div>
 
     <div class="contact-box reveal">
-      <h3>Send Us a Message</h3>
-      <form id="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" enctype="multipart/form-data" novalidate>
+      <h3>Let&rsquo;s Discuss Your Hiring Needs</h3>
+      <p class="contact-form-intro">Whether you are making a critical leadership appointment, building a new team or looking for specialist talent, our consultants are ready to help.</p>
+      <form id="client-form" class="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" novalidate>
+        <input type="hidden" name="formType" value="Client Enquiry">
+
         <div class="form-group">
-          <label class="form-label">Name</label>
-          <div class="form-row">
-            <div>
-              <label class="form-sublabel" for="cf-first">First Name <span class="form-required">(required)</span></label>
-              <input class="form-control" type="text" id="cf-first" name="firstName" required>
-            </div>
-            <div>
-              <label class="form-sublabel" for="cf-last">Last Name <span class="form-required">(required)</span></label>
-              <input class="form-control" type="text" id="cf-last" name="lastName" required>
-            </div>
+          <label class="form-label" for="clf-name">Full Name <span class="form-required">(required)</span></label>
+          <input class="form-control" type="text" id="clf-name" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="clf-email">Work Email <span class="form-required">(required)</span></label>
+          <input class="form-control" type="email" id="clf-email" name="workEmail" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="clf-company">Company Name <span class="form-required">(required)</span></label>
+          <input class="form-control" type="text" id="clf-company" name="companyName" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="clf-title">Job Title</label>
+            <input class="form-control" type="text" id="clf-title" name="jobTitle">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clf-phone">Contact Number</label>
+            <input class="form-control" type="tel" id="clf-phone" name="contactNumber">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="cf-phone">Contact No. <span class="form-required">(required)</span></label>
-          <input class="form-control" type="tel" id="cf-phone" name="contactNo" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="cf-email">Email Address <span class="form-required">(required)</span></label>
-          <input class="form-control" type="email" id="cf-email" name="email" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="cf-subject">Subject <span class="form-required">(required)</span></label>
-          <select class="form-control" id="cf-subject" name="subject" required>
+          <label class="form-label" for="clf-service">Service Required</label>
+          <select class="form-control" id="clf-service" name="serviceRequired">
             <option value="" selected disabled>Select an option</option>
-            <option value="Employer Enquiry">Employer Enquiry — Hiring Needs</option>
-            <option value="Job Seeker">Job Seeker — Submit Resume</option>
-            <option value="Talent Profiling Tools">Talent Profiling Tools</option>
-            <option value="Partnership / Media">Partnership / Media</option>
-            <option value="General Enquiry">General Enquiry</option>
+            <option value="Retained Executive Search">Retained Executive Search</option>
+            <option value="Contingency Recruitment">Contingency Recruitment</option>
+            <option value="Talent Mapping">Talent Mapping</option>
+            <option value="Contract Staffing">Contract Staffing</option>
+            <option value="Payroll Services">Payroll Services</option>
+            <option value="Talent Assessment & Profiling">Talent Assessment &amp; Profiling</option>
+            <option value="Career Transition">Career Transition</option>
+            <option value="Other Enquiry">Other Enquiry</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="cf-message">Message <span class="form-required">(required)</span></label>
-          <textarea class="form-control" id="cf-message" name="message" rows="6" required></textarea>
+          <label class="form-label" for="clf-industry">Industry</label>
+          <input class="form-control" type="text" id="clf-industry" name="industry">
         </div>
 
         <div class="form-group">
-          <label class="form-label">Submit File</label>
-          <div class="form-upload-row">
-            <button type="button" class="form-upload-btn" id="cf-upload-trigger">Upload</button>
-            <span class="form-upload-name" id="cf-upload-name">No file chosen</span>
-            <input type="file" name="attachment" id="cf-upload-input" hidden>
-          </div>
+          <label class="form-label" for="clf-message">How Can We Help? <span class="form-required">(required)</span></label>
+          <textarea class="form-control" id="clf-message" name="message" rows="6" required></textarea>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Terms and Conditions <span class="form-required">(required)</span></label>
-          <p class="form-terms">I have read and accept the Terms of Use and Privacy Policy of JonDavidson Pte Ltd. I declare that the information provided by me is true and correct.</p>
-          <label class="form-checkbox-row">
-            <input type="checkbox" name="agree" id="cf-agree" required>
-            <span>Agree</span>
-          </label>
-        </div>
-
-        <button type="submit" class="form-submit-btn" id="cf-submit-btn">Submit</button>
-        <div class="form-status" id="cf-status" role="status"></div>
+        <button type="submit" class="form-submit-btn" id="clf-submit-btn">Discuss My Hiring Needs</button>
+        <p class="form-privacy-note">By submitting this form, you consent to JonDavidson contacting you regarding your enquiry and handling your information in accordance with our Privacy Policy.</p>
+        <div class="form-status" id="clf-status" role="status"></div>
       </form>
     </div>
     </div>
 
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact-box contact-box-candidate reveal">
+      <h3>Submit Your CV</h3>
+      <p class="contact-form-intro">Already know which role interests you? <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener">Browse Current Opportunities</a> and apply directly.</p>
+      <form id="candidate-form" class="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="formType" value="Candidate CV Submission">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="caf-name">Full Name <span class="form-required">(required)</span></label>
+            <input class="form-control" type="text" id="caf-name" name="fullName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="caf-email">Email <span class="form-required">(required)</span></label>
+            <input class="form-control" type="email" id="caf-email" name="email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="caf-phone">Contact Number <span class="form-required">(required)</span></label>
+            <input class="form-control" type="tel" id="caf-phone" name="contactNumber" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="caf-location">Current Location <span class="form-required">(required)</span></label>
+            <input class="form-control" type="text" id="caf-location" name="currentLocation" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="caf-specialisation">Area of Specialisation <span class="form-required">(required)</span></label>
+          <input class="form-control" type="text" id="caf-specialisation" name="areaOfSpecialisation" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">CV Upload <span class="form-required">(required)</span></label>
+          <div class="form-upload-row">
+            <button type="button" class="form-upload-btn" id="caf-upload-trigger">Upload</button>
+            <span class="form-upload-name" id="caf-upload-name">No file chosen</span>
+            <input type="file" name="cv" id="caf-upload-input" required hidden>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="privacyConsent" id="caf-consent" required>
+            <span>By submitting this form, you consent to JonDavidson contacting you regarding your enquiry and handling your information in accordance with our Privacy Policy.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit-btn" id="caf-submit-btn">Submit My CV</button>
+        <div class="form-status" id="caf-status" role="status"></div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -2194,51 +2275,75 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     setTimeout(walkNavTagline, 600);
   }
 
-  const cfForm = document.getElementById('contact-form');
-  const cfUploadTrigger = document.getElementById('cf-upload-trigger');
-  const cfUploadInput = document.getElementById('cf-upload-input');
-  const cfUploadName = document.getElementById('cf-upload-name');
-  const cfStatus = document.getElementById('cf-status');
-  const cfSubmitBtn = document.getElementById('cf-submit-btn');
+  function wireContactForm({ formId, uploadTriggerId, uploadInputId, uploadNameId, statusId, submitBtnId, successMessage, submitLabel }){
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const uploadTrigger = uploadTriggerId ? document.getElementById(uploadTriggerId) : null;
+    const uploadInput = uploadInputId ? document.getElementById(uploadInputId) : null;
+    const uploadName = uploadNameId ? document.getElementById(uploadNameId) : null;
+    const status = document.getElementById(statusId);
+    const submitBtn = document.getElementById(submitBtnId);
 
-  cfUploadTrigger.addEventListener('click', () => cfUploadInput.click());
-  cfUploadInput.addEventListener('change', () => {
-    cfUploadName.textContent = cfUploadInput.files.length ? cfUploadInput.files[0].name : 'No file chosen';
+    if (uploadTrigger && uploadInput && uploadName) {
+      uploadTrigger.addEventListener('click', () => uploadInput.click());
+      uploadInput.addEventListener('change', () => {
+        uploadName.textContent = uploadInput.files.length ? uploadInput.files[0].name : 'No file chosen';
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'form-status';
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          if (uploadName) uploadName.textContent = 'No file chosen';
+          status.textContent = successMessage;
+          status.className = 'form-status visible success';
+        } else {
+          const data = await res.json().catch(() => null);
+          const msg = data && data.errors && data.errors.length ? data.errors.map(er => er.message).join(', ') : 'Something went wrong. Please try again.';
+          status.textContent = msg;
+          status.className = 'form-status visible error';
+        }
+      } catch (err) {
+        status.textContent = 'Network error — please check your connection and try again.';
+        status.className = 'form-status visible error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitLabel;
+      }
+    });
+  }
+
+  wireContactForm({
+    formId: 'client-form',
+    statusId: 'clf-status',
+    submitBtnId: 'clf-submit-btn',
+    submitLabel: 'Discuss My Hiring Needs',
+    successMessage: "Thanks — your enquiry has been sent. We'll be in touch shortly."
   });
 
-  cfForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    cfStatus.className = 'form-status';
-    if (!cfForm.checkValidity()) {
-      cfForm.reportValidity();
-      return;
-    }
-    cfSubmitBtn.disabled = true;
-    cfSubmitBtn.textContent = 'Sending…';
-    try {
-      const res = await fetch(cfForm.action, {
-        method: 'POST',
-        body: new FormData(cfForm),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        cfForm.reset();
-        cfUploadName.textContent = 'No file chosen';
-        cfStatus.textContent = "Thanks — your message has been sent. We'll be in touch shortly.";
-        cfStatus.className = 'form-status visible success';
-      } else {
-        const data = await res.json().catch(() => null);
-        const msg = data && data.errors && data.errors.length ? data.errors.map(er => er.message).join(', ') : 'Something went wrong. Please try again.';
-        cfStatus.textContent = msg;
-        cfStatus.className = 'form-status visible error';
-      }
-    } catch (err) {
-      cfStatus.textContent = 'Network error — please check your connection and try again.';
-      cfStatus.className = 'form-status visible error';
-    } finally {
-      cfSubmitBtn.disabled = false;
-      cfSubmitBtn.textContent = 'Submit';
-    }
+  wireContactForm({
+    formId: 'candidate-form',
+    uploadTriggerId: 'caf-upload-trigger',
+    uploadInputId: 'caf-upload-input',
+    uploadNameId: 'caf-upload-name',
+    statusId: 'caf-status',
+    submitBtnId: 'caf-submit-btn',
+    submitLabel: 'Submit My CV',
+    successMessage: "Thanks — your CV has been submitted. We'll be in touch shortly."
   });
 
   const personModal = document.getElementById('person-modal');
