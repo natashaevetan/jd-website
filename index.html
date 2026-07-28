@@ -345,6 +345,8 @@ header,main.page{transition:opacity .6s ease .2s;}
 .solutions-copy p:last-child{margin-bottom:0;}
 .solutions .wrap,.tools .wrap{max-width:1320px;}
 .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+.card-grid-center-last{display:flex;flex-wrap:wrap;justify-content:center;}
+.card-grid-center-last .card{flex:0 0 calc((100% - 60px)/3);}
 .card{
   background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
   padding:42px;transition:transform .2s ease, box-shadow .2s ease;display:block;
@@ -581,10 +583,9 @@ header,main.page{transition:opacity .6s ease .2s;}
   align-items:flex-end;
 }
 .jobs-cta.photo .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;padding-bottom:64px;}
-.jobs-cta.photo h2{color:var(--white);font-size:56px;line-height:1.1;max-width:680px;margin-left:auto;margin-right:auto;}
+.jobs-cta.photo h2{color:var(--white);font-size:56px;line-height:1.1;max-width:900px;margin-left:auto;margin-right:auto;white-space:nowrap;}
 .jobs-cta.photo p{color:rgba(255,255,255,0.82);font-size:20px;max-width:520px;margin-left:auto;margin-right:auto;}
 .jobs-cta.photo .jobs-cta-actions{justify-content:center;}
-.jobs-cta.photo .jobs-cta-actions .btn{font-size:17px;padding:16px 30px;}
 .jobs-cta.photo .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .jobs-cta.photo .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
 .career-cta-band{
@@ -687,6 +688,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .city-carousel-arrow.prev{left:14px;}
   .city-carousel-arrow.next{right:14px;}
   .card-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:repeat(2,1fr);}
+  .card-grid-center-last .card{flex:0 0 calc((100% - 30px)/2);}
   .ccv-grid{grid-template-columns:repeat(2,1fr);}
   .hero h1{font-size:44px;}
   .hero-subhead{font-size:18px;}
@@ -773,7 +775,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .jobs-cta h2{font-size:24px;}
   .jobs-cta p{font-size:15px;}
   .jobs-cta.photo .wrap{padding:48px 20px;}
-  .jobs-cta.photo h2{font-size:34px;}
+  .jobs-cta.photo h2{font-size:34px;white-space:normal;}
   .jobs-cta.photo p{font-size:17px;}
   .career-cta-band h2{font-size:32px;}
   footer .wrap{padding:0 20px;}
@@ -1241,7 +1243,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="solutions">
   <div class="wrap">
-    <div class="card-grid">
+    <div class="card-grid card-grid-center-last">
       <div class="card reveal">
         <h3>Contingency Recruitment</h3>
         <p>Success-based recruitment for managerial, professional and specialist appointments.</p>
@@ -1297,21 +1299,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <p>This relationship gives JonDavidson access to regional infrastructure and workforce capabilities while allowing our consultants to maintain the specialist, relationship-led approach for which JonDavidson is known.</p>
     </div>
     <div class="jobs-cta-actions" style="justify-content:center;">
-      <a href="https://www.elitez.asia/" target="_blank" rel="noopener" class="btn btn-outline">Discover the ELITEZ Group</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="jobs-cta reveal">
-      <div>
-        <h2>Not sure where to begin?</h2>
-        <p>Tell us what you're looking to achieve, and we'll tailor a solution to your organisation.</p>
-      </div>
-      <div class="jobs-cta-actions">
-        <a href="#contact" data-route="contact" class="btn btn-primary">Discuss My Hiring Needs</a>
-      </div>
+      <a href="https://www.elitez.asia/" target="_blank" rel="noopener" class="btn btn-primary">Discover the ELITEZ Group</a>
     </div>
   </div>
 </section>
