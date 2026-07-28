@@ -168,7 +168,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 }
 .hero .eyebrow{color:#FF9CA6;}
 .hero .eyebrow::before{background:#FF9CA6;}
-.hero h1{color:var(--white);font-size:60px;line-height:1.1;margin-bottom:22px;}
+.hero h1{color:var(--white);font-size:60px;line-height:1.1;margin-bottom:28px;}
 .hero h1 .animate-word{
   display:inline-block;
   opacity:0;
@@ -176,7 +176,7 @@ header,main.page{transition:opacity .6s ease .2s;}
   filter:blur(26px);
 }
 .hero h1 .animate-word.in{opacity:1;transform:translateY(0);filter:blur(0);}
-.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:560px;margin:22px auto 0;}
+.hero-subhead{color:rgba(255,255,255,0.82);font-size:20px;line-height:1.5;max-width:560px;margin:28px auto 0;}
 .hero-subhead .animate-word{
   display:inline-block;
   opacity:0;
@@ -189,7 +189,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero .btn-outline{border-color:rgba(255,255,255,0.5);color:var(--white);}
 .hero .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
-.hero .hero-actions{justify-content:center;}
+.hero .hero-actions{justify-content:center;margin-top:34px;}
 .story-split{
   position:relative;overflow:hidden;
   min-height:100vh;display:flex;align-items:center;
@@ -254,6 +254,9 @@ header,main.page{transition:opacity .6s ease .2s;}
 }
 .page-hero h1{font-size:36px;margin-bottom:10px;}
 .page-hero p{color:var(--gray-600);font-size:16px;max-width:560px;}
+.page-hero-copy{max-width:680px;}
+.page-hero-copy h1{max-width:600px;}
+.page-hero-copy p{max-width:100%;margin-bottom:28px;}
 .page-hero.photo{
   background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/client-meeting.jpg") center/cover no-repeat;
   min-height:78vh;padding:196px 0 88px;display:flex;align-items:center;
@@ -654,7 +657,7 @@ select.form-control:invalid{color:var(--gray-400);}
 
 /* FOOTER */
 footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-top:1px solid var(--border);}
-.footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;}
+.footer-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;}
 .footer-brand .footer-brand-tight{margin:0;line-height:1.15;font-size:15px;color:var(--gray-600);}
 .footer-brand .footer-brand-tight:first-of-type{margin-top:67px;margin-bottom:8px;}
 .footer-brand .footer-brand-tight:last-of-type{margin-bottom:67px;}
@@ -665,7 +668,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 .footer-legal-name span{font-weight:500;color:var(--gray-600);}
 .footer-legal p{font-family:'Manrope',sans-serif;font-weight:500;font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:4px;}
 .footer-legal p:last-child{margin-bottom:0;}
-.footer-legal a{color:var(--navy-700);text-decoration:none;}
+.footer-legal a{color:var(--navy-700);font-weight:400;text-decoration:none;}
 .footer-legal a:hover{text-decoration:underline;}
 .footer-legal .legal-label{color:var(--ink);}
 .footer-legal-members{text-align:left;}
@@ -1772,13 +1775,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">Candidates</div>
-    <h1>Your next career opportunity starts here.</h1>
-    <p>Explore leadership, professional and specialist opportunities across Asia Pacific. Our consultants provide confidential, informed guidance throughout the recruitment process.</p>
-    <div class="hero-actions" style="margin-bottom:0;">
-      <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse Current Opportunities</a>
-      <a href="#contact" data-route="contact" class="btn btn-outline">Submit Your CV</a>
-      <a href="#contract-staffing" data-route="contract-staffing" class="btn btn-outline">Explore Contract Opportunities</a>
+    <div class="page-hero-copy">
+      <div class="eyebrow">Candidates</div>
+      <h1>Your next career opportunity starts here.</h1>
+      <p>Explore leadership, professional and specialist opportunities across Asia Pacific. Our consultants provide confidential, informed guidance throughout the recruitment process.</p>
+      <div class="hero-actions" style="margin-bottom:0;">
+        <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">Browse Current Opportunities</a>
+        <a href="#candidates" data-route="candidates" data-anchor="cv-form" class="btn btn-outline">Submit Your CV</a>
+        <a href="#contract-staffing" data-route="contract-staffing" class="btn btn-outline">Explore Contract Opportunities</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1845,6 +1850,64 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <li>Support during offer and resignation discussions</li>
       <li>Ongoing support for contract employees</li>
     </ul>
+  </div>
+</section>
+
+<section id="cv-form">
+  <div class="wrap">
+    <div class="contact-box contact-box-candidate reveal">
+      <h3>Submit Your CV</h3>
+      <p class="contact-form-intro">Already know which role interests you? <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener">Browse Current Opportunities</a> and apply directly.</p>
+      <form id="candidate-form" class="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="formType" value="Candidate CV Submission">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="caf-name">Full Name <span class="form-required">(required)</span></label>
+            <input class="form-control" type="text" id="caf-name" name="fullName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="caf-email">Email <span class="form-required">(required)</span></label>
+            <input class="form-control" type="email" id="caf-email" name="email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="caf-phone">Contact Number <span class="form-required">(required)</span></label>
+            <input class="form-control" type="tel" id="caf-phone" name="contactNumber" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="caf-location">Current Location <span class="form-required">(required)</span></label>
+            <input class="form-control" type="text" id="caf-location" name="currentLocation" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="caf-specialisation">Area of Specialisation <span class="form-required">(required)</span></label>
+          <input class="form-control" type="text" id="caf-specialisation" name="areaOfSpecialisation" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">CV Upload <span class="form-required">(required)</span></label>
+          <div class="form-upload-row">
+            <button type="button" class="form-upload-btn" id="caf-upload-trigger">Upload</button>
+            <span class="form-upload-name" id="caf-upload-name">No file chosen</span>
+            <input type="file" name="cv" id="caf-upload-input" required hidden>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="privacyConsent" id="caf-consent" required>
+            <span>By submitting this form, you consent to JonDavidson contacting you regarding your enquiry and handling your information in accordance with our Privacy Policy.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit-btn" id="caf-submit-btn">Submit My CV</button>
+        <div class="form-status" id="caf-status" role="status"></div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1938,64 +2001,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     </div>
     </div>
 
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="contact-box contact-box-candidate reveal">
-      <h3>Submit Your CV</h3>
-      <p class="contact-form-intro">Already know which role interests you? <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener">Browse Current Opportunities</a> and apply directly.</p>
-      <form id="candidate-form" class="contact-form" action="https://formspree.io/f/mlgqdkza" method="POST" enctype="multipart/form-data" novalidate>
-        <input type="hidden" name="formType" value="Candidate CV Submission">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="caf-name">Full Name <span class="form-required">(required)</span></label>
-            <input class="form-control" type="text" id="caf-name" name="fullName" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="caf-email">Email <span class="form-required">(required)</span></label>
-            <input class="form-control" type="email" id="caf-email" name="email" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="caf-phone">Contact Number <span class="form-required">(required)</span></label>
-            <input class="form-control" type="tel" id="caf-phone" name="contactNumber" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="caf-location">Current Location <span class="form-required">(required)</span></label>
-            <input class="form-control" type="text" id="caf-location" name="currentLocation" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="caf-specialisation">Area of Specialisation <span class="form-required">(required)</span></label>
-          <input class="form-control" type="text" id="caf-specialisation" name="areaOfSpecialisation" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">CV Upload <span class="form-required">(required)</span></label>
-          <div class="form-upload-row">
-            <button type="button" class="form-upload-btn" id="caf-upload-trigger">Upload</button>
-            <span class="form-upload-name" id="caf-upload-name">No file chosen</span>
-            <input type="file" name="cv" id="caf-upload-input" required hidden>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-checkbox-row">
-            <input type="checkbox" name="privacyConsent" id="caf-consent" required>
-            <span>By submitting this form, you consent to JonDavidson contacting you regarding your enquiry and handling your information in accordance with our Privacy Policy.</span>
-          </label>
-        </div>
-
-        <button type="submit" class="form-submit-btn" id="caf-submit-btn">Submit My CV</button>
-        <div class="form-status" id="caf-status" role="status"></div>
-      </form>
-    </div>
   </div>
 </section>
 
