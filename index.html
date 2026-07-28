@@ -1824,14 +1824,11 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   window.addEventListener('hashchange', () => showRoute(routeFromHash()));
   window.addEventListener('popstate', () => showRoute(routeFromHash()));
 
-  function loadHomeFresh(){
-    if (window.location.hash && window.location.hash !== '#home') {
-      history.replaceState(null, '', window.location.pathname + window.location.search + '#home');
-    }
-    showRoute('home');
+  function loadInitialRoute(){
+    showRoute(routeFromHash());
   }
-  window.addEventListener('DOMContentLoaded', loadHomeFresh);
-  loadHomeFresh();
+  window.addEventListener('DOMContentLoaded', loadInitialRoute);
+  loadInitialRoute();
 
   // Real anchor clicks (and even plain `location.hash =` assignment) make
   // the browser run its own native "scroll to fragment" pass, which respects
