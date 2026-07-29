@@ -2219,9 +2219,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       };
       typeTimer = setTimeout(step, startDelay);
     };
-    playNavTagline(600);
-    const navLogo = document.querySelector('header a.logo');
-    if (navLogo) navLogo.addEventListener('click', () => playNavTagline(0));
+    document.addEventListener('jd:intro-flyaway', () => playNavTagline(700));
   }
 
   function wireContactForm({ formId, uploadTriggerId, uploadInputId, uploadNameId, statusId, submitBtnId, successMessage, submitLabel }){
@@ -2417,6 +2415,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       document.body.classList.remove('intro-active');
       introRevealed = true;
       if (document.querySelector('.page.active')?.dataset.route === 'home') playHeroHeadline();
+      document.dispatchEvent(new Event('jd:intro-flyaway'));
       after(900, () => { splash.style.display = 'none'; });
     }
 
@@ -2504,9 +2503,18 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   (function(){
     const lines = document.querySelectorAll('.story-split-text h2 .split-line');
     if (!lines.length) return;
+    let delayTimer = null;
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        lines.forEach(l => l.classList.toggle('in', e.isIntersecting));
+        clearTimeout(delayTimer);
+        if (e.isIntersecting) {
+          lines[0].classList.add('in');
+          delayTimer = setTimeout(() => {
+            for (let i = 1; i < lines.length; i++) lines[i].classList.add('in');
+          }, 1000);
+        } else {
+          lines.forEach(l => l.classList.remove('in'));
+        }
       });
     }, { threshold: 0.4 });
     io.observe(lines[0].closest('h2'));
