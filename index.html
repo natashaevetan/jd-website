@@ -444,7 +444,6 @@ header,main.page{transition:opacity .6s ease .2s;}
 .city-carousel-overlay{position:relative;z-index:1;color:#fff;padding:0 32px;}
 .city-carousel-city{font-family:'Manrope',sans-serif;font-weight:800;font-size:72px;line-height:1.1;}
 .city-carousel-country{font-family:'Manrope',sans-serif;font-weight:500;font-size:22px;color:rgba(255,255,255,0.82);margin-top:10px;}
-.city-carousel-visit{margin-top:36px;font-size:17px;padding:16px 34px;}
 .city-carousel-arrow{
   position:absolute;top:50%;transform:translateY(-50%);z-index:2;
   width:52px;height:52px;border-radius:50%;
@@ -458,26 +457,6 @@ header,main.page{transition:opacity .6s ease .2s;}
 .city-carousel-arrow svg{width:22px;height:22px;}
 .city-carousel-arrow.prev{left:28px;}
 .city-carousel-arrow.next{right:28px;}
-.office-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
-.office-modal.is-open{display:flex;}
-.office-modal-backdrop{position:absolute;inset:0;background:rgba(11,31,58,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-.office-modal-panel{
-  position:relative;background:var(--white);border-radius:20px;box-shadow:0 30px 80px rgba(11,31,58,0.35);
-  max-width:460px;width:100%;padding:44px;text-align:center;
-}
-.office-modal-close{
-  position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;
-  border:1px solid var(--border);background:var(--white);font-size:18px;line-height:1;color:var(--gray-600);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-}
-.office-modal-close:hover{color:var(--navy-900);border-color:var(--navy-900);}
-.office-modal-city{font-size:26px;color:var(--navy-900);margin-bottom:4px;}
-.office-modal-country{font-size:14px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:20px;}
-.office-modal-address{font-size:15.5px;line-height:1.7;color:var(--gray-600);}
-.network-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;align-items:center;justify-content:flex-start;border-top:1px solid rgba(255,255,255,0.16);padding-top:26px;}
-.network-row span{font-size:12.5px;color:rgba(255,255,255,0.55);letter-spacing:0.08em;text-transform:uppercase;}
-.network-row strong{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#fff;}
-
 /* TEAM */
 .team{background:var(--white);}
 #page-meet-team .team .wrap{max-width:1440px;}
@@ -503,10 +482,10 @@ header,main.page{transition:opacity .6s ease .2s;}
 .person p{font-size:14px;color:var(--gray-600);}
 .person-readmore{
   display:inline-flex;align-items:center;justify-content:center;margin-top:14px;
-  background:var(--red-600);border:none;border-radius:999px;padding:10px 22px;
-  color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:background .2s ease;
+  background:var(--white);border:1.5px solid var(--border);border-radius:999px;padding:10px 22px;
+  color:var(--navy-900);font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:border-color .2s ease;
 }
-.person-readmore:hover{background:var(--red-500);}
+.person-readmore:hover{border-color:var(--navy-700);}
 .person-bio{display:none;}
 
 /* PERSON MODAL */
@@ -743,7 +722,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .world-mark-line{font-size:32px;}
   .city-carousel-city{font-size:36px;}
   .city-carousel-country{font-size:16px;}
-  .office-modal-panel{padding:32px;}
   .story-split{flex-direction:column;padding:64px 0;}
   .story-split-photo{display:none;}
   .story-split-text{flex:0 0 100%;max-width:100%;}
@@ -1076,12 +1054,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <div class="eyebrow reveal">Regional Presence</div>
     <h1 class="reveal">Rooted in Singapore and across Asia Pacific</h1>
     <p class="reveal region-subheading">Headquartered in Singapore, with regional capabilities through the ELITEZ Group and international search reach through ENEX and NPAworldwide.</p>
-    <div class="network-row reveal">
-      <span>Global Network</span>
-      <strong>ENEX</strong>
-      <strong>NPA Worldwide</strong>
-      <strong>ELITEZ Group</strong>
-    </div>
   </div>
 </section>
 
@@ -1114,7 +1086,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="city-carousel-overlay">
     <div class="city-carousel-city"></div>
     <div class="city-carousel-country"></div>
-    <button class="btn btn-primary city-carousel-visit" type="button">Visit us</button>
   </div>
 </section>
 
@@ -1193,16 +1164,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <p class="person-modal-role"></p>
     </div>
     <div class="person-modal-bio"></div>
-  </div>
-</div>
-
-<div class="office-modal" id="office-modal">
-  <div class="office-modal-backdrop"></div>
-  <div class="office-modal-panel" role="dialog" aria-modal="true" aria-labelledby="office-modal-city">
-    <button class="office-modal-close" type="button" aria-label="Close">&times;</button>
-    <h3 class="office-modal-city" id="office-modal-city"></h3>
-    <p class="office-modal-country"></p>
-    <p class="office-modal-address"></p>
   </div>
 </div>
 
@@ -2316,17 +2277,16 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     const slides = Array.from(section.querySelectorAll('.city-carousel-slide'));
     const cityEl = section.querySelector('.city-carousel-city');
     const countryEl = section.querySelector('.city-carousel-country');
-    const visitBtn = section.querySelector('.city-carousel-visit');
     const prevBtn = section.querySelector('.city-carousel-arrow.prev');
     const nextBtn = section.querySelector('.city-carousel-arrow.next');
 
     const CITIES = [
-      { city: 'Singapore', country: 'Singapore', address: '2 Kallang Avenue, #03-05 CT Hub, Singapore 339407' },
-      { city: 'Bangkok', country: 'Thailand', address: '408/107 Phahonyothin Place Building, 12th Floor Samsen Nai, Phaya Thai, Bangkok 10400, Thailand' },
-      { city: 'Jakarta', country: 'Indonesia', address: 'Luminary Tower, 63rd Floor Thamrin Nine Complex, Jl. MH Thamrin No.10, Jakarta, Daerah Khusus Ibukota Jakarta 10230, Indonesia' },
-      { city: 'Kuala Lumpur', country: 'Malaysia', address: 'B1-43A-1, Soho Suites @ KLCC No. 20 Jalan Perak 50450 Kuala Lumpur, Malaysia' },
-      { city: 'Ho Chi Minh City', country: 'Vietnam', address: 'VRG Building, 177 Hai Ba Trung Street Xuan Hoa Ward, Ho Chi Minh City, Vietnam' },
-      { city: 'Coimbatore', country: 'India', address: '11/4 Pooja Garden, Kalapatti Main Road, SITRA, Coimbatore, Tamil Nadu 641014, India' },
+      { city: 'Singapore', country: 'Singapore' },
+      { city: 'Bangkok', country: 'Thailand' },
+      { city: 'Jakarta', country: 'Indonesia' },
+      { city: 'Kuala Lumpur', country: 'Malaysia' },
+      { city: 'Ho Chi Minh City', country: 'Vietnam' },
+      { city: 'Coimbatore', country: 'India' },
     ];
 
     let index = 0;
@@ -2362,32 +2322,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       index = (index + 1) % CITIES.length;
       render();
       startRotation();
-    });
-
-    const officeModal = document.getElementById('office-modal');
-    const officeModalCity = officeModal.querySelector('.office-modal-city');
-    const officeModalCountry = officeModal.querySelector('.office-modal-country');
-    const officeModalAddress = officeModal.querySelector('.office-modal-address');
-
-    function openOfficeModal(){
-      const data = CITIES[index];
-      officeModalCity.textContent = data.city;
-      officeModalCountry.textContent = data.country;
-      officeModalAddress.textContent = data.address;
-      officeModal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      stopRotation();
-    }
-    function closeOfficeModal(){
-      officeModal.classList.remove('is-open');
-      document.body.style.overflow = '';
-      startRotation();
-    }
-    visitBtn.addEventListener('click', openOfficeModal);
-    officeModal.querySelector('.office-modal-close').addEventListener('click', closeOfficeModal);
-    officeModal.querySelector('.office-modal-backdrop').addEventListener('click', closeOfficeModal);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && officeModal.classList.contains('is-open')) closeOfficeModal();
     });
   })();
 
