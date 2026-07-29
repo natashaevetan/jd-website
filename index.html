@@ -266,6 +266,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .page-hero.photo .wrap{width:100%;}
 .page-hero.photo.talent-assessment-advisory-hero{background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/talent-tools-meeting.jpg") center/cover no-repeat;}
 .page-hero.photo.retained-executive-search-hero{background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/retained-executive-search-boardroom.jpg") center/cover no-repeat;}
+.page-hero.photo.about-hero{background:linear-gradient(115deg, rgba(9,22,43,0.93), rgba(11,31,58,0.82) 55%, rgba(11,31,58,0.62)), url("images/building-businesses.jpg") center/cover no-repeat;}
 .page-hero.photo .eyebrow{color:#FF9CA6;}
 .page-hero.photo .eyebrow::before{background:#FF9CA6;}
 .page-hero.photo h1{color:var(--white);}
@@ -279,20 +280,8 @@ header,main.page{transition:opacity .6s ease .2s;}
 #page-home .solutions .section-head h2{font-size:48px;}
 
 /* ABOUT — WHO WE ARE */
-#page-about .page-hero,#page-meet-team .page-hero{background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,0.16);}
-#page-meet-team .page-hero{min-height:100vh;display:flex;align-items:center;}
+#page-meet-team .page-hero{background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,0.16);min-height:100vh;display:flex;align-items:center;}
 #page-meet-team .page-hero .wrap{width:100%;}
-#page-about .page-hero{
-  position:relative;overflow:hidden;padding:0;display:block;
-}
-#page-about .page-hero .about-hero-photo-img{display:block;width:100%;height:auto;}
-#page-about .page-hero::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg, rgba(11,31,58,0.15) 45%, rgba(11,31,58,0.92) 100%);
-}
-#page-about .page-hero .wrap{
-  position:absolute;left:0;right:0;bottom:14%;z-index:1;width:100%;
-}
 #page-about .page-hero .eyebrow,#page-meet-team .page-hero .eyebrow{color:#FF9CA6;}
 #page-about .page-hero .eyebrow::before,#page-meet-team .page-hero .eyebrow::before{background:#FF9CA6;}
 #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:48px;color:#fff;}
@@ -736,7 +725,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .card-grid,.team-grid,.tools-preview-grid,.pillars-row{grid-template-columns:1fr;}
   .ccv-grid{grid-template-columns:1fr;}
   #page-about .page-hero h1,#page-meet-team .page-hero h1{font-size:30px;}
-  #page-about .page-hero{min-height:52vh;}
   .who-we-are{padding-bottom:64px;}
   .person-modal-panel{grid-template-columns:1fr;padding:32px;gap:24px;max-height:88vh;}
   .person-modal-photo{width:120px;height:120px;}
@@ -995,8 +983,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </main>
 <main class="page" id="page-about" data-route="about">
 
-<section class="page-hero">
-  <img class="about-hero-photo-img" src="images/about-founders-group.webp" alt="The JonDavidson founding and leadership team">
+<section class="page-hero photo about-hero">
   <div class="wrap">
     <div class="eyebrow">About Us</div>
     <h1>Right talent, right role, right culture.</h1>
