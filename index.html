@@ -192,7 +192,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero .hero-actions{justify-content:center;margin-top:34px;}
 .story-split{
   display:flex;align-items:center;
-  background:var(--white);
+  background:var(--bg);
 }
 .story-split-text{
   flex:0 0 25%;max-width:25%;
@@ -211,10 +211,16 @@ header,main.page{transition:opacity .6s ease .2s;}
 .story-split-text h2 .split-line.in{opacity:1;transform:translateY(0);}
 .story-split-cta{margin:12px auto 0;display:table;}
 .story-split-photo{
+  position:relative;
   flex:0 0 75%;max-width:75%;
   aspect-ratio:1035/600;
   background-image:url("images/building-businesses-team.webp");
-  background-position:center;background-size:contain;background-repeat:no-repeat;background-color:var(--white);
+  background-position:center;background-size:contain;background-repeat:no-repeat;background-color:var(--bg);
+}
+.story-split-photo::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, var(--bg) 0%, rgba(246,248,251,0) 5%);
+  pointer-events:none;
 }
 .ticker-section{padding:20px 0 0;background:var(--white);}
 .tight-top{padding-top:0;padding-bottom:0;}
