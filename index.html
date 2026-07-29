@@ -191,23 +191,16 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
 .hero .hero-actions{justify-content:center;margin-top:34px;}
 .story-split{
-  position:relative;overflow:hidden;
-  min-height:max(42vw, 520px);display:flex;align-items:center;
+  display:flex;align-items:center;
   background:var(--white);
 }
-.story-split-photo{
-  position:absolute;top:50%;right:0;width:60%;
-  aspect-ratio:1035/600;transform:translateY(-50%);
-  background-image:url("images/building-businesses-team.webp");
-  background-position:center;background-size:contain;background-repeat:no-repeat;
+.story-split-text{
+  flex:0 0 30%;max-width:30%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:48px 32px;
 }
-.story-split-photo::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg, var(--white) 0%, rgba(255,255,255,0.85) 3%, rgba(255,255,255,0) 9%);
-}
-.story-split .wrap{position:relative;z-index:1;max-width:1400px;width:100%;}
-.story-split-text{max-width:440px;}
-.story-split-text h2{font-size:38px;line-height:1.35;color:var(--navy-900);overflow:hidden;padding-bottom:6px;}
+.story-split-text h2{font-size:32px;line-height:1.35;color:var(--navy-900);overflow:hidden;padding-bottom:6px;}
 .story-split-text h2 .split-line{
   display:block;
   opacity:0;
@@ -217,6 +210,12 @@ header,main.page{transition:opacity .6s ease .2s;}
 .story-split-text h2 .split-line-bottom{transform:translateY(85px);}
 .story-split-text h2 .split-line.in{opacity:1;transform:translateY(0);}
 .story-split-cta{margin:12px auto 0;display:table;}
+.story-split-photo{
+  flex:0 0 70%;max-width:70%;
+  aspect-ratio:1035/600;
+  background-image:url("images/building-businesses-team.webp");
+  background-position:center;background-size:contain;background-repeat:no-repeat;background-color:var(--white);
+}
 .ticker-section{padding:20px 0 0;background:var(--white);}
 .tight-top{padding-top:0;padding-bottom:0;}
 .stats-reveal{
@@ -671,7 +670,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 .page.active{display:block;}
 
 @media (max-width:980px){
-  .story-split-text h2{font-size:34px;}
+  .story-split-text h2{font-size:28px;}
   .world-mark-line{font-size:56px;}
   .city-carousel-city{font-size:52px;}
   .city-carousel-country{font-size:19px;}
@@ -739,10 +738,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .city-carousel-city{font-size:36px;}
   .city-carousel-country{font-size:16px;}
   .office-modal-panel{padding:32px;}
-  .story-split{min-height:0;padding:64px 0;}
+  .story-split{flex-direction:column;padding:64px 0;}
   .story-split-photo{display:none;}
-  .story-split-text{max-width:100%;}
-  .story-split-text h2{font-size:28px;}
+  .story-split-text{flex:0 0 100%;max-width:100%;}
+  .story-split-text h2{font-size:26px;}
   #page-home .solutions .section-head h2{font-size:32px;}
   .who-we-are-copy p,.our-values-copy p,.solutions-copy p{font-size:18px;}
   .who-we-are-copy .lede-statement{font-size:28px;}
@@ -914,13 +913,11 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 </section>
 
 <section class="story-split">
-  <div class="story-split-photo" role="img" aria-label="The JonDavidson leadership team"></div>
-  <div class="wrap">
-    <div class="story-split-text">
-      <h2><span class="split-line split-line-top">we go the distance</span></h2>
-      <a href="#meet-team" data-route="meet-team" class="btn btn-primary story-split-cta">Meet Our Team</a>
-    </div>
+  <div class="story-split-text">
+    <h2><span class="split-line split-line-top">we go the distance</span></h2>
+    <a href="#meet-team" data-route="meet-team" class="btn btn-primary story-split-cta">Meet Our Team</a>
   </div>
+  <div class="story-split-photo" role="img" aria-label="The JonDavidson leadership team"></div>
 </section>
 
 <section class="ticker-section">
