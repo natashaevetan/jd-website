@@ -202,13 +202,14 @@ header,main.page{transition:opacity .6s ease .2s;}
 }
 .story-split-text h2{font-size:32px;line-height:1.35;color:var(--navy-900);overflow:hidden;padding-bottom:6px;}
 .story-split-text h2 .split-line{
-  display:block;
+  display:inline-block;
   opacity:0;
-  transition:opacity 1.05s cubic-bezier(.16,1,.3,1), transform 1.05s cubic-bezier(.16,1,.3,1);
+  filter:blur(6px);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1), filter 0.9s cubic-bezier(.16,1,.3,1);
 }
-.story-split-text h2 .split-line-top{transform:translateY(-85px);}
-.story-split-text h2 .split-line-bottom{transform:translateY(85px);}
-.story-split-text h2 .split-line.in{opacity:1;transform:translateY(0);}
+.story-split-text h2 .split-line-top{transform:translateY(-65px);}
+.story-split-text h2 .split-line-bottom{transform:translateY(65px);}
+.story-split-text h2 .split-line.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .story-split-cta{margin:12px auto 0;display:table;}
 .story-split-photo{
   position:relative;
@@ -901,7 +902,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 
 <section class="story-split">
   <div class="story-split-text">
-    <h2><span class="split-line split-line-top">we go the distance</span></h2>
+    <h2><span class="split-line split-line-top">we go</span> <span class="split-line split-line-bottom">the distance</span></h2>
     <a href="#meet-team" data-route="meet-team" class="btn btn-primary story-split-cta">Meet Our Team</a>
   </div>
   <div class="story-split-photo" role="img" aria-label="The JonDavidson leadership team"></div>
@@ -2191,6 +2192,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     const full = 'we go the distance';
     navTagline.innerHTML = '<span class="tw-typed"></span><span class="tw-cursor"></span>';
     const typedEl = navTagline.querySelector('.tw-typed');
+    const cursorEl = navTagline.querySelector('.tw-cursor');
 
     const navLogoName = document.querySelector('header .logo-name');
     function fitNavTagline(){
@@ -2205,11 +2207,14 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       clearTimeout(typeTimer);
       let n = 0;
       typedEl.textContent = '';
+      if (cursorEl) cursorEl.style.display = '';
       const step = () => {
         typedEl.textContent = full.slice(0, n);
         if (n < full.length) {
           n++;
           typeTimer = setTimeout(step, 100);
+        } else if (cursorEl) {
+          cursorEl.style.display = 'none';
         }
       };
       typeTimer = setTimeout(step, startDelay);
