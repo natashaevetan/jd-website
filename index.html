@@ -192,13 +192,14 @@ header,main.page{transition:opacity .6s ease .2s;}
 .hero .hero-actions{justify-content:center;margin-top:34px;}
 .story-split{
   position:relative;overflow:hidden;
-  min-height:100vh;display:flex;align-items:center;
+  min-height:max(36vw, 480px);display:flex;align-items:center;
   background:var(--white);
 }
 .story-split-photo{
-  position:absolute;top:0;right:0;bottom:0;width:60%;
+  position:absolute;top:50%;right:0;width:60%;
+  aspect-ratio:1035/600;transform:translateY(-50%);
   background-image:url("images/building-businesses-team.webp");
-  background-position:center;background-size:cover;background-repeat:no-repeat;
+  background-position:center;background-size:contain;background-repeat:no-repeat;
 }
 .story-split-photo::after{
   content:"";position:absolute;inset:0;
@@ -1384,8 +1385,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <p class="two-models-badge" style="text-align:center;border-top:none;padding-top:0;">Worldwide Reach. Local Expertise. True Engagement.</p>
     </div>
     <div class="jobs-cta-actions" style="justify-content:center;">
-      <a href="#contact" data-route="contact" class="btn btn-primary">Discuss a Leadership Appointment</a>
-      <a href="https://www.enexsearch.group/" target="_blank" rel="noopener" class="btn btn-outline">Explore the ENEX Network</a>
+      <a href="#contact" data-route="contact" class="btn btn-outline">Discuss a Leadership Appointment</a>
+      <a href="https://www.enexsearch.group/" target="_blank" rel="noopener" class="btn btn-primary">Explore the ENEX Network</a>
     </div>
   </div>
 </section>
