@@ -362,6 +362,11 @@ header,main.page{transition:opacity .6s ease .2s;}
 .partner-overview-grid{grid-template-columns:repeat(3,1fr);margin-top:36px;}
 .two-models-card .btn{margin-top:20px;}
 .two-models-badge{font-size:13.5px;font-weight:700;color:var(--navy-800);letter-spacing:0.02em;margin-top:18px;padding-top:18px;border-top:1px solid var(--border);}
+.enex-cta-row{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center;margin-top:40px;}
+.enex-cta-logo img{width:100%;height:auto;display:block;}
+.enex-cta-text{text-align:left;}
+.enex-cta-text .two-models-badge{border-top:none;margin-top:0;padding-top:0;text-align:left;font-size:20px;}
+.enex-cta-text .jobs-cta-actions{justify-content:flex-start;margin-top:22px;}
 .industry-grid{margin-top:36px;}
 .industry-corporate-functions{margin-top:36px;padding:32px 42px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);}
 .industry-corporate-functions h4{font-size:19px;margin-bottom:8px;}
@@ -741,6 +746,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   .tool-detail{padding:24px;}
   .form-row{grid-template-columns:1fr;}
   .contact-columns{grid-template-columns:1fr;}
+  .enex-cta-row{grid-template-columns:1fr;gap:24px;text-align:center;}
+  .enex-cta-logo img{max-width:200px;margin:0 auto;}
+  .enex-cta-text,.enex-cta-text .two-models-badge{text-align:center;}
+  .enex-cta-text .jobs-cta-actions{justify-content:center;}
   .contact-box{padding:26px;}
   .hero h1{font-size:36px;}
   .hero-subhead{font-size:16px;}
@@ -1337,11 +1346,18 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <div class="who-we-are-copy reveal">
       <p>JonDavidson is the Singapore partner of ENEX Global Executive Search, an international network of independent, owner-managed executive search firms.</p>
       <p>Through ENEX, we provide clients with access to established search partners and local market expertise across 50 offices on five continents. This enables us to coordinate international leadership searches while maintaining consistent service and direct senior-consultant involvement.</p>
-      <p class="two-models-badge" style="text-align:center;border-top:none;padding-top:0;">Worldwide Reach. Local Expertise. True Engagement.</p>
     </div>
-    <div class="jobs-cta-actions" style="justify-content:center;">
-      <a href="#contact" data-route="contact" class="btn btn-outline">Discuss a Leadership Appointment</a>
-      <a href="https://www.enexsearch.group/" target="_blank" rel="noopener" class="btn btn-primary">Explore the ENEX Network</a>
+    <div class="enex-cta-row reveal">
+      <div class="enex-cta-logo">
+        <img src="images/enex-accredited-partner-logo.gif" alt="ENEX Global Executive Search — Accredited Partner">
+      </div>
+      <div class="enex-cta-text">
+        <p class="two-models-badge">Worldwide Reach. Local Expertise. True Engagement.</p>
+        <div class="jobs-cta-actions">
+          <a href="#contact" data-route="contact" class="btn btn-outline">Discuss a Leadership Appointment</a>
+          <a href="https://www.enexsearch.group/" target="_blank" rel="noopener" class="btn btn-primary">Explore the ENEX Network</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
