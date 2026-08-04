@@ -131,7 +131,7 @@ header,main.page{transition:opacity .6s ease .2s;}
 .nav-dropdown{position:relative;}
 .nav-dropdown-trigger{display:inline-flex;align-items:center;gap:5px;}
 .nav-dropdown-caret{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;transition:transform .15s ease;}
-.nav-dropdown:hover .nav-dropdown-caret,.nav-dropdown:focus-within .nav-dropdown-caret{transform:rotate(-135deg);margin-top:1px;}
+.nav-dropdown:hover .nav-dropdown-caret,.nav-dropdown:focus-within .nav-dropdown-caret,.nav-dropdown.dropdown-open .nav-dropdown-caret{transform:rotate(-135deg);margin-top:1px;}
 .nav-dropdown-menu{
   position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(2px);
   padding-top:14px;
@@ -143,10 +143,11 @@ header,main.page{transition:opacity .6s ease .2s;}
   background:var(--white);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);
   padding:8px;min-width:200px;display:flex;flex-direction:column;gap:2px;
 }
-.nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:8px;border-bottom:none !important;white-space:nowrap;}
+.nav-dropdown-menu a{display:block;width:100%;box-sizing:border-box;padding:10px 14px;border-radius:8px;border-bottom:none !important;white-space:nowrap;}
 .nav-dropdown-menu a:hover{background:var(--bg);color:var(--navy-900);}
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu{
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.dropdown-open .nav-dropdown-menu{
   opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);
 }
 
@@ -223,7 +224,6 @@ header,main.page{transition:opacity .6s ease .2s;}
   background:linear-gradient(90deg, var(--bg) 0%, rgba(246,248,251,0) 5%);
   pointer-events:none;
 }
-.ticker-section{padding:20px 0 0;background:var(--white);}
 .tight-top{padding-top:0;padding-bottom:0;}
 .stats-reveal{
   position:relative;overflow:hidden;padding:0 32px;min-height:100vh;
@@ -368,6 +368,11 @@ header,main.page{transition:opacity .6s ease .2s;}
 .enex-cta-text .jobs-cta-actions{justify-content:flex-start;margin-top:22px;}
 .industry-grid{margin-top:36px;}
 .industry-corporate-functions{margin-top:36px;padding:32px 42px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);}
+.industry-roles{margin-top:20px;padding-top:18px;border-top:1px solid var(--border);}
+.industry-roles-label{font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:10px;}
+.industry-roles ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.industry-roles li{position:relative;padding-left:16px;font-size:14.5px;color:var(--gray-700);}
+.industry-roles li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--red-600);}
 .industry-corporate-functions h4{font-size:19px;margin-bottom:8px;}
 .industry-corporate-functions p{font-size:16px;line-height:1.65;color:var(--gray-600);}
 
@@ -448,6 +453,7 @@ header,main.page{transition:opacity .6s ease .2s;}
   pointer-events:none;
 }
 .city-carousel-overlay{position:relative;z-index:1;color:#fff;padding:0 32px;}
+.city-carousel-label{font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:14px;}
 .city-carousel-city{font-family:'Manrope',sans-serif;font-weight:800;font-size:72px;line-height:1.1;}
 .city-carousel-country{font-family:'Manrope',sans-serif;font-weight:500;font-size:22px;color:rgba(255,255,255,0.82);margin-top:10px;}
 .city-carousel-arrow{
@@ -580,21 +586,6 @@ header,main.page{transition:opacity .6s ease .2s;}
   background:transparent;border:1.5px solid #fff;color:#fff;
 }
 .career-cta-band .btn-primary:hover{background:rgba(255,255,255,0.12);}
-/* LIVE ROLES TICKER */
-.ticker-bar{display:flex;align-items:stretch;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.ticker-label{display:flex;align-items:center;gap:10px;padding:18px 40px;min-width:230px;flex-shrink:0;background:var(--bg);position:relative;z-index:2;}
-.ticker-dot{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,0.18);flex-shrink:0;}
-.ticker-label-title{font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.06em;color:var(--navy-900);}
-.ticker-label-sub{font-size:14px;color:var(--gray-600);}
-.ticker-track-wrap{flex:1;overflow:hidden;background:var(--white);position:relative;}
-.ticker-track{display:flex;align-items:center;gap:14px;width:max-content;padding:14px 0;animation:ticker-scroll 70s linear infinite;}
-.ticker-track-wrap:hover .ticker-track{animation-play-state:paused;}
-.ticker-item{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--border);border-radius:999px;padding:9px 18px;font-size:13.5px;white-space:nowrap;flex-shrink:0;}
-.ticker-item-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;flex-shrink:0;}
-.ticker-item strong{color:var(--navy-900);font-weight:700;}
-@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@media (prefers-reduced-motion: reduce){.ticker-track{animation:none;}}
-@media (max-width:680px){.ticker-label-sub{display:none;}.ticker-label{padding:14px 14px;}}
 
 /* CONTACT */
 .office-info p{color:var(--gray-600);font-size:16px;line-height:1.65;margin-bottom:26px;}
@@ -825,10 +816,10 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="stats-reveal">
   <div class="stats-reveal-grid">
     <div><span class="num" data-target="2007">0</span><span class="label">Established</span></div>
-    <div><span class="num" data-target="6">0</span><span class="label">Asia Pacific Offices</span></div>
-    <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries Connected</span></div>
+    <div><span class="num" data-target="6">0</span><span class="label">Asia Pacific Markets</span></div>
+    <div><span class="num" data-target="40" data-suffix="+">0</span><span class="label">Countries Through Global Networks</span></div>
   </div>
-  <p class="stats-reveal-copy reveal">A Singapore-headquartered executive search and human capital consultancy, connecting organisations across Asia Pacific with leaders who share their values.</p>
+  <p class="stats-reveal-copy reveal">Retained leadership search through ENEX. International contingency recruitment through NPAworldwide. Regional workforce solutions as part of the ELITEZ Group of Companies.</p>
 </section>
 
 <section class="solutions">
@@ -915,43 +906,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="story-split-photo" role="img" aria-label="The JonDavidson leadership team"></div>
 </section>
 
-<section class="ticker-section">
-  <div class="ticker-bar">
-    <div class="ticker-label">
-      <span class="ticker-dot"></span>
+<section class="tight-top">
+  <div class="wrap">
+    <div class="jobs-cta reveal">
       <div>
-        <div class="ticker-label-title">LIVE ROLES</div>
-        <div class="ticker-label-sub">Now hiring</div>
+        <h2>Looking for your next opportunity?</h2>
+        <p>Browse the roles we&rsquo;re currently hiring for across Asia Pacific.</p>
       </div>
-    </div>
-    <div class="ticker-track-wrap">
-      <div class="ticker-track">
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Managing Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Group General Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Strategy</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>VP of Human Resources</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Supply Chain</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Senior Sales Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Associate Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Director of Sales</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Business Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Lead Engineer</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Corporate Services</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Principal Consultant</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Managing Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Group General Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Strategy</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>VP of Human Resources</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Supply Chain</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Senior Sales Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Associate Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Director of Sales</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Business Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Lead Engineer</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Corporate Services</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Principal Consultant</strong></div>
+      <div class="jobs-cta-actions">
+        <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-primary">View Current Opportunities</a>
       </div>
     </div>
   </div>
@@ -979,7 +942,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="wrap">
     <div class="eyebrow">About Us</div>
     <h1>Right talent, right role, right culture.</h1>
-    <p>Since 2007, JonDavidson has believed organisations succeed when the people they hire are aligned on values and culture &mdash; not just skills.</p>
   </div>
 </section>
 
@@ -997,7 +959,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <div class="pillars pillars-row">
       <div class="pillar reveal">
         <img class="pillar-photo" src="images/pillar-global-perspective.jpg" alt="Global Perspective">
-        <div class="pillar-body"><h4>Global Perspective</h4><p>Global network access through ENEX and international search partners.</p></div>
+        <div class="pillar-body"><h4>Global Perspective</h4><p>International retained-search reach through ENEX and contingency-recruitment access through NPAworldwide.</p></div>
       </div>
       <div class="pillar reveal">
         <img class="pillar-photo" src="images/pillar-local-expertise.jpg" alt="Local Expertise">
@@ -1063,8 +1025,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="page-hero">
   <div class="wrap">
     <div class="eyebrow reveal">Regional Presence</div>
-    <h1 class="reveal">Rooted in Singapore and across Asia Pacific</h1>
-    <p class="reveal region-subheading">Headquartered in Singapore, with regional capabilities through the ELITEZ Group and international search reach through ENEX and NPAworldwide.</p>
+    <h1 class="reveal">Singapore Based. Regionally Connected.</h1>
+    <p class="reveal region-subheading">JonDavidson is headquartered in Singapore. Through the ELITEZ Group of Companies, we have access to regional recruitment and workforce capabilities, complemented by international search reach through ENEX and NPAworldwide.</p>
   </div>
 </section>
 
@@ -1095,6 +1057,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </button>
   <div class="city-carousel-overlay">
+    <div class="city-carousel-label">ELITEZ Group Regional Locations</div>
     <div class="city-carousel-city"></div>
     <div class="city-carousel-country"></div>
   </div>
@@ -1193,7 +1156,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="solutions">
   <div class="wrap">
     <div class="solutions-copy reveal">
-      <p>As a member of NPAworldwide, we can also support international professional and specialist recruitment through a trusted network of independent recruitment firms. As part of the ELITEZ Group of Companies, we draw upon established regional recruitment and workforce infrastructure to support permanent and flexible hiring needs.</p>
+      <p>Our Singapore services are delivered through JonDavidson&rsquo;s local operations, while our Malaysian payroll and workforce solutions are supported by the ELITEZ Group&rsquo;s established operations in Malaysia. As a member of NPAworldwide, we can also support international professional and specialist recruitment through a trusted network of independent recruitment firms.</p>
     </div>
   </div>
 </section>
@@ -1277,6 +1240,19 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     <div class="solution-detail reveal">
       <p>Success-based recruitment for managerial, professional and specialist appointments.</p>
       <p>Our consultants take the time to understand each role and organisation, identifying candidates whose experience and capabilities are the right match &mdash; supported, where needed, by international reach through NPAworldwide.</p>
+      <h4>When to Use Contingency Recruitment</h4>
+      <p>Contingency recruitment is suited to clearly defined managerial, professional and specialist appointments where clients prefer a success-based hiring model.</p>
+      <h4>Our Recruitment Process</h4>
+      <ol class="solution-steps">
+        <li><strong>Role and business briefing</strong></li>
+        <li><strong>Targeted candidate sourcing</strong></li>
+        <li><strong>Candidate screening and qualification</strong></li>
+        <li><strong>Shortlist presentation</strong></li>
+        <li><strong>Interview coordination</strong></li>
+        <li><strong>Offer and resignation support</strong></li>
+        <li><strong>Post-placement follow-up</strong></li>
+      </ol>
+      <p style="margin-top:26px;">Not sure whether retained or contingency search is right for your appointment? <a href="#contact" data-route="contact">Speak with our consultants.</a></p>
     </div>
   </div>
 </section>
@@ -1456,7 +1432,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   <div class="wrap">
     <div class="solution-detail reveal">
       <p>Flexible contract staffing solutions that help organisations access specialist talent, manage project-based requirements and scale their workforce efficiently.</p>
-      <p>JonDavidson can support the employment lifecycle, including talent sourcing, employment contracts, payroll administration, statutory compliance, insurance and employee support.</p>
+      <p>Our contract staffing and workforce solutions are available in Singapore and Malaysia, supported by local employment, payroll and compliance capabilities within JonDavidson and the ELITEZ Group of Companies. Services can include talent sourcing, employment contracts, payroll administration, statutory contributions, insurance and ongoing employee support.</p>
       <h4>For Employers</h4>
       <p>Our contract staffing solutions provide experienced professionals who can integrate seamlessly into your team&mdash;without the long-term commitments of permanent hiring.</p>
       <h4>Our Services</h4>
@@ -1464,8 +1440,8 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <li>Contract and temporary staffing</li>
         <li>Talent sourcing and candidate screening</li>
         <li>Interview coordination and background checks</li>
-        <li>Payroll administration and CPF management</li>
-        <li>Employment contracts and statutory compliance</li>
+        <li>Country-specific payroll and statutory contribution administration</li>
+        <li>Local employment contracts and statutory compliance in Singapore and Malaysia</li>
         <li>Insurance and employee administration</li>
       </ul>
       <h4>Why Partner With Us?</h4>
@@ -1503,25 +1479,34 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
 <section class="tools">
   <div class="wrap">
     <div class="solution-detail reveal">
-      <p>Accurate, compliant, and hassle-free payroll solutions tailored to your business.</p>
-      <p>Managing payroll and HR administration can be time-consuming and complex. JonDavidson provides end-to-end payroll outsourcing services that ensure your employees are paid accurately, statutory obligations are met, and your business remains compliant&mdash;allowing your team to focus on strategic growth.</p>
-      <h4>Our Payroll Services</h4>
-      <p>We manage every aspect of your payroll process, including:</p>
+      <p>JonDavidson provides payroll outsourcing services in Singapore and Malaysia, helping organisations manage salary processing, statutory contributions, payroll reporting and employee administration accurately and efficiently.</p>
+      <p>Our Singapore payroll services are delivered through JonDavidson&rsquo;s local operations, while our Malaysian payroll services are supported by the ELITEZ Group&rsquo;s established operations in Malaysia.</p>
+      <h4>Singapore Payroll Services</h4>
       <ul class="solution-list">
         <li>Payroll processing and salary computation</li>
         <li>CPF and statutory contribution administration</li>
-        <li>Bonus, allowances, claims, and leave calculations</li>
-        <li>Secure payslip generation and salary disbursement</li>
-        <li>Payroll reporting and management insights</li>
-        <li>Statutory submissions, including NS, maternity, childcare, and IR21 claims</li>
-        <li>Payroll records and compliance administration</li>
+        <li>Bonuses, allowances, claims and leave calculations</li>
+        <li>Payslip generation and salary disbursement</li>
+        <li>Payroll reporting and records administration</li>
+        <li>IR8A and IR21 administration</li>
+        <li>Relevant government-paid leave claims</li>
+      </ul>
+      <h4>Malaysia Payroll Services</h4>
+      <ul class="solution-list">
+        <li>Payroll processing and salary computation</li>
+        <li>EPF, SOCSO and EIS administration</li>
+        <li>PCB/MTD payroll deductions</li>
+        <li>Bonuses, allowances, claims and leave calculations</li>
+        <li>Payslip generation and salary disbursement</li>
+        <li>Malaysian statutory payroll reporting</li>
+        <li>Payroll records and employee administration</li>
       </ul>
       <h4>Leave Management</h4>
       <p>Simplify leave administration with an integrated leave management solution that enables employees to submit requests online while managers can review, approve, and monitor leave across teams and locations with ease.</p>
       <h4>Why Partner With Us?</h4>
       <ul class="solution-features">
         <li><strong>Accurate &amp; Timely Payroll</strong><span>Ensure employees are paid correctly and on schedule.</span></li>
-        <li><strong>Regulatory Compliance</strong><span>Stay compliant with Singapore's statutory and payroll requirements.</span></li>
+        <li><strong>Regulatory Compliance</strong><span>Stay compliant with Singapore and Malaysia statutory and payroll requirements.</span></li>
         <li><strong>Reduced Administrative Workload</strong><span>Free your HR team to focus on higher-value initiatives.</span></li>
         <li><strong>Secure &amp; Reliable Processes</strong><span>Protect sensitive employee data with trusted payroll systems.</span></li>
         <li><strong>Scalable Solutions</strong><span>Flexible payroll services that grow alongside your business.</span></li>
@@ -1586,6 +1571,15 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="card reveal">
         <h3>Technology, Digital &amp; AI</h3>
         <p>Enterprise Technology, Cloud and Cybersecurity, AI and Data, Telecommunications, Digital Products and Platforms.</p>
+        <div class="industry-roles">
+          <div class="industry-roles-label">Representative Appointments</div>
+          <ul>
+            <li>CTO and Technology Directors</li>
+            <li>Product and Engineering Leaders</li>
+            <li>Regional Sales Directors</li>
+            <li>AI, Data and Cloud Specialists</li>
+          </ul>
+        </div>
       </div>
       <div class="card reveal">
         <h3>Industrial, Engineering &amp; Semiconductors</h3>
@@ -1594,6 +1588,16 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="card reveal">
         <h3>Maritime, Shipping &amp; Logistics</h3>
         <p>Container Shipping, Maritime Services, Freight and Logistics, Supply Chain and Port-related Operations.</p>
+        <div class="industry-roles">
+          <div class="industry-roles-label">Representative Appointments</div>
+          <ul>
+            <li>Country Manager / Country General Manager</li>
+            <li>Commercial Directors</li>
+            <li>Head of Sales</li>
+            <li>Operations Heads</li>
+            <li>Finance and Supply Chain Leaders</li>
+          </ul>
+        </div>
       </div>
       <div class="card reveal">
         <h3>Financial Services</h3>
@@ -1615,6 +1619,20 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="jobs-cta reveal">
+      <div>
+        <h2>Looking for leadership or specialist talent in your industry?</h2>
+        <p>Our consultants combine sector knowledge, regional networks and targeted search expertise to help you identify the right people.</p>
+      </div>
+      <div class="jobs-cta-actions">
+        <a href="#contact" data-route="contact" class="btn btn-primary">Discuss a Hiring Need</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 <main class="page" id="page-candidates" data-route="candidates">
 
@@ -1627,48 +1645,6 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       <div class="hero-actions" style="margin-bottom:0;">
         <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener" class="btn btn-outline">Browse Current Opportunities</a>
         <a href="#candidates" data-route="candidates" data-anchor="cv-form" class="btn btn-outline">Submit Your CV</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="ticker-section">
-  <div class="ticker-bar">
-    <div class="ticker-label">
-      <span class="ticker-dot"></span>
-      <div>
-        <div class="ticker-label-title">LIVE ROLES</div>
-        <div class="ticker-label-sub">Now hiring</div>
-      </div>
-    </div>
-    <div class="ticker-track-wrap">
-      <div class="ticker-track">
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Managing Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Group General Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Strategy</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>VP of Human Resources</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Supply Chain</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Senior Sales Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Associate Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Director of Sales</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Business Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Lead Engineer</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Corporate Services</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Principal Consultant</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Managing Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Group General Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Strategy</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>VP of Human Resources</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Regional Sales Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Supply Chain</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Senior Sales Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Associate Director</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Director of Sales</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Business Manager</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Lead Engineer</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Head of Corporate Services</strong></div>
-        <div class="ticker-item"><span class="ticker-item-dot"></span><strong>Principal Consultant</strong></div>
       </div>
     </div>
   </div>
@@ -1841,6 +1817,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
         <p class="form-privacy-note">By submitting this form, you consent to JonDavidson contacting you regarding your enquiry and handling your information in accordance with our Privacy Policy.</p>
         <div class="form-status" id="clf-status" role="status"></div>
       </form>
+      <p class="contact-form-intro">Looking for your next career opportunity? <a href="https://recruitcrm.io/jobs/JonDavidson_jobs" target="_blank" rel="noopener">Explore Current Opportunities</a> or <a href="#candidates" data-route="candidates" data-anchor="cv-form">Submit Your CV</a>.</p>
     </div>
     </div>
 
@@ -1869,7 +1846,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 JonDavidson Group. All rights reserved. &nbsp;&middot;&nbsp; <a href="documents/JonDavidson-Privacy-Policy.pdf" target="_blank" rel="noopener">Privacy Policy</a></span>
+      <span>&copy; 2026 JonDavidson Pte Ltd. All rights reserved. &nbsp;&middot;&nbsp; <a href="documents/JonDavidson-Privacy-Policy.pdf" target="_blank" rel="noopener">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
@@ -1881,6 +1858,30 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     const open = navLinksEl.style.display === 'flex';
     navLinksEl.style.display = open ? 'none' : 'flex';
     navLinksEl.style.cssText += 'flex-direction:column;position:fixed;top:64px;right:20px;background:#FFFFFF;border:1px solid #E4E9F1;padding:20px 28px;border-radius:14px;gap:16px;box-shadow:0 20px 40px rgba(11,31,58,0.18);';
+  });
+
+  // The desktop nav dropdown opens on :hover, which doesn't fire on touch
+  // devices at desktop widths (e.g. tablets). Below the 1240px breakpoint the
+  // dropdown submenu is already always expanded inline, so this only needs to
+  // intercept the first tap when the hover flyout layout is active and the
+  // device has no real hover (touch).
+  document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+    const trigger = dropdown.querySelector(':scope > .nav-dropdown-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', (e) => {
+      const isFlyoutLayout = window.matchMedia('(min-width:1241px)').matches;
+      const canHover = window.matchMedia('(hover: hover)').matches;
+      if (isFlyoutLayout && !canHover && !dropdown.classList.contains('dropdown-open')) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-dropdown.dropdown-open').forEach((d) => d.classList.remove('dropdown-open'));
+        dropdown.classList.add('dropdown-open');
+      }
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.dropdown-open').forEach((d) => d.classList.remove('dropdown-open'));
+    }
   });
 
   const TITLES = {"home": "JonDavidson Group — Executive Search, Recruitment & Workforce Solutions", "about": "Who We Are — JonDavidson Group", "meet-team": "Meet Our Team — JonDavidson Group", "recruitment-workforce-solutions": "Recruitment & Workforce Solutions — JonDavidson Group", "retained-executive-search": "Retained Executive Search — JonDavidson Group", "solution-interim-management": "Interim Leadership — JonDavidson Group", "solution-career-transition": "Career Transition — JonDavidson Group", "solution-contingency-recruitment": "Contingency Recruitment — JonDavidson Group", "contract-staffing": "Contract Staffing & Workforce Solutions — JonDavidson Group", "solution-payroll-outsourcing": "Payroll Services — JonDavidson Group", "solution-training-consultancy": "Training & Consultancy — JonDavidson Group", "industry-expertise": "Industry Expertise — JonDavidson Group", "candidates": "Candidates — JonDavidson Group", "contact": "Contact Us — JonDavidson Group"};
