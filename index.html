@@ -29,8 +29,10 @@
   })
 </script>
 <title>JonDavidson Group</title>
+<link rel="icon" type="image/png" href="images/logo-icon.png">
+<link rel="apple-touch-icon" href="images/logo-icon.png">
 <meta name="description" content="JonDavidson is a Singapore-headquartered executive search, recruitment and workforce solutions firm serving organisations across Asia Pacific.">
-<link rel="canonical" href="https://yvonne-ux.github.io/jd-website/">
+<link rel="canonical" href="https://jondavidsongroup.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -2125,7 +2127,7 @@ footer{background:var(--white);color:var(--gray-600);padding:56px 0 28px;border-
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', DESCRIPTIONS[route] || DESCRIPTIONS.home);
     const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', 'https://yvonne-ux.github.io/jd-website/' + (route === 'home' ? '' : route));
+    if (canonical) canonical.setAttribute('href', 'https://jondavidsongroup.com/' + (route === 'home' ? '' : route));
     scrollToTopInstant();
     closeMobileMenu();
     reobserve();
